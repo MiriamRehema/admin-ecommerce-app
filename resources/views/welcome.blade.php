@@ -38,6 +38,12 @@
                         >
                             Log in
                         </a>
+                        <a
+                                href="{{ route('users.index') }}"
+                                class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
+                                Manage users
+                            </a>
+
 
                         @if (Route::has('register'))
                             <a
@@ -45,6 +51,10 @@
                                 class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
                                 Register
                             </a>
+                            
+
+
+
                         @endif
                     @endauth
                 </nav>
@@ -81,6 +91,26 @@
                                         />
                                     </svg>
                                 </a>
+                                <span>
+                                Read the
+                                <a href="https://laravel.com/docs" target="_blank" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-[#f53003] dark:text-[#FF4433] ms-1">
+                                    <span>Documentation</span>
+                                    <svg
+                                        width="10"
+                                        height="11"
+                                        viewBox="0 0 10 11"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="w-2.5 h-2.5"
+                                    >
+                                        <path
+                                            d="M7.70833 6.95834V2.79167H3.54167M2.5 8L7.5 3.00001"
+                                            stroke="currentColor"
+                                            stroke-linecap="square"
+                                        />
+                                    </svg>
+                                </a>
+
                             </span>
                         </li>
                         <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:bottom-1/2 before:top-0 before:start-[0.4rem] before:absolute">
@@ -117,6 +147,7 @@
                                 Deploy now
                             </a>
                         </li>
+                        
                     </ul>
                 </div>
                 <div class="bg-[#fff2f2] dark:bg-[#1D0002] relative lg:-ms-px -mb-px lg:mb-0 rounded-t-lg lg:rounded-t-none lg:rounded-e-lg! aspect-[335/376] lg:aspect-auto w-full lg:w-[438px] shrink-0 overflow-hidden">
