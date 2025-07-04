@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 //use App\Http\Controllers\PermissionController;
 
 Route::get('/', function () {
@@ -20,14 +21,9 @@ Route::view('dashboard', 'dashboard')
 
 
 Route::resource("users",UserController::class);
+Route::resource("products",ProductController::class);
  // This sets up the resource routes with the 'users' name prefix
-// Route::resource('permissions',App\Http\Controllers\PermissionController::class)
-//     ->middleware(['auth'])
-//     ->names('permissions'); // This sets up the resource routes with the 'permissions' name prefix
 
-//Route::middleware(['auth'])->group(function () {
-    //Route::resource('permissions', PermissionController::class); // This sets up the resource routes
-//});
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
