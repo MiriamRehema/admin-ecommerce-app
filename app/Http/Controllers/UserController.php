@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\User;
+use Hash;
 
 class UserController extends Controller
 {
@@ -23,7 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //return view('users.create');
+        return view('users.create');
     }
 
     /**
@@ -31,7 +32,26 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required|email',
+            'password'=>'required',
+            
+        ]
+
+        );
+        User::create([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'password'=>Hash::make($request->password)
+            // 'email_verified_at'=>now(),
+            // 'remember_token'=>null,
+            // 'created_at'=>now(),
+            // 'updated_at'=>now(),
+        ]);
+        return redirect()->route('users.index')
+               ->with("success","User created successfully");
+        //,dd($request->all());
     }
 
     /**
@@ -39,7 +59,8 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user =User::find($id);
+        return view('users.show',compact('user'));
     }
 
     /**
@@ -47,7 +68,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user =User::find($id);
+        return view('users.edit',compact("user"));
     }
 
     /**
@@ -55,7 +77,23 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required|email',
+            'password'=>'required'
+            
+        ]
+        );
+        $user = User::find($id);
+
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->password=Hash::make($request->password);
+        $user->save();
+
+         return redirect()->route('users.index')
+               ->with("success","User updated successfully");
+
     }
 
     /**
@@ -63,6 +101,10 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        
+        $user=User::find($id);
+        $user->delete();
+        return redirect()->route('users.index')
+               ->with("success","Successfully Deleted");
     }
 }
