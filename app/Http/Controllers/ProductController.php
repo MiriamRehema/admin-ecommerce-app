@@ -76,11 +76,11 @@ class ProductController extends Controller
             
         ]
         );
-        $product = Product::find($id);
+        $user = Product::find($id);
 
-        $product->name=$request->name;
+        $user->name=$request->name;
 
-        $product->save();
+        $user->save();
 
          return redirect()->route('products.index')
                ->with("success","Product updated successfully.");
