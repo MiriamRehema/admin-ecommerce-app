@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
-//use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,6 +22,7 @@ Route::view('dashboard', 'dashboard')
 
 Route::resource("users",UserController::class);
 Route::resource("products",ProductController::class);
+Route::resource("roles",RoleController::class);
  // This sets up the resource routes with the 'users' name prefix
 
 
