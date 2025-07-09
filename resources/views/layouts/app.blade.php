@@ -56,6 +56,10 @@
                         <li class=nav-item>
                              <a class="nav-link" href="{{ route('products.index') }}">Manage Products</a>
                         </li>
+                        <li class=nav-item>
+                             <a class="nav-link" href="{{ route('roles.index') }}">Manage Roles</a>
+                        </li>
+
                        
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
