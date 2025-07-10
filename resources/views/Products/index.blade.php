@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('content') 
-<livewire:products.index />
+@section('content')
 
- @endsection
+<livewire:products.index /> 
+ @endsection 

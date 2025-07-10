@@ -1,48 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="card">
-                <div class="card-header">{{ __('Update Product') }}</div>
+<div class="max-w-2xl mx-auto py-8">
+    <x-card title="Update Product">
+        <x-slot name="slot">
+            <a href="{{ route('products.index') }}">
+                <x-button icon="arrow-left" class="mb-4" label="Back" />
+            </a>
+            <form method="POST" action="{{ route('products.update', $product->id) }}" class="space-y-6">
+                @csrf
+                @method('PUT')
 
-                <div class="card-body">
-                    <a href="{{ route('products.index') }}" class="btn btn-info">Back</a>
-                    <form method="POST" action="{{route('products.update', $product->id)}}">
-
-                    @csrf
-                    @method('PUT')
-
-                    
-                    
-                    <div class="mt-2">
-                        <label>Name:</label>
-                        <input type="name" name="name" class="form-control" value="{{ $product->name}}">
-                        @error('name')
-                        <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    </div>
-                    <div class="mt-2">
-                    <button class="btn btn-success">Update</button>
-                    </div>
-                    </form>
-
-
-
-                    </div>
-
-
-                
-                   
-                   
+                <div>
+                    <x-input label="Name" name="name" value="{{ old('name', $product->name) }}" />
+                    @error('name')
+                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                    @enderror
                 </div>
-            </div>
-        </div>
-    </div>
+
+                <div>
+                    <x-button type="submit" positive label="Update" />
+                </div>
+            </form>
+        </x-slot>
+    </x-card>
 </div>
-
-
 @endsection
