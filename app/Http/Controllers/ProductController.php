@@ -13,8 +13,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products=Product::all();
-        return view('products.index',compact('products'));
+        
+        return view('products.index');
     }
 
     /**
@@ -76,11 +76,11 @@ class ProductController extends Controller
             
         ]
         );
-        $user = Product::find($id);
+        $product = Product::find($id);
 
-        $user->name=$request->name;
+        $product->name=$request->name;
 
-        $user->save();
+        $product->save();
 
          return redirect()->route('products.index')
                ->with("success","Product updated successfully.");
