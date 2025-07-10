@@ -23,7 +23,7 @@ Route::view('dashboard', 'dashboard')
 Route::resource("users",UserController::class);
 Route::resource("products",ProductController::class);
 Route::resource("roles",RoleController::class);
- // This sets up the resource routes with the 'users' name prefix
+
 
 
 Route::middleware(['auth'])->group(function () {
