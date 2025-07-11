@@ -1,58 +1,45 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="card">
-                <div class="card-header">{{ __('Edit User') }}</div>
 
-                <div class="card-body">
-                    <a href="{{ route('users.index') }}" class="btn btn-info">Back</a>
-                    <form method="POST" action="{{route('users.update', $user->id)}}">
+<div class="max-w-2xl mx-auto py-8">
+    <x-card title="Update User">
+        <x-slot name="slot">
+            <a href="{{ route('users.index') }}">
+                <x-button icon="arrow-left" class="mb-4" label="Back" />
+            </a>
 
-                    @csrf
-                    @method('PUT')
+            <form method="POST" action="{{ route('users.update', $user->id) }}" class="space-y-6">
+                @csrf
+                @method('PUT')
 
-                    
-                    
-                    <div class="mt-2">
-                        <label>Name:</label>
-                        <input type="name" name="name" class="form-control" value="{{ $user->name}}">
-                        @error('name')
-                        <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="mt-2">
-                        <label>Email:</label>
-                        <input type="email" name="email" class="form-control"value="{{ $user->email}}">
-                        @error('email')
-                        <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="mt-2">
-                        <label>Password:</label>
-                        <input type="password" name="password" class="form-control">
-                        @error('password')
-                        <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="mt-2">
-                    <button class="btn btn-success">Update</button>
-                    </div>
-                    </form>
-
-
-
-                    </div>
-
-
-                
-                   
-                   
+                <div>
+                    <x-input label="Name" name="name" value="{{ old('name', $user->name) }}" />
+                    @error('name')
+                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                    @enderror
                 </div>
-            </div>
-        </div>
-    </div>
+
+                <div>
+                    <x-input label="Email" name="email" type="email" value="{{ old('email', $user->email) }}" />
+                    @error('email')
+                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div>
+                    <x-input label="Password" name="password" type="password" />
+                    @error('password')
+                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div>
+                    <x-button type="submit" positive label="Update" />
+                </div>
+            </form>
+        </x-slot>
+    </x-card>
 </div>
+
 @endsection
