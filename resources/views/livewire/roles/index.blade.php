@@ -1,51 +1,51 @@
+<div class="max-w-full mx-auto py-8">
+    <x-card title="Roles">
+            
+        <x-slot name="slot">
+            @if (session('success'))
+            <x-alert title="Success Message!" positive />
+            @endif
+            
 
-   <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="card">
-                <div class="card-header">{{ __('Roles') }}</div>
+            <a href="{{ route('roles.create') }}">
+                <x-button class="mb-4" icon="plus" positive label="Add Role" />
+            </a>
 
-
-                <div class="card-body">
-                   @if (session('success'))
-                    <div class="alert alert-success">
-                    {{ session('success') }}
-                    </div>
-                    @endif
-                    <a href="{{ route('roles.create') }}" class="btn btn-success mb-3">Add Roles</a>
-                
-                    <table class="table table-striped">
-                        <thead>
+            <div class="overflow-x-auto rounded-lg shadow">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">ID</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Created At</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-100">
+                        @foreach($roles as $role)
                             <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Actions</th>
+                                <td class="px-4 py-2">{{ $role->id }}</td>
+                                <td class="px-4 py-2">{{ $role->name }}</td>
+                                <td class="px-4 py-2">{{ $role->created_at->format('Y-m-d H:i') }}</td>
+                                <td class="px-4 py-2 flex gap-2">
+                                    <a href="{{ route('roles.edit', $role->id) }}">
+                                        <x-button icon="pencil" small primary label="Edit" />
+                                    </a>
+                                    <a href="{{ route('roles.show', $role->id) }}">
+                                        <x-button icon="eye" small info label="Show" />
+                                    </a>
+                                    <form method="POST" action="{{ route('roles.destroy', $role->id) }}" onsubmit="return confirm('Are you sure?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <x-button wire:click="confirmFull" negative>Delete</x-button>
+                                        <!-- <x-button icon="trash" small negative label="Delete" type="submit" /> -->
+                                    </form>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($roles as $role)
-                                <tr>
-                                    <td>{{ $role->id }}</td>
-                                    <td>{{ $role->name }}</td>
-                                    
-                                    <td>{{ $role->created_at->format('Y-m-d H:i') }}</td>
-                                    <td>
-                                        <form method="POST" action="{{route('roles.destroy', $role->id)}}" >
-                                            @csrf
-                                            @method('DELETE')
-                                        <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                        <a href="{{ route('roles.show', $role->id) }}" class="btn btn-info btn-sm">Show</a>  
-                                        <button class="btn btn-danger btn-sm">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
-        </div>
-    </div>
+        </x-slot>
+    </x-card>
 </div>
-
-
