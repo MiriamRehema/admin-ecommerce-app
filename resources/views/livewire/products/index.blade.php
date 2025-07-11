@@ -1,14 +1,13 @@
-<div class="max-w-4xl mx-auto py-8">
+<div class="max-w-full mx-auto py-8">
     <x-card title="PRODUCTS">
         <x-slot name="slot">
             @if (session('success'))
-                <x-button wire:click="successNotification" positive>
-                 Success Notification
-                </x-button>
+                 <x-alert title="Success Message!" positive />
             @endif
 
             <a href="{{ route('products.create') }}">
-                <x-button class="mb-4" icon="plus" positive label="Add Product" />
+                <x-button icon='plus' label="Add Product" x-on:click="$openModal('cardModal')" warning />
+                <!-- <x-button class="mb-4" icon="plus" positive label="Add Product" /> -->
             </a>
 
             <div class="overflow-x-auto rounded-lg shadow">
