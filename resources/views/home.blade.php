@@ -7,9 +7,7 @@
             {{ __('Dashboard') }}
         </x-slot>
         @if (session('status'))
-            <x-notification icon="success" class="mb-4">
-                {{ session('status') }}
-            </x-notification>
+            <x-alert title="Success Message!" positive />
         @endif
 
         <div class="text-gray-700 text-lg">
