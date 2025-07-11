@@ -1,29 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="card">
-                <div class="card-header">{{ __('Show User') }}</div>
 
-                <div class="card-body">
-                    <a href="{{ route('users.index') }}" class="btn btn-info">Back</a>
-                    <p><strong>Name:</strong>{{$user->name}}</p>
-                    <p><strong>Email:</strong>{{$user->email}}</p>
-                    
+<div class="max-w-2xl mx-auto py-8">
+    <x-card title="Show User">
+        <x-slot name="slot">
+            <a href="{{ route('users.index') }}">
+                <x-button icon="arrow-left" class="mb-4" label="Back" />
+            </a>
 
-
-
-                    </div>
-
-
-                
-                   
-                   
-                </div>
+            <div class="space-y-4">
+                <p><strong>Name:</strong> {{ $user->name }}</p>
+                <p><strong>Email:</strong> {{ $user->email }}</p>
+                <!-- Add more user details here as needed -->
             </div>
-        </div>
-    </div>
+        </x-slot>
+    </x-card>
 </div>
+
 @endsection
