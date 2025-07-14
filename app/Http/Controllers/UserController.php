@@ -15,8 +15,8 @@ class UserController extends Controller
     public function index()
     {
        
-       
-        return view('users.index');
+      
+         return view('users.index');
     }
 
     /**
@@ -33,9 +33,9 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required',
-            'email'=>'required|email',
-            'password'=>'required',
+            'name'=>'required|string|max:255',
+            'email'=>'required|email|string|email|max:255|unique:users',
+            'password'=>'required|string|min:8',
             
         ]
 
