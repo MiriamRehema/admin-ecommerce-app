@@ -2,13 +2,11 @@
     <x-card title="PRODUCTS">
         <x-slot name="slot">
             @if (session('success'))
-                 <x-alert title="Success Message!" positive />
+                <x-alert title="Success Message!" positive />
             @endif
 
-            <a href="{{ route('products.create') }}">
-                <x-button icon='plus' label="Add Product" x-on:click="$openModal('cardModal')" warning />
-                <!-- <x-button class="mb-4" icon="plus" positive label="Add Product" /> -->
-            </a>
+            <!-- Button to open the modal -->
+            <x-button label="Add Product" x-on:click="$openModal('createProductModal')" warning />
 
             <div class="overflow-x-auto rounded-lg shadow">
                 <table class="min-w-full divide-y divide-gray-200">
@@ -46,4 +44,28 @@
             </div>
         </x-slot>
     </x-card>
+
+    <!-- Modal for creating a product -->
+    <x-modal-card title="Create Product" name="createProductModal">
+        <x-slot name="slot">
+            <form method="POST" action="{{ route('products.store') }}" class="space-y-6">
+                @csrf
+
+                <div>
+                    <x-input icon="shopping-bag" label="Name" name="nam" placeholder="Product" />
+                    @error('name')
+                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div>
+                    <x-button type="submit" positive label="Create" />
+                </div>
+            </form>
+        </x-slot>
+
+        <x-slot name="footer" class="flex justify-end">
+            <x-button flat label="Cancel" x-on:click="close" />
+        </x-slot>
+    </x-modal-card>
 </div>
