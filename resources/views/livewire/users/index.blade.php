@@ -1,15 +1,13 @@
-<div class="max-w-5xl mx-auto py-8">
-    <x-card title="Users">
+<div class="max-w-full mx-auto py-8">
+    <x-card title="USERS">
         <x-slot name="slot">
             @if (session('success'))
                  <x-alert title="Success Message!" positive />
             @endif
 
-            <a href="{{ route('users.create') }}">
-                <x-button icon='plus' label="Add User" x-on:click="$openModal('cardModal')" warning />
+            
 
-                <!-- <x-button class="mb-4" icon="plus" positive label="Add User" /> -->
-            </a>
+            <x-button label="Add User" x-on:click="$openModal('createUserModal')" warning />
 
             <div class="overflow-x-auto rounded-lg shadow">
                 <table class="min-w-full divide-y divide-gray-200">
@@ -47,4 +45,45 @@
             </div>
         </x-slot>
     </x-card>
+
+    <!-- Modal for creating users -->
+     <x-modal-card title="Create User" name="createUserModal">
+        <x-slot name="slot">
+            <form method="POST" action="{{ route('users.store') }}" class="space-y-6">
+                @csrf
+
+                <div>
+                     <x-input icon="user" label="Name" name="name" placeholder='Name' />
+                    @error('name')
+                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div>
+                    <x-input icon='envelope'  label="Email" name="email" placeholder='Email' />
+                    @error('email')
+                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div>
+                    <x-password label="Password"  name="password" value="I love WireUI ❤️" />
+                    
+                    @error('password')
+                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div>
+                    <x-button type="submit" positive label="Submit" />
+                </div>
+            </form>
+
+        </x-slot>
+
+        <x-slot name="footer" class="flex justify-end">
+            <x-button flat label="Cancel" x-on:click="close" />
+        </x-slot>
+    </x-modal-card>
 </div>
+
