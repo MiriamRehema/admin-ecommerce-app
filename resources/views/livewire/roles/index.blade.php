@@ -1,15 +1,13 @@
 <div class="max-w-full mx-auto py-8">
-    <x-card title="Roles">
+    <x-card title="ROLES">
             
         <x-slot name="slot">
             @if (session('success'))
             <x-alert title="Success Message!" positive />
             @endif
             
-
-            <a href="{{ route('roles.create') }}">
-                <x-button class="mb-4" icon="plus" positive label="Add Role" />
-            </a>
+            <x-button label="Add Role" x-on:click="$openModal('createRoleModal')" warning />
+            
 
             <div class="overflow-x-auto rounded-lg shadow">
                 <table class="min-w-full divide-y divide-gray-200">
@@ -37,7 +35,19 @@
                                     <form method="POST" action="{{ route('roles.destroy', $role->id) }}" onsubmit="return confirm('Are you sure?');">
                                         @csrf
                                         @method('DELETE')
-                                        <x-button wire:click="confirmFull" negative>Delete</x-button>
+                                        <x-button
+                                         x-on:click="$wireui.confirmNotification({
+                                        title: 'Are you Sure?',
+                                        description: 'Save the information?',
+                                        icon: 'question',
+                                        acceptLabel: 'Yes, save it',
+                                        method: 'save',
+                                        params: 'Saved',
+                                        })"
+                                        warning>
+                                        Delete
+                                        </x-button>
+                                       
                                         <!-- <x-button icon="trash" small negative label="Delete" type="submit" /> -->
                                     </form>
                                 </td>
