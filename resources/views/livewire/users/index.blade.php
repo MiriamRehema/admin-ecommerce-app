@@ -53,7 +53,7 @@
                 @csrf
 
                 <div>
-                     <x-input icon="user" label="Name" name="name" placeholder='Name' />
+                     <x-input icon="users" label="Name" name="name" placeholder='Name' />
                     @error('name')
                         <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
                     @enderror
