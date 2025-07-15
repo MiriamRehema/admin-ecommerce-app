@@ -58,4 +58,36 @@
             </div>
         </x-slot>
     </x-card>
+
+    <!-- Modal fro creating a role -->
+     <x-modal-card title="Create Role" name="createRoleModal">
+        <x-slot name="slot">
+            <form method="POST" action="{{ route('roles.store') }}" class="space-y-6">
+                @csrf
+
+                <div>
+                    <x-input icon="users" label="Name" name="name" placeholder="Role" />
+                    @error('role')
+                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div>
+                <h3 class="text-2xl font-semibold">Permissions:</h3>
+                @foreach($permissions as $permission)      
+                <label>
+                {{ $permission->name }}<x-checkbox name="permissions[]" value="{{$permission->id}}" />
+                </label>
+                @endforeach
+                </div>
+
+                <div>
+                    <x-button type="submit" positive label="Create" />
+                </div>
+            </form>
+        </x-slot>
+
+        <x-slot name="footer" class="flex justify-end">
+            <x-button flat label="Cancel" x-on:click="close" />
+        </x-slot>
+    </x-modal-card>
 </div>
