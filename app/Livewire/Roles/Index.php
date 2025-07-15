@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Roles;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 
 use Livewire\Component;
@@ -12,7 +13,9 @@ class Index extends Component
     {
        
         return view('livewire.roles.index',[
-            'roles' => Role::all()
+            //@dd($permissions)
+             'roles' => Role::all(),
+            'permissions'=>Permission::all()
         ]);
         
     }
