@@ -13,9 +13,9 @@ class Index extends Component
     {
        
         return view('livewire.roles.index',[
-            //@dd($permissions)
+              //dd($permissions),
              'roles' => Role::all(),
-            'permissions'=>Permission::all()
+             'permissions'=>Permission::all()
         ]);
         
     }
