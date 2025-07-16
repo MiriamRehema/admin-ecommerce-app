@@ -59,7 +59,7 @@
         </x-slot>
     </x-card>
 
-    <!-- Modal fro creating a role -->
+    <!-- Modal for creating a role -->
      <x-modal-card title="Create Role" name="createRoleModal">
         <x-slot name="slot">
             <form method="POST" action="{{ route('roles.store') }}" class="space-y-6">
@@ -74,8 +74,12 @@
                 <div>
                 <h3 class="text-2xl font-semibold">Permissions:</h3>
                 @foreach($permissions as $permission)      
-                <label>
-                {{ $permission->name }}<x-checkbox name="permissions[]" value="{{$permission->id}}" />
+                <label class="flex items-center" >
+                    <span class="ml-2">
+                <x-checkbox name="permissions[{{ $permission->name}}]" value="{{$permission->name}}" />
+                </span>
+                {{ $permission->name }}
+
                 </label>
                 @endforeach
                 </div>
