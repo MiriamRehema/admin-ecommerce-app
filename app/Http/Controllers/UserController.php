@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Spatie\Permission\Models\Role;
+
 use App\Models\User;
 use Hash;
 
@@ -24,14 +26,17 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $roles=Role::all();
+         dd($roles);
+        return view('users.create',compact('roles'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+    { 
+        //dd($request->all());
         $request->validate([
             'name'=>'required|string|max:255',
             'email'=>'required|email|string|email|max:255|unique:users',
@@ -40,7 +45,7 @@ class UserController extends Controller
         ]
 
         );
-        User::create([
+        $user=User::create([
             'name'=>$request->name,
             'email'=>$request->email,
             'password'=>Hash::make($request->password)
@@ -49,6 +54,7 @@ class UserController extends Controller
             // 'created_at'=>now(),
             // 'updated_at'=>now(),
         ]);
+        $user->syncRoles($request->roles);
         return redirect()->route('users.index')
                ->with("success","User created successfully");
         //,dd($request->all());
@@ -60,7 +66,8 @@ class UserController extends Controller
     public function show(string $id)
     {
         $user =User::find($id);
-        return view('users.show',compact('user'));
+        $roles =$user->roles;
+        return view('users.show',compact('user','roles'));
     }
 
     /**
@@ -69,7 +76,9 @@ class UserController extends Controller
     public function edit(string $id)
     {
         $user =User::find($id);
-        return view('users.edit',compact("user"));
+        $roles=Role::all();
+
+        return view('users.edit',compact("user","roles"));
     }
 
     /**
