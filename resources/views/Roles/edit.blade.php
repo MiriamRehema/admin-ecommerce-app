@@ -10,32 +10,37 @@
             
             <form method="POST" action="{{ route('roles.update',  $role->id) }}" class="space-y-6">
              @csrf
-             @method('PUT')
+             @method("PUT")
              
 
             <div >
             <label>Name:</label>
-            <x-input icon="users" name="roles" placeholder="Role" value="{{$role->name}}"/>
-            @error("roles")
+            <x-input icon="users" name="name" placeholder="Role" value="{{$role->name}}"/>
+            @error("name")
                 <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
             @enderror
             </div>
        
             <div>
-            <h3 class="text-2xl font-semibold">Permissions:</h3>
-            @foreach($permissions as $permission)
-            <label class="flex items-center">
-              <span class="ml-2">
-              <x-checkbox  
-                name="permissions[{{ $permission->name }}]" 
-                value="{{ $permission->name }}"
-                :checked="$role->hasPermissionTo($permission->name)" 
-                   />
-              </span>
-               {{ $permission->name }}
-            </label>
-            @endforeach
-            </div>
+
+                <h3 class="text-2xl font-semibold">Permissions:</h3>
+                @foreach($permissions as $permission)
+                <div class="checkbox checkbox-success">
+
+                    <input
+
+                    type="checkbox" 
+                    name="permissions[]" 
+                    
+                    value="{{ $permission->name }}"  
+                    {{ $role->hasPermissionTo($permission->name) ? 'checked' : '' }} 
+                     />
+                <label for="{{ $permission->name }}">
+                {{ $permission->name }}
+                </label>
+        </div>
+    @endforeach
+</div>
         
 
         
