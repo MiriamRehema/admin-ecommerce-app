@@ -36,19 +36,21 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
         $request->validate([
-            'name'=>'required',
+            'name'=>'required|unique:roles,name',
+
             
             
         ]
 
         );
-        Role::create([
-            'name'=>$request->name,
+        $role=Role::create([
+            'name'=>$request->name
            
         ]);
         $role->syncPermissions($request->permissions);
-
+        //dd($request->permissions);
 
         return redirect()->route('roles.index')
                ->with("success","Role created successfully");
@@ -69,7 +71,7 @@ class RoleController extends Controller
     public function edit(string $id)
     {
         $role =Role::find($id);
-        
+        //dd($role);
         
         $permissions=Permission::all();
         //dd($permissions);
@@ -102,6 +104,10 @@ class RoleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $role=Role::find($id);
+        $role->delete();
+        return redirect()->route('roles.index')
+               ->with("success","Successfully Deleted");
+    
     }
 }
