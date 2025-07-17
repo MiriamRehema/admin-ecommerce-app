@@ -35,20 +35,7 @@
                                     <form method="POST" action="{{ route('roles.destroy', $role->id) }}" onsubmit="return confirm('Are you sure?');">
                                         @csrf
                                         @method('DELETE')
-                                        <x-button
-                                         x-on:click="$wireui.confirmNotification({
-                                        title: 'Are you Sure?',
-                                        description: 'Save the information?',
-                                        icon: 'question',
-                                        acceptLabel: 'Yes, save it',
-                                        method: 'save',
-                                        params: 'Saved',
-                                        })"
-                                        warning>
-                                        Delete
-                                        </x-button>
-                                       
-                                        <!-- <x-button icon="trash" small negative label="Delete" type="submit" /> -->
+                                          <x-button icon="trash" small negative label="Delete" type="submit" />
                                     </form>
                                 </td>
                             </tr>
@@ -67,7 +54,7 @@
 
                 <div>
                     <x-input icon="users" label="Name" name="name" placeholder="Role" />
-                    @error('role')
+                    @error('name')
                         <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
                     @enderror
                 </div>
@@ -76,7 +63,7 @@
                 @foreach($permissions as $permission)      
                 <label class="flex items-center" >
                     <span class="ml-2">
-                <x-checkbox name="permissions[{{ $permission->name}}]" value="{{$permission->name}}" />
+                <x-checkbox name="permissions[]" value="{{$permission->name}}" />
                 </span>
                 {{ $permission->name }}
 
