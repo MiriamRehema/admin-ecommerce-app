@@ -25,11 +25,11 @@
         <label class="flex items-center">
             <span class="ml-2">
             
-            <x-checkbox  name="permissions[{{ $permission->name}}]" value="{{ $permission->name }}" />
+            <x-checkbox  name="permissions[]" value="{{ $permission->name }}" />
             </span>
             {{ $permission->name }}
             
-        </label>
+        </label></br>
         @endforeach
         </div>
         
