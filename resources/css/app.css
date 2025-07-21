@@ -1,5 +1,6 @@
 /* @import 'tailwindcss'; */
 @import '../../vendor/livewire/flux/dist/flux.css';
+@import url('https://fonts.bunny.net/css?family=Nunito');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
