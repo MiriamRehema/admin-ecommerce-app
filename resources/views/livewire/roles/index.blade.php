@@ -6,8 +6,9 @@
             <x-alert title="Success Message!" positive />
             @endif
             
+            @can('role-create')
             <x-button label="Add Role" x-on:click="$openModal('createRoleModal')" warning />
-            
+            @endcan
 
             <div class="overflow-x-auto rounded-lg shadow">
                 <table class="min-w-full divide-y divide-gray-200">
@@ -26,17 +27,24 @@
                                 <td class="px-4 py-2">{{ $role->name }}</td>
                                 <td class="px-4 py-2">{{ $role->created_at->format('Y-m-d H:i') }}</td>
                                 <td class="px-4 py-2 flex gap-2">
+                                    @can('role-edit')
                                     <a href="{{ route('roles.edit', $role->id) }}">
                                         <x-button icon="pencil" small primary label="Edit" />
                                     </a>
+                                    @endcan
+                                    @can('role-list')
                                     <a href="{{ route('roles.show', $role->id) }}">
                                         <x-button icon="eye" small info label="Show" />
                                     </a>
+                                    @endcan
+                                    </a>
+                                    @can('role-delete')
                                     <form method="POST" action="{{ route('roles.destroy', $role->id) }}" onsubmit="return confirm('Are you sure?');">
                                         @csrf
                                         @method('DELETE')
                                           <x-button icon="trash" small negative label="Delete" type="submit" />
                                     </form>
+                                    @endcan
                                 </td>
                             </tr>
                         @endforeach
