@@ -34,12 +34,25 @@
                     @enderror
                 </div>
                 <div>
+                    {{-- Display current roles as a list --}}
+<ul class="mb-2 text-sm text-gray-600">
+    Current Role:
+    @forelse($user->roles as $role)
+    
+        <li>{{ $role->name }}</li>
+    @empty
+        <li>None</li>
+    @endforelse
+</ul>
                     <x-select
                     label="Select Roles"
                     name="roles[]"
                     placeholder="Select many roles"
+                    :selected="$user->roles->pluck('id')->toArray()"
                     multiselect
+                    
                     :options="$roles->pluck('name', 'id')->toArray()" 
+                    
                      
                     />
                 </div>
