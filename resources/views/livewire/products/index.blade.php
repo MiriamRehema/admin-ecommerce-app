@@ -6,8 +6,10 @@
             @endif
 
             <!-- Button to open the modal -->
-            <x-button label="Add Product" x-on:click="$openModal('createProductModal')" warning />
+            @can('product-create')
 
+            <x-button label="Add Product" x-on:click="$openModal('createProductModal')" warning />
+            @endcan
             <div class="overflow-x-auto rounded-lg shadow">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
@@ -25,17 +27,25 @@
                                 <td class="px-4 py-2">{{ $product->name }}</td>
                                 <td class="px-4 py-2">{{ $product->created_at->format('Y-m-d H:i') }}</td>
                                 <td class="px-4 py-2 flex gap-2">
-                                    <a href="{{ route('products.edit', $product->id) }}">
-                                        <x-button icon="pencil" small primary label="Edit" />
-                                    </a>
-                                    <a href="{{ route('products.show', $product->id) }}">
-                                        <x-button icon="eye" small info label="Show" />
-                                    </a>
-                                    <form method="POST" action="{{ route('products.destroy', $product->id) }}" onsubmit="return confirm('Are you sure?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <x-button icon="trash" small negative label="Delete" type="submit" />
-                                    </form>
+   
+                                    @can('product-edit')
+                                        <a href="{{ route('products.edit', $product->id) }}">
+                                            <x-button icon="pencil" small primary label="Edit" />
+                                        </a>
+                                    @endcan
+                                    @can('product-list')
+                                        <a href="{{ route('products.show', $product->id) }}">
+                                            <x-button icon="eye" small info label="Show" />
+                                        </a>
+                                    @endcan
+                                    @can('product-delete')
+                                        <form method="POST" action="{{ route('products.destroy', $product->id) }}" onsubmit="return confirm('Are you sure?');">
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <x-button icon="trash" small negative label="Delete" type="submit" />
+                                        </form>
+                                    @endcan
                                 </td>
                             </tr>
                         @endforeach
@@ -52,7 +62,7 @@
                 @csrf
 
                 <div>
-                    <x-input icon="shopping-bag" label="Name" name="nam" placeholder="Product" />
+                    <x-input icon="shopping-bag" label="Name" name="name" placeholder="Product" />
                     @error('name')
                         <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
                     @enderror
