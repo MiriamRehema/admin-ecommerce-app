@@ -8,6 +8,15 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
+     public function __construct()
+{
+    // examples:
+    $this->middleware(['permission:product-list|product-create|product-edit|product-delete'])->only(['index', 'show']);
+    $this->middleware(['permission:product-edit'])->only(['edit', 'update']);
+    $this->middleware(['permission:product-create'])->only(['create', 'store']);
+    $this->middleware(['permission:product-delete'])->only(['destroy']);
+
+}
     /**
      * Display a listing of the resource.
      */
@@ -30,6 +39,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
         $request->validate([
             'name'=>'required',
             
@@ -53,6 +63,7 @@ class ProductController extends Controller
     public function show(string $id)
     {
         $product =Product::find($id);
+        //dd($product);
         return view('products.show',compact('product'));
     }
 
