@@ -3,17 +3,17 @@
         <div class="grid gap-6 md:grid-cols-3">
             <x-card class="aspect-video flex items-center justify-center">
                 <a href="{{ route('users.index') }}" class="text-lg font-semibold text-blue-600 hover:underline">
-                    View Users
+                    Manage Users
                 </a>
             </x-card>
             <x-card class="aspect-video flex items-center justify-center">
                 <a href="{{ route('products.index') }}" class="text-lg font-semibold text-green-600 hover:underline">
-                    View Products
+                    Manage Products
                 </a>
             </x-card>
             <x-card class="aspect-video flex items-center justify-center">
                 <a href="{{ route('roles.index') }}" class="text-lg font-semibold text-purple-600 hover:underline">
-                    View Roles
+                    Manage Roles
                 </a>
             </x-card>
         </div>
