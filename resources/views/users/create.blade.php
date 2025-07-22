@@ -17,8 +17,8 @@
                 </div>
 
                 <div>
-                    <x-input icon='envelope' name="name"  label="Email" placeholder='Email' />
-                    @error('name')
+                    <x-input icon='envelope' name="email"  label="Email" placeholder='Email' />
+                    @error('email')
                         <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
                     @enderror
                 </div>
@@ -31,13 +31,14 @@
                     @enderror
                 </div>
                 <div>
-                    <x-select
-                       label="Select Roles"
-                       name="roles[]"
-                       placeholder="Select many roles"
-                       multiselect
-                       :options="$roles->pluck('name', 'id')->toArray()"
-                    />
+                   <x-select
+    label="Select Roles"
+    name="roles[]"
+    placeholder="Select many roles"
+    multiselect
+    :selected="$user->roles->pluck('id')->toArray()"
+    :options="$roles->pluck('name', 'id')->toArray()"
+/>
                 </div>
 
                 <div>
