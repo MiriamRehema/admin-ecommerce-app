@@ -27,7 +27,8 @@ class UserController extends Controller
     public function create()
     {
         $roles=Role::all();
-         //dd($roles);
+        //dd($user, $user?->roles);
+        // dd($roles);
         return view('users.create',compact('roles'));
     }
 
@@ -54,7 +55,12 @@ class UserController extends Controller
             // 'created_at'=>now(),
             // 'updated_at'=>now(),
         ]);
-        $user->syncRoles($request->roles);
+        $roles = $request->roles;
+        if (is_array($roles) && isset($roles[0]) && is_string($roles[0]) && str_starts_with($roles[0], '[')) {
+            $roles = json_decode($roles[0], true);
+        }
+        $user->syncRoles($roles);
+        //dd($request->roles);
         return redirect()->route('users.index')
                ->with("success","User created successfully");
         //,dd($request->all());
@@ -66,8 +72,10 @@ class UserController extends Controller
     public function show(string $id)
     {
         $user =User::find($id);
-        $roles =$user->roles;
-        return view('users.show',compact('user','roles'));
+      
+        //dd( $user?->roles);
+        return view('users.show',compact('user'));
+        
     }
 
     /**
@@ -75,10 +83,18 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        $user =User::find($id);
+        //dd($id);
+         
+         //dd($roles);
+         
+         //dd($user?->roles);
+         //dd($user?->roles->pluck('name')->toArray());
+        $user =User::with('roles')->find($id);
         $roles=Role::all();
+        //dd($user, $user?->roles);
+        //dd($user->roles);
 
-        return view('users.edit',compact("user","roles"));
+        return view('users.edit',compact("user", "roles"));
     }
 
     /**
@@ -86,10 +102,11 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        //dd($request->all());
         $request->validate([
             'name'=>'required',
             'email'=>'required|email',
-            'password'=>'required'
+            'password'=>'nullable'
             
         ]
         );
@@ -99,9 +116,15 @@ class UserController extends Controller
         $user->email=$request->email;
         $user->password=Hash::make($request->password);
         $user->save();
+ 
 
-         return redirect()->route('users.index')
-               ->with("success","User updated successfully");
+        $roles = $request->roles;
+        if (is_array($roles) && isset($roles[0]) && is_string($roles[0]) && str_starts_with($roles[0], '[')) {
+            $roles = json_decode($roles[0], true);
+        }
+        $user->syncRoles($roles);
+        return redirect()->route('users.index')
+              ->with("success","User updated successfully");
 
     }
 
