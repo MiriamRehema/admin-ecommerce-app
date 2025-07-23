@@ -62,4 +62,8 @@ class User extends Authenticatable
     /**
      * Get the user's avatar URL
      */
+    // public function avatarUrl(): string
+    // {
+    //     return 'https://ui-avatars.com/api/?name=' . urlencode($this->name) . '&size=128&background=random';
+    // }
 }
