@@ -7,38 +7,58 @@
 
             
             
-            <x-button label="Add User" x-on:click="$openModal('createUserModal')" warning />
+            <x-button md label="Add User" x-on:click="$openModal('createUserModal')" warning />
 
             <div class="overflow-x-auto rounded-lg shadow">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Initials</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Created At</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Role</th>
-                            <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
+                            <th class="px-4 py-2 text-left text-xxs font-medium text-gray-500 uppercase">Initials</th>
+                            <th class="px-4 py-2 text-left text-xxs font-medium text-gray-500 uppercase">Name</th>
+                            <th class="px-4 py-2 text-left text-xxs font-medium text-gray-500 uppercase">Created At</th>
+                            <th class="px-4 py-2 text-left text-xxs font-medium text-gray-500 uppercase">Role</th>
+
+                            <th class="px-4 py-2 text-left text-xxs font-medium text-gray-500 uppercase">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-100">
                         @foreach($users as $user)
                             <tr>
-                                <td class="px-4 py-2">{{ $user->initials() }}</td>
+                                
+                                    
+                                
+                                <td>
+                                <x-avatar sm >
+                                     <x-slot name="label" class="!text-orange-300 !font-extrabold italic">
+                                        {{ $user->initials() }}
+                                    </x-slot>
+                                </x-avatar>
+                                </td>
+
                                 <td class="px-4 py-2">{{ $user->name }}</td>
                                 <td class="px-4 py-2">{{ $user->created_at->format('Y-m-d H:i') }}</td>
-                                <td class="px-4 py-2">{{ $user->roles->pluck('name')->implode(', ') ?: 'None' }}</td>
                                 
+
+                                <td>
+                                    @foreach($user->roles as $role)
+                                        <x-badge flat green label="{{ $role->name }}" />
+                                    @endforeach
+                                    @if($user->roles->isEmpty())
+                                        <x-badge flat rose label="No Role" />
+                                    @endif
+                                </td>
                                 <td class="px-4 py-2 flex gap-2">
-                                    <a href="{{ route('users.edit', $user->id) }}">
-                                        <x-button icon="pencil" small primary label="Edit" />
-                                    </a>
+                                    
                                     <a href="{{ route('users.show', $user->id) }}">
-                                        <x-button icon="eye" small info label="Show" />
+                                        <x-button  icon="eye" flat interaction:solid="positive" style="color: info;"/>
+                                    </a>
+                                    <a href="{{ route('users.edit', $user->id) }}">
+                                        <x-button icon="pencil-square " flat interaction:solid="info" style="color: green;" />
                                     </a>
                                     <form method="POST" action="{{ route('users.destroy', $user->id) }}" onsubmit="return confirm('Are you sure?');">
                                         @csrf
                                         @method('DELETE')
-                                        <x-button icon="trash" small negative label="Delete" type="submit" />
+                                        <x-mini-button rounded icon="trash" flat gray interaction="negative" style="color: red;"/>
                                     </form>
                                 </td>
                             </tr>
