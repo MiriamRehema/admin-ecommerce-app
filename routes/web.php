@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\OrderController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,6 +24,7 @@ Route::view('dashboard', 'dashboard')
 Route::resource("users",UserController::class);
 Route::resource("products",ProductController::class);
 Route::resource("roles",RoleController::class);
+Route::resource("orders",OrderController::class);
 
 
 
