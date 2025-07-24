@@ -42,6 +42,19 @@ class ProductController extends Controller
         //dd($request->all());
         $request->validate([
             'name'=>'required',
+            'slug'=>'required|unique:products,slug',
+            'description'=>'required',
+            'price'=>'required|numeric',
+            'stock'=>'required|integer',
+            'is_active'=>'required|boolean',
+            'category_id'=>'required|exists:categories,id',
+            'is_featured'=>'required|boolean',
+            'is_new'=>'required|boolean',
+            'is_on_sale'=>'required|boolean',
+            'image'=>'nullable|array',
+
+
+
             
             
             
@@ -50,6 +63,17 @@ class ProductController extends Controller
         );
         Product::create([
             'name'=>$request->name,
+            'slug'=>str_slug($request->name),
+            'description'=>$request->description,
+            'image'=>$request->image,
+            'price'=>$request->price,
+            'is_active'=>$request->is_active,
+            'category_id'=>$request->category_id,
+            'stock'=>$request->stock,
+            'is_featured'=>$request->is_featured,
+            'is_new'=>$request->is_new,
+            'is_on_sale'=>$request->is_on_sale,
+            
            
         ]);
         return redirect()->route('products.index')
@@ -84,11 +108,23 @@ class ProductController extends Controller
     {
         $request->validate([
             'name'=>'required',
+            'slug'=>'required|unique:products,slug,'.$id,
+            'description'=>'required',
+            'price'=>'required|numeric',
+            'stock'=>'required|integer',
+            'is_active'=>'required|boolean',
+            'category_id'=>'required|exists:categories,id',
+            'is_featured'=>'required|boolean',
+            'is_new'=>'required|boolean',
+            'is_on_sale'=>'required|boolean',
+
+
             
             
         ]
         );
         $product = Product::find($id);
+
 
         $product->name=$request->name;
 
