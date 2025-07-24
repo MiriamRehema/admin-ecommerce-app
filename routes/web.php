@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,6 +26,7 @@ Route::resource("users",UserController::class);
 Route::resource("products",ProductController::class);
 Route::resource("roles",RoleController::class);
 Route::resource("orders",OrderController::class);
+Route::resource("categories",CategoryController::class);
 
 
 
