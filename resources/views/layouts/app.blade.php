@@ -22,6 +22,7 @@
 <body class="bg-gray-50 dark:bg-gray-900 min-h-screen antialiased">
     <div id="app">
         <x-notifications />
+        <x-notifications position="top-end" />
 
         <nav class="bg-white dark:bg-gray-800 shadow">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -56,6 +57,9 @@
                                 </li>
                                 <li>
                                     <a class="text-gray-700 dark:text-gray-200 hover:underline" href="{{ route('orders.index') }}">Manage Orders</a>
+                                </li>
+                                <li>
+                                    <a class="text-gray-700 dark:text-gray-200 hover:underline" href="{{ route('categories.index') }}">Manage Categories</a>
                                 </li>
                                 <li class="relative" x-data="{ open: false }">
                                     <button @click="open = !open" class="flex items-center text-gray-700 dark:text-gray-200 hover:underline focus:outline-none">
