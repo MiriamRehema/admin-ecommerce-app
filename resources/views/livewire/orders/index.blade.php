@@ -19,7 +19,7 @@
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Payment Status</th>
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Order Status</th>
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Shipping Amount</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Notes</th>
+                          
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
                         </tr>
                         
