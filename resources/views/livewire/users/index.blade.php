@@ -58,7 +58,7 @@
                                     <form method="POST" action="{{ route('users.destroy', $user->id) }}" onsubmit="return confirm('Are you sure?');">
                                         @csrf
                                         @method('DELETE')
-                                        <x-mini-button rounded icon="trash" flat gray interaction="negative" style="color: red;"/>
+                                        <x-mini-button rounded icon="trash" flat gray interaction="negative" style="color: red;" type="submit"/>
                                     </form>
                                 </td>
                             </tr>
