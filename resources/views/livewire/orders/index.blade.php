@@ -154,5 +154,62 @@
         <x-button flat label="Cancel" x-on:click="close" />
     </x-slot>
 </x-modal-card>
+<!-- modal for creating order items -->
+<x-modal-card title="Create Order Item" name="createOrderItemModal">
+    <x-slot name="slot">
+        <form method="POST" action="{{ route('order-items.store') }}" class="space-y-6">
+            @csrf
+            <div>
+                <x-select
+                    label="Order"
+                    name="order_id"
+                    :options="$orders"
+                    option-label="id"
+                    option-value="id"
+                    placeholder="Select Order"
+                />
+                @error('order_id')
+                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                @enderror
+            </div>
+            <div>
+                <x-select
+                    label="Product"
+                    name="product_id"
+                    :options="$products"
+                    option-label="name"
+                    option-value="id"
+                    placeholder="Select Product"
+                />
+                @error('product_id')
+                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                @enderror
+            </div>
+            <div>
+                <x-input label="Quantity" name="quantity" type="number" placeholder="Quantity" />
+                @error('quantity')
+                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                @enderror
+            </div>
+            <div>
+                <x-input label="Unit Amount" name="unit_amount" type="number" step="0.01" placeholder="Unit Amount" />
+                @error('unit_amount')
+                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                @enderror
+            </div>
+            <div>
+                <x-input label="Total Amount" name="total_amount" type="number" step="0.01" placeholder="Total Amount" />
+                @error('total_amount')
+                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                @enderror
+            </div>
+            <div>
+                <x-button type="submit" positive label="Create Order Item" />
+            </div>
+        </form>
+    </x-slot>
+    <x-slot name="footer" class="flex justify-end">
+        <x-button flat label="Cancel" x-on:click="close" />
+    </x-slot>
+</x-modal-card>
 </div>
-
