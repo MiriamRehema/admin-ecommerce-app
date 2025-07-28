@@ -1,9 +1,7 @@
 <div>
-   <x-card title"Order Items">
+   <x-card title="Order Items">
         <x-slot name="slot">
-            <div class="flex justify-end mb-4">
-                <x-button positive label="Create Order Item" wire:click="$emit('openModal', 'orderitems.create')" />
-            </div>
+           <x-button label="Add Order Item" x-on:click="$openModal('createOrderItemModal')" warning />
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-50">
                     <tr>
