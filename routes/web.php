@@ -11,6 +11,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderItemController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,6 +29,8 @@ Route::resource("products",ProductController::class);
 Route::resource("roles",RoleController::class);
 Route::resource("orders",OrderController::class);
 Route::resource("categories",CategoryController::class);
+//Route::get('orders/{order}/items', [OrderController::class, 'show'])->name('orders.items.show');
+Route::resource("order-items", OrderItemController::class)->except(['show', 'edit', 'update', 'destroy']);
 
 
 
