@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Product;
 
 class CategoryController extends Controller
 {
@@ -12,7 +13,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('categories.index');
+       $categories = Category::with('products')->get(); // Load categories with products
+        return view('categories.index', compact('categories'));
         
     }
 
@@ -21,7 +23,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view("categories.create");
     }
 
     /**
@@ -29,7 +31,24 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'slug' => 'required|unique:categories,slug',
+            'description' => 'required|string|max:1000',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'is_active' => 'required|boolean',
+        ]);
+        
+    
+        $category = Category::create([
+            'name' => $request->name,
+            'slug' => $request->slug,
+            'image' => $request->image,
+            'is_active' => $request->is_active,
+            'description' => $request->description,
+        ]);
+        return redirect()->route('categories.index')->with('success', 'Category created successfully.');
     }
 
     /**
@@ -37,7 +56,9 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
+        $category = Category::with('products')->findOrFail($id); // Load products under the category
+        return view('categories.show', compact('category'));
     }
 
     /**
@@ -45,7 +66,8 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('categories.edit', compact('category'));
     }
 
     /**
@@ -53,7 +75,27 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+       $request->validate([
+            'name' => 'required|string|max:255',
+            'slug' => 'required|unique:categories,slug',
+            'description' => 'required|string|max:1000',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'is_active' => 'required|boolean',
+        ]);
+
+
+        $category = Category::find($id);
+
+        $category->name = $request->name;
+        $category->slug = $request->slug;
+        $category->description = $request->description;
+        $category->is_active = $request->is_active;
+
+        $imagePath = null;
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->store('images', 'public'); // Store in public/images
+    }
+        return redirect()->route('categories.index')->with('success', 'Updated successfully.'); 
     }
 
     /**
@@ -61,6 +103,10 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+
+        return redirect()->route('categories.index')
+               ->with("success","Successfully Deleted.");
     }
 }
