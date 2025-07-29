@@ -67,11 +67,10 @@
                     <x-select 
                         label="User"
                         name="user_id"
-                        :options="$users"
-                        option-label="name"
-                        option-value="id"
+                        :options="$users->pluck('name', 'id')->toArray()"
+                      
                         placeholder="Select User"
-                        id="user_id"
+                        
                     />
                     @error('user_id')
                         <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
@@ -84,7 +83,7 @@
                         name="payment_method"
                         :options="['credit_card' => 'Credit Card', 'paypal' => 'PayPal', 'bank_transfer' => 'Bank Transfer']"
                         placeholder="Select Payment Method"
-                        id="payment_method" 
+                        
                     />
                     @error('payment_method')
                         <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
@@ -96,7 +95,7 @@
                         name="payment_status"
                         :options="['pending' => 'Pending', 'completed' => 'Completed', 'cancelled' => 'Cancelled']"
                         placeholder="Select Payment Status"
-                        id="payment_status" 
+                       
                     />
                     @error('payment_status')
                         <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
@@ -108,7 +107,7 @@
                         name="status"
                         :options="['new' => 'New', 'processing' => 'Processing', 'shipped' => 'Shipped', 'delivered' => 'Delivered', 'cancelled' => 'Cancelled']"
                         placeholder="Select Order Status"
-                        id="order_status"
+                       
                     />
                     @error('status')
                         <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
@@ -126,70 +125,46 @@
                         <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
                     @enderror
                 </div>
-
-                <div>
-                    <x-button type="submit" positive label="Create Order" />
-                </div>
-            </form>
-        </x-slot>
-        <x-slot name="footer" class="flex justify-end">
-            <x-button flat label="Cancel" x-on:click="close" />
-        </x-slot>
-    </x-modal-card>
-
-    <x-modal-card title="Create Order Item" name="createOrderItemModal">
-        <x-slot name="slot">
-            <form method="POST" action="{{ route('order-items.store') }}" class="space-y-6">
-                @csrf
-                <div>
-                    <x-select
-                        label="Order"
-                        name="order_id"
-                        :options="$orders"
-                        option-label="id"
-                        option-value="id"
-                        placeholder="Select Order"
-                        id="order_id" 
-                    />
-                    @error('order_id')
-                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div>
-                    <x-select
+                <!-- Order items section -->
+                <div class="border-t pt-4">
+                    <h3 class="text-lg font-semibold">Order Items</h3>
+                    <div>
+                        <x-select
                         label="Product"
                         name="product_id"
-                        :options="$products"
-                        option-label="name"
-                        option-value="id"
+                        :options="$products->pluck('name', 'id')->toArray()"
+                        
                         placeholder="Select Product"
-                        id="product_id" 
-                    />
-                    @error('product_id')
-                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div>
-                    <x-input label="Quantity" name="quantity" type="number" placeholder="Quantity" id="quantity" />
+                        
+                        />
+                        @error('product_id')
+                           <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div>
+                    <x-input label="Quantity" name="quantity" type="number" placeholder="Quantity"  />
                     @error('quantity')
                         <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
                     @enderror
                 </div>
                 <div>
-                    <x-input label="Unit Amount" name="unit_amount" type="number" step="1" placeholder="Unit Amount" id="unit_amount" />
+                    <x-input label="Unit Amount" name="unit_amount" type="number" step="1" placeholder="Unit Amount"  />
                     @error('unit_amount')
                         <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
                     @enderror
                 </div>
                 <div>
-                    <x-input label="Total Amount" name="total_amount" type="number" step="1" placeholder="Total Amount" id="total_amount" />
+                    <x-input label="Total Amount" name="total_amount" type="number" step="1" placeholder="Total Amount"  />
                     @error('total_amount')
                         <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
                     @enderror
                 </div>
+
+
                 <div>
-                    <x-button type="submit" positive label="Create Order Item" />
+                    <x-button type="submit" positive label="Create Order" />
                 </div>
+
             </form>
         </x-slot>
         <x-slot name="footer" class="flex justify-end">
@@ -198,3 +173,6 @@
     </x-modal-card>
 
 </div>
+
+    
+
