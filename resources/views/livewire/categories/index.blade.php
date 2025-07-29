@@ -15,6 +15,7 @@
                     <thead class="bg-gray-50">
                         <tr>
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Image</th>
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Slug</th>
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Is Active</th>
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Created At</th>
@@ -24,28 +25,35 @@
                     <tbody class="bg-white divide-y divide-gray-100">
                         @foreach($categories as $category)
                             <tr>
+                                <td class="px-4 py-2">
+                                     @if($category->image)
+                                     <img src="{{ Storage::url($category->image) }}" alt="Category Image" class="w-16 h-16 object-cover" />
+                                    @else
+                                    No Image
+                                    @endif
+                                </td>
                                 <td class="px-4 py-2">{{ $category->name }}</td>
                                 <td class="px-4 py-2">{{ $category->slug }}</td>
                                 <td class="px-4 py-2">{{ $category->is_active ? 'Yes' : 'No' }}</td>
                                 <td class="px-4 py-2">{{ $category->created_at->format('Y-m-d H:i') }}</td>
                                 <td class="px-4 py-2 flex gap-2">
-                                    @can('category-edit')
+                                    
                                         <a href="{{ route('categories.edit', $category->id) }}">
                                             <x-button icon="pencil" small primary label="Edit" />
                                         </a>
-                                    @endcan
-                                    @can('category-list')
+                                    
+                                   
                                         <a href="{{ route('categories.show', $category->id) }}">
                                             <x-button icon="eye" small info label="Show" />
                                         </a>
-                                    @endcan
-                                    @can('category-delete')
+                                    
+                                    
                                         <form method="POST" action="{{ route('categories.destroy', $category->id) }}" onsubmit="return confirm('Are you sure?');">
                                             @csrf
                                             @method('DELETE')
                                             <x-button icon="trash" small negative label="Delete" type="submit" />
                                         </form>
-                                    @endcan
+                                    
                                 </td>
                             </tr>
                         @endforeach
@@ -62,14 +70,14 @@
                 @csrf
 
                 <div>
-                    <x-input icon="tag" label=" Name" name="name" placeholder=" Category name" required />
+                    <x-input icon="tag" label="  Name" name="name" placeholder=" Category name" />
                     @error('name')
                         <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
                     @enderror
                 </div>
 
                 <div>
-                    <x-input label="Slug" name="slug" placeholder="Enter category slug" required />
+                    <x-input label="Slug" name="slug" placeholder="Enter category slug"  />
                     @error('slug')
                         <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
                     @enderror
@@ -90,7 +98,7 @@
                 </div>
 
                 <div>
-                    <x-toggle id="color-positive" name="toggle" label="Is Active" warning xl />
+                    <x-toggle id="color-positive" name="is_active" label="Is Active" warning xl />
                 </div>
 
                 <div class="mt-4">
