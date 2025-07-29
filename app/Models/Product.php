@@ -29,4 +29,15 @@ class Product extends Model
         'is_new' => 'boolean',
         'is_on_sale' => 'boolean',
     ];
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+     public function items(){
+        return $this->hasMany(Order_item::class);
+    }
+   
+     public function reviews(){
+        return $this->belongsToMany(Review::class);
+    }
+
 }
