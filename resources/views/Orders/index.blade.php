@@ -3,5 +3,5 @@
 @section('content')
 
 <livewire:orders.index /> 
-<livewire:orderitems.index />
+
  @endsection 

@@ -77,8 +77,8 @@
                 @csrf
 
                 <div>
-                    <x-input icon="shopping-bag" label="Name" name="name" placeholder="Product" />
-                    @error('name')
+                    <x-input icon="shopping-bag" label="Product Name" name="product_name" placeholder="Product" />
+                    @error('product_name')
                         <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
                     @enderror
                 </div>
