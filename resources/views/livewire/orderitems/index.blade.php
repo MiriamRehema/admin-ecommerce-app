@@ -23,7 +23,16 @@
                             <td class="px-6 py-4 whitespace-nowrap">{{ $item->total_amount }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex space-x-2">
-                                    <x-button icon="pencil" flat interaction:solid="info" wire:click="$emit('openModal', 'orderitems.edit', {{ $item->id }})" />
+                                    
+                                        <a href="{{ route('order-items.edit', $item->id) }}">
+                                            <x-button icon="pencil" small primary label="Edit" />
+                                        </a>
+
+                                        <a href="{{ route('order-items.show', $item->id) }}">
+                                            <x-button icon="eye" small info label="Show" />
+                                        </a>
+                                    
+                                    
                                     <form method="POST" action="{{ route('order-items.destroy', $item->id) }}" onsubmit="return confirm('Are you sure?');">
                                         @csrf
                                         @method('DELETE')
