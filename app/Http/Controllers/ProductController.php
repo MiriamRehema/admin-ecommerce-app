@@ -52,20 +52,15 @@ class ProductController extends Controller
             'is_new'=>'required|boolean',
             'is_on_sale'=>'required|boolean',
             'image'=>'nullable|array',
-
-
-
             
-            
-            
-        ]
+        ]);
 
-        );
+        $imagePath=$request->file('image') ? $request->file('image')->store('products', 'public') : null;
         Product::create([
             'name'=>$request->name,
             'slug'=>str_slug($request->name),
             'description'=>$request->description,
-            'image'=>$request->image,
+            'image'=>$imagePath,
             'price'=>$request->price,
             'is_active'=>$request->is_active,
             'category_id'=>$request->category_id,
@@ -127,6 +122,11 @@ class ProductController extends Controller
 
 
         $product->name=$request->name;
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('products', 'public');
+            $product->image = $imagePath; // Update image path if a new image is uploaded
+        }
 
         $product->save();
 
