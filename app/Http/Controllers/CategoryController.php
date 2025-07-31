@@ -39,12 +39,14 @@ class CategoryController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'is_active' => 'required|boolean',
         ]);
+        // Handle image upload if necessary
+        $imagePath = $request->file('image')->store('categories', 'public');
         
-    
+
         $category = Category::create([
             'name' => $request->name,
             'slug' => $request->slug,
-            'image' => $request->image,
+            'image' => $imagePath,
             'is_active' => $request->is_active,
             'description' => $request->description,
         ]);
@@ -91,10 +93,16 @@ class CategoryController extends Controller
         $category->description = $request->description;
         $category->is_active = $request->is_active;
 
-        $imagePath = null;
-    if ($request->hasFile('image')) {
-        $imagePath = $request->file('image')->store('images', 'public'); // Store in public/images
-    }
+        // Handle image upload if provided
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('categories', 'public');
+            $category->image = $imagePath;
+        }
+
+        
+        $category->save();
+
+    
         return redirect()->route('categories.index')->with('success', 'Updated successfully.'); 
     }
 
