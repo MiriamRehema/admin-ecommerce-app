@@ -37,21 +37,23 @@
                                 <td class="px-4 py-2">{{ $category->is_active ? 'Yes' : 'No' }}</td>
                                 <td class="px-4 py-2">{{ $category->created_at->format('Y-m-d H:i') }}</td>
                                 <td class="px-4 py-2 flex gap-2">
-                                    
+
+
+                                        <a href="{{ route('categories.show', $category->id) }}">
+                                            <x-button icon="eye" flat interaction:solid="positive" style="color: info;" />
+                                        </a>
                                         <a href="{{ route('categories.edit', $category->id) }}">
-                                            <x-button icon="pencil" small primary label="Edit" />
+                                            <x-button icon="pencil-square" flat interaction:solid="info" style="color: green;" />
                                         </a>
                                     
                                    
-                                        <a href="{{ route('categories.show', $category->id) }}">
-                                            <x-button icon="eye" small info label="Show" />
-                                        </a>
+                                        
                                     
                                     
                                         <form method="POST" action="{{ route('categories.destroy', $category->id) }}" onsubmit="return confirm('Are you sure?');">
                                             @csrf
                                             @method('DELETE')
-                                            <x-button icon="trash" small negative label="Delete" type="submit" />
+                                            <x-mini-button  rounded icon="trash" flat gray interaction="negative" style="color: red;" type="submit" />
                                         </form>
                                     
                                 </td>
@@ -98,8 +100,9 @@
                 </div>
 
                 <div>
-                    <x-toggle id="color-positive" name="is_active" label="Is Active" warning xl />
-                </div>
+    <label for="is_active">Is Active:</label>
+    <input type="checkbox" name="is_active" value="1" {{ old('is_active', 1) ? 'checked' : '' }}>
+</div>
 
                 <div class="mt-4">
                     <x-button type="submit" positive label="Create" />
