@@ -1,4 +1,4 @@
-<div>
+<div class="max-w-2xl mx-auto py-8">
    <x-card title="Order Items">
         <x-slot name="slot">
            <x-button label="Add Order Item" x-on:click="$openModal('createOrderItemModal')" warning />
@@ -25,18 +25,18 @@
                                 <div class="flex space-x-2">
                                     
                                         <a href="{{ route('order-items.edit', $item->id) }}">
-                                            <x-button icon="pencil" small primary label="Edit" />
+                                            <x-button icon="pencil-square" flat interaction:solid="info" style="color: green;" />
                                         </a>
 
                                         <a href="{{ route('order-items.show', $item->id) }}">
-                                            <x-button icon="eye" small info label="Show" />
+                                            <x-button icon="eye" flat interaction:solid="positive" style="color: info;" />
                                         </a>
                                     
                                     
                                     <form method="POST" action="{{ route('order-items.destroy', $item->id) }}" onsubmit="return confirm('Are you sure?');">
                                         @csrf
                                         @method('DELETE')
-                                        <x-button icon="trash" flat interaction:solid="negative" type="submit" />
+                                        <x-mini-button rounded icon="trash" flat interaction:solid="negative" style="color: red;"type="submit" />
                                     </form>
                                 </div>
 

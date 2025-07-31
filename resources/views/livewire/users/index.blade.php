@@ -1,4 +1,4 @@
-<div class="max-w-full mx-auto py-8">
+<div class="max-w-2xl mx-auto py-8">
     <x-card title="USERS">
         <x-slot name="slot">
             @if (session('success'))
@@ -13,12 +13,12 @@
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
-                            <th class="px-4 py-2 text-left text-xxs font-medium text-gray-500 uppercase">Initials</th>
-                            <th class="px-4 py-2 text-left text-xxs font-medium text-gray-500 uppercase">Name</th>
-                            <th class="px-4 py-2 text-left text-xxs font-medium text-gray-500 uppercase">Created At</th>
-                            <th class="px-4 py-2 text-left text-xxs font-medium text-gray-500 uppercase">Role</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Initials</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Created At</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Role</th>
 
-                            <th class="px-4 py-2 text-left text-xxs font-medium text-gray-500 uppercase">Actions</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-100">

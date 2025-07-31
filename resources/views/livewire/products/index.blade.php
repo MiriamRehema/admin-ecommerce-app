@@ -1,4 +1,4 @@
-<div class="max-w-full mx-auto py-8">
+<div class="max-w-2xl mx-auto py-8">
     <x-card title="PRODUCTS">
         <x-slot name="slot">
             @if (session('success'))
@@ -45,12 +45,12 @@
    
                                     @can('product-edit')
                                         <a href="{{ route('products.edit', $product->id) }}">
-                                            <x-button icon="pencil" small primary label="Edit" />
+                                            <x-button icon="pencil-square" flat interaction:solid="info" style="color: green;" />
                                         </a>
                                     @endcan
                                     @can('product-list')
                                         <a href="{{ route('products.show', $product->id) }}">
-                                            <x-button icon="eye" small info label="Show" />
+                                            <x-button icon="eye" flat interaction:solid="positive" style="color: info;" />
                                         </a>
                                     @endcan
                                     @can('product-delete')
@@ -58,7 +58,7 @@
                                             @csrf
                                             @method('DELETE')
 
-                                            <x-button icon="trash" small negative label="Delete" type="submit" />
+                                            <x-mini-button rounded icon="trash" flat gray interaction="negative" style="color: red;" type="submit" />
                                         </form>
                                     @endcan
                                 </td>
@@ -83,11 +83,17 @@
                     @enderror
                 </div>
                 <div>
+
                     <x-input icon="tag" label="Slug" name="slug" placeholder="product-slug" />
                        @error('slug')
                            <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
                        @enderror
                 </div>
+                <div>
+                    <x-input type="file" label="Image" name="image" />
+                    @error('image')
+                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                    @enderror
                 <div>
                      <x-input label="Description" name="description" placeholder="Product description" />
                        @error('description')

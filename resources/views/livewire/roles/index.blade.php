@@ -1,4 +1,4 @@
-<div class="max-w-full mx-auto py-8">
+<div class="max-w-2xl mx-auto py-8">
     <x-card title="ROLES">
             
         <x-slot name="slot">
@@ -29,20 +29,20 @@
                                 <td class="px-4 py-2 flex gap-2">
                                     @can('role-edit')
                                     <a href="{{ route('roles.edit', $role->id) }}">
-                                        <x-button icon="pencil" small primary label="Edit" />
+                                        <x-button icon="pencil-square" flat interaction:solid="info" style="color: green;"/>
                                     </a>
                                     @endcan
                                     @can('role-list')
                                     <a href="{{ route('roles.show', $role->id) }}">
-                                        <x-button icon="eye" small info label="Show" />
+                                        <x-button icon="eye" flat interaction:solid="positive" style="color: info;" />
                                     </a>
                                     @endcan
-                                    </a>
+                                
                                     @can('role-delete')
                                     <form method="POST" action="{{ route('roles.destroy', $role->id) }}" onsubmit="return confirm('Are you sure?');">
                                         @csrf
                                         @method('DELETE')
-                                          <x-button icon="trash" small negative label="Delete" type="submit" />
+                                          <x-mini-button rounded icon="trash" flat gray interaction="negative" style="color: red;" type="submit" />
                                     </form>
                                     @endcan
                                 </td>
