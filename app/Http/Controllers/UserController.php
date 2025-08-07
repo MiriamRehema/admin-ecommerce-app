@@ -42,6 +42,7 @@ class UserController extends Controller
             'name'=>'required|string|max:255',
             'email'=>'required|email|string|email|max:255|unique:users',
             'password'=>'required|string|min:8',
+            'is_active'=>'required|boolean', // Assuming active is a boolean field
             
         ]
 
@@ -49,7 +50,8 @@ class UserController extends Controller
         $user=User::create([
             'name'=>$request->name,
             'email'=>$request->email,
-            'password'=>Hash::make($request->password)
+            'password'=>Hash::make($request->password),
+            'is_active'=>$request->is_active, // Assuming active is a boolean field
             // 'email_verified_at'=>now(),
             // 'remember_token'=>null,
             // 'created_at'=>now(),
@@ -106,14 +108,14 @@ class UserController extends Controller
         $request->validate([
             'name'=>'required',
             'email'=>'required|email',
-            'password'=>'nullable'
-            
-        ]
-        );
+            'password'=>'nullable',
+            'is_active'=>'required|boolean',
+        ]);
         $user = User::find($id);
 
         $user->name=$request->name;
         $user->email=$request->email;
+        $user->is_active=$request->is_active; // Assuming active is a boolean field
         $user->password=Hash::make($request->password);
         $user->save();
  
