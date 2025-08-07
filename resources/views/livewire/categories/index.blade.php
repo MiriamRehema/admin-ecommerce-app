@@ -34,7 +34,13 @@
                                 </td>
                                 <td class="px-4 py-2">{{ $category->name }}</td>
                                 <td class="px-4 py-2">{{ $category->slug }}</td>
-                                <td class="px-4 py-2">{{ $category->is_active ? 'Yes' : 'No' }}</td>
+                                <td class="px-4 py-2">
+                                    @if($category->is_active)
+                                        <x-badge flat green label="Active" />
+                                    @else
+                                        <x-badge flat red label="Inactive" />
+                                    @endif
+                                </td>
                                 <td class="px-4 py-2">{{ $category->created_at->format('Y-m-d H:i') }}</td>
                                 <td class="px-4 py-2 flex gap-2">
 
