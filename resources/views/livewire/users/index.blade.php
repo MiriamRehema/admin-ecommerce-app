@@ -1,4 +1,4 @@
-<div class="max-w-2xl mx-auto py-8">
+<div class="max-w-full mx-auto py-8">
     <x-card title="USERS">
         <x-slot name="slot">
             @if (session('success'))
@@ -17,16 +17,13 @@
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Created At</th>
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Role</th>
-
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Is Active</th>
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-100">
                         @foreach($users as $user)
                             <tr>
-                                
-                                    
-                                
                                 <td>
                                 <x-avatar sm >
                                      <x-slot name="label" class="!text-orange-300 !font-extrabold italic">
@@ -37,8 +34,6 @@
 
                                 <td class="px-4 py-2">{{ $user->name }}</td>
                                 <td class="px-4 py-2">{{ $user->created_at->format('Y-m-d H:i') }}</td>
-                                
-
                                 <td>
                                     @foreach($user->roles as $role)
                                         <x-badge flat green label="{{ $role->name }}" />
@@ -47,6 +42,16 @@
                                         <x-badge flat rose label="No Role" />
                                     @endif
                                 </td>
+                                
+                                <td class="px-4 py-2">
+                                    @if($user->is_active)
+                                        <x-badge flat green label="Active" />
+                                    @else
+                                        <x-badge flat red label="Inactive" />
+                                    @endif
+                                </td>
+
+                                
                                 <td class="px-4 py-2 flex gap-2">
                                     
                                     <a href="{{ route('users.show', $user->id) }}">
@@ -73,6 +78,9 @@
      <x-modal-card title="Create User" name="createUserModal">
         <x-slot name="slot">
             <form method="POST" action="{{ route('users.store') }}" class="space-y-6">
+
+               
+                
                 @csrf
 
                 <div>
@@ -108,10 +116,16 @@
     :options="$roles->pluck('name', 'id')->toArray()"
 />
                 </div>
+                
+                <div>
+    <label for="is_active">Is Active:</label>
+    <input type="checkbox" name="is_active" value="1" {{ old('is_active', 1) ? 'checked' : '' }}>
+</div>
 
                 <div>
                     <x-button type="submit" positive label="Submit" />
                 </div>
+
             </form>
 
         </x-slot>
