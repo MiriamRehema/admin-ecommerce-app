@@ -12,6 +12,10 @@
             <div class="space-y-4">
                 <p><strong>Name:</strong> {{ $user->name }}</p>
                 <p><strong>Email:</strong> {{ $user->email }}</p>
+
+                <p><strong>Created At:</strong> {{ $user->created_at->format('Y-m-d H:i') }}</p>
+                <p><strong>Updated At:</strong> {{ $user->updated_at->format('Y-m-d H:i') }}</p>
+                <p><strong>Active:</strong> {{ $user->active ? 'Yes' : 'No' }}</p>
                 <h4>Roles:</h4>
                 @if($user->roles->isEmpty())
                     <p>No roles assigned</p>
