@@ -1,4 +1,4 @@
-<div class="max-w-2xl mx-auto py-8">
+<div class="max-w-full mx-auto py-8">
     <x-card title="PRODUCTS">
         <x-slot name="slot">
             @if (session('success'))
@@ -14,7 +14,7 @@
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">ID</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Image</th>
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Slug</th>
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Category</th>
@@ -22,6 +22,8 @@
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Price</th>
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Is Active</th>
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Is Featured</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Is New</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Is On Sale</th>
 
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Created At</th>
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
@@ -30,18 +32,46 @@
                     <tbody class="bg-white divide-y divide-gray-100">
                         @foreach($products as $product)
                             <tr>
-                                <td class="px-4 py-2">{{ $product->id }}</td>
+                                
+                                <td class="px-4 py-2">
+                                    @if($product->image)
+                                        <img src="{{ Storage::url($product->image) }}" alt="Product Image" class="w-16 h-16 object-cover" />
+                                    @else
+                                        No Image
+                                    @endif
+                                </td>
                                 <td class="px-4 py-2">{{ $product->name }}</td>
                                 <td class="px-4 py-2">{{ $product->slug }}</td>
                                 <td class="px-4 py-2">{{ $product->category->name ?? 'N/A' }}</td>
                                 <td class="px-4 py-2">{{ $product->stock }}</td>
                                 <td class="px-4 py-2">{{ $product->price }}</td>
-                                <td class="px-4 py-2">{{ $product->is_active ? 'Yes' : 'No' }}</td>
-                                <td class="px-4 py-2">{{ $product->is_featured ? 'Yes' : 'No' }}</td>
-                                <td class="px-4 py-2">{{ $product->is_new ? 'Yes' : 'No' }}</td>
-                                <td class="px-4 py-2">{{ $product->is_on_sale ? 'Yes' : 'No' }}</td>
+                                <td class="px-4 py-2">@if($product->is_active)
+                                     <x-badge flat green label="Active" />
+                                    @else
+                                        <x-badge flat red label="Inactive" />
+                                    @endif
+                                </td>
+                                <td class="px-4 py-2">@if($product->is_featured )
+                                     <x-badge flat green label="Active" />
+                                    @else
+                                        <x-badge flat red label="Inactive" />
+                                    @endif
+                                </td>
+                                <td class="px-4 py-2">@if($product->is_new)
+                                     <x-badge flat green label="Active" />
+                                    @else
+                                        <x-badge flat red label="Inactive" />
+                                    @endif
+                                </td>
+                                <td class="px-4 py-2">@if($product->is_on_sale)
+                                     <x-badge flat green label="Active" />
+                                    @else
+                                        <x-badge flat red label="Inactive" />
+                                    @endif
+                                </td>
                                 <td class="px-4 py-2">{{ $product->created_at->format('Y-m-d H:i') }}</td>
                                 <td class="px-4 py-2 flex gap-2">
+
    
                                     @can('product-edit')
                                         <a href="{{ route('products.edit', $product->id) }}">
@@ -77,8 +107,8 @@
                 @csrf
 
                 <div>
-                    <x-input icon="shopping-bag" label="Product Name" name="product_name" placeholder="Product" />
-                    @error('product_name')
+                    <x-input icon="shopping-bag" label="Product Name" name="name" placeholder="Product" />
+                    @error('name')
                         <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
                     @enderror
                 </div>
@@ -94,6 +124,7 @@
                     @error('image')
                         <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
                     @enderror
+                </div>
                 <div>
                      <x-input label="Description" name="description" placeholder="Product description" />
                        @error('description')
@@ -113,12 +144,9 @@
                      @enderror
                 </div>
                 <div>
-                      <x-toggle id="is_active" name="is_active" label="Is Active" />
-                    @error('is_active')
-                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-                     @enderror
-
-                </div>
+    <label for="is_active">Is Active:</label>
+    <input type="checkbox" name="is_active" value="1" {{ old('is_active', 1) ? 'checked' : '' }}>
+</div>
                 <div>
                 <x-select
                 label="Category"
@@ -131,23 +159,17 @@
                 @enderror
                 </div>
                 <div>
-                  <x-toggle id="is_featured" name="is_featured" label="Is Featured" />
-                    @error('is_featured')
-                   <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-                    @enderror
-                </div>
+    <label for="is_featured">Is Featured:</label>
+    <input type="checkbox" name="is_featured" value="1" {{ old('is_featured', 1) ? 'checked' : '' }}>
+</div>
                 <div>
-                    <x-toggle id="is_new" name="is_new" label="Is New" />
-                      @error('is_new')
-                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-                       @enderror
-                </div>
+    <label for="is_new">Is New:</label>
+    <input type="checkbox" name="is_new" value="1" {{ old('is_new', 1) ? 'checked' : '' }}>
+</div>
                 <div>
-                   <x-toggle id="is_on_sale" name="is_on_sale" label="Is On Sale" />
-                         @error('is_on_sale')
-                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-                    @enderror
-                </div>
+    <label for="is_on_sale">Is On Sale:</label>
+    <input type="checkbox" name="is_on_sale" value="1" {{ old('is_on_sale', 1) ? 'checked' : '' }}>
+</div>
 
                 <div>
                     <x-button type="submit" positive label="Create" />
