@@ -12,6 +12,8 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderItemController;
+use App\Http\Controllers\ServiceRequestController;
+use App\Http\Controllers\ServiceController;
 
 
 Route::get('/', function () {
@@ -25,12 +27,15 @@ Route::view('dashboard', 'dashboard')
 
 
 Route::resource("users",UserController::class);
-Route::resource("products",ProductController::class);
+
 Route::resource("roles",RoleController::class);
+Route::resource("products",ProductController::class);
 Route::resource("orders",OrderController::class);
 Route::resource("categories",CategoryController::class);
 //Route::get('orders/{order}/items', [OrderController::class, 'show'])->name('orders.items.show');
-Route::resource("order-items", OrderItemController::class)->except(['show', 'edit', 'update', 'destroy']);
+//Route::resource("order-items", OrderItemController::class)->except(['show', 'edit', 'update', 'destroy']);
+Route::resource("service_requests", ServiceRequestController::class);
+Route::resource("services", ServiceController::class);
 
 
 
