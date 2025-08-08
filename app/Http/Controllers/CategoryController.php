@@ -13,7 +13,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-       $categories = Category::with('products')->get(); // Load categories with products
+       $categories = Category::with('products')->get(); 
+      // dd($categories);// Load categories with products
         return view('categories.index', compact('categories'));
         
     }
