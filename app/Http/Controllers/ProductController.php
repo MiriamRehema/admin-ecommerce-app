@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
+
 
 
 class ProductController extends Controller
@@ -23,15 +25,21 @@ class ProductController extends Controller
     public function index()
     {
         
-        return view('products.index');
+        $products=Product::with('category')->get();
+       // dd($products); // Eager load category relationship
+        return view('products.index', compact('products'));
     }
+        
+    
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-         return view('products.create');
+        $categories =Category::all(); // Fetch all categories for the dropdown
+        return view('products.create', compact('categories'));
+        
     }
 
     /**
@@ -39,7 +47,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
+        dd($request->all());
         $request->validate([
             'name'=>'required',
             'slug'=>'required|unique:products,slug',
@@ -51,12 +59,12 @@ class ProductController extends Controller
             'is_featured'=>'required|boolean',
             'is_new'=>'required|boolean',
             'is_on_sale'=>'required|boolean',
-            'image'=>'nullable|array',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             
         ]);
 
-        $imagePath=$request->file('image') ? $request->file('image')->store('products', 'public') : null;
-        Product::create([
+        $imagePath=$request->file('image')->store('products', 'public') ;
+        $product=Product::create([
             'name'=>$request->name,
             'slug'=>str_slug($request->name),
             'description'=>$request->description,
@@ -112,6 +120,7 @@ class ProductController extends Controller
             'is_featured'=>'required|boolean',
             'is_new'=>'required|boolean',
             'is_on_sale'=>'required|boolean',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
 
             
