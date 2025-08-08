@@ -120,7 +120,7 @@
                 <div>
     <label for="is_active">Is Active:</label>
     <input type="checkbox" name="is_active" value="1" {{ old('is_active', 1) ? 'checked' : '' }}>
-</div>
+    </div>
 
                 <div>
                     <x-button type="submit" positive label="Submit" />
