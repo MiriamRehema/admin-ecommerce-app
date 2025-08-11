@@ -9,7 +9,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <title>{{ config('app.name', 'Laravel') }}</title>
@@ -70,6 +69,9 @@
                             </li>
                             <li>
                                 <a class="text-gray-700 dark:text-gray-200 hover:underline" href="{{ route('categories.index') }}">Manage Categories</a>
+                            </li>
+                            <li>
+                                <a class="text-gray-700 dark:text-gray-200 hover:underline" href="{{ route('services.index') }}">Manage Services</a>
                             </li>
                             <li class="relative" x-data="{ open: false }">
                                 <button @click="open = !open" class="flex items-center text-gray-700 dark:text-gray-200 hover:underline focus:outline-none">
