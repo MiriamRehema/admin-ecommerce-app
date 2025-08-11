@@ -12,11 +12,12 @@ class Category extends Model
         'name',
         'slug',
         'image',
-        'is_active',
+        
         'description',
     ];  
     protected $casts=[
-        'image'=> 'array'
+        'image'=> 'array',
+        'is_active'=> 'boolean',
 
     ];
     public function products(){
