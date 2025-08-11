@@ -14,8 +14,8 @@
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Image</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Slug</th>
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Is Active</th>
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Created At</th>
