@@ -1,4 +1,4 @@
-<div class="max-w-2xl mx-auto py-8">
+<div class="max-w-full mx-auto py-8">
     <x-card title="ORDERS">
         <x-slot name="slot">
             @if (session('success'))
