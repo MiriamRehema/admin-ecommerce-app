@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Order;
+
+
+
+
 
 
 
@@ -47,11 +52,11 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        //dd($request->all());
         $request->validate([
             'name'=>'required',
             'slug'=>'required|unique:products,slug',
-            'description'=>'required',
+            'description'=>'required|max:1000',
             'price'=>'required|numeric',
             'stock'=>'required|integer',
             'is_active'=>'required|boolean',
@@ -59,14 +64,14 @@ class ProductController extends Controller
             'is_featured'=>'required|boolean',
             'is_new'=>'required|boolean',
             'is_on_sale'=>'required|boolean',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             
         ]);
 
-        $imagePath=$request->file('image')->store('products', 'public') ;
+        $imagePath=$request->file('image')->store('categories', 'public') ;
         $product=Product::create([
             'name'=>$request->name,
-            'slug'=>str_slug($request->name),
+            'slug'=>$request->slug,
             'description'=>$request->description,
             'image'=>$imagePath,
             'price'=>$request->price,
@@ -100,8 +105,9 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-         $product =Product::find($id);
-        return view('products.edit',compact("product"));
+        $product =Product::find($id);
+        $categories = Category::all();
+        return view('products.edit',compact("product","categories"));
     }
 
     /**
@@ -111,7 +117,7 @@ class ProductController extends Controller
     {
         $request->validate([
             'name'=>'required',
-            'slug'=>'required|unique:products,slug,'.$id,
+            'slug'=>'required|unique:products,slug,'. $id,
             'description'=>'required',
             'price'=>'required|numeric',
             'stock'=>'required|integer',
@@ -122,18 +128,25 @@ class ProductController extends Controller
             'is_on_sale'=>'required|boolean',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
-
-            
-            
-        ]
-        );
+        ]);
         $product = Product::find($id);
 
 
         $product->name=$request->name;
+        $product->slug=$request->slug;
+        $product->description=$request->description;
+        $product->price=$request->price;
+        $product->is_active=$request->has('is_active') ? 1 : 0;
+        $product->category_id=$request->category_name;
+        $product->stock=$request->stock;
+        $product->is_featured=$request->has('is_featured') ? 1 : 0;
+        $product->is_new=$request->has('is_new') ? 1 : 0;
+        $product->is_on_sale=$request->has('is_on_sale') ? 1 : 0;
+        // Handle image upload if a new image is provided
+
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('products', 'public');
+            $imagePath = $request->file('image')->store('categories', 'public');
             $product->image = $imagePath; // Update image path if a new image is uploaded
         }
 
