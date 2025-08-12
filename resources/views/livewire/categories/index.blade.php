@@ -27,7 +27,7 @@
                             <tr>
                                 <td class="px-4 py-2">
                                      @if($category->image)
-                                     <img src="{{ Storage::url($category->image) }}" alt="Category Image" class="w-16 h-16 object-cover" />
+                                     <img src="{{ Storage::url($category->image) }}" alt="Category Image" class="w-12 h-12 object-contain rounded-full" />
                                     @else
                                     No Image
                                     @endif
@@ -99,7 +99,7 @@
                 </div>
 
                 <div>
-                    <x-input label="Description" name="description" placeholder="Enter description" />
+                     <x-textarea label="Description" placeholder="Category description" name="description" />
                     @error('description')
                         <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
                     @enderror
