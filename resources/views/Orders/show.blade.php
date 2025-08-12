@@ -71,13 +71,16 @@
                 readonly
             >{{ $order->notes }}</x-textarea>
         </div>
-
+  <!-- show for order iytems -->
         <div>
-            <h3 class="text-lg font-medium">Order Items</h3>
-            <ul class="space-y-2">
+            <h2 class="text-xl font-semibold mt-6">Order Items</h2>
+            <ul class="list-disc pl-5">
                 @foreach($order->items as $item)
-                    <li class="flex justify-between">
-                        <span>{{ $item->name }} (Quantity: {{ $item->quantity }}, Price: ${{ $item->price }})</span>
+                    <li>
+                        <strong>Product ID:</strong> {{ $item->product_id }} |
+                        <strong>Quantity:</strong> {{ $item->quantity }} |
+                        <strong>Unit Amount:</strong> {{ $item->unit_amount }} |
+                        <strong>Total Amount:</strong> {{ $item->total_amount }}
                     </li>
                 @endforeach
             </ul>
