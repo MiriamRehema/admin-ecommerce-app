@@ -35,7 +35,7 @@
                                 
                                 <td class="px-4 py-2">
                                     @if($product->image)
-                                        <img src="{{ Storage::url($product->image) }}" alt="Product Image" class="w-16 h-16 object-cover" />
+                                        <img src="{{ Storage::url($product->image) }}" alt="Product Image" class="w-12 h-12 object-contain rounded-full" />
                                     @else
                                         No Image
                                     @endif
@@ -46,29 +46,30 @@
                                 <td class="px-4 py-2">{{ $product->stock }}</td>
                                 <td class="px-4 py-2">{{ $product->price }}</td>
                                 <td class="px-4 py-2">@if($product->is_active)
-                                     <x-badge flat green label="Active" />
+                                    <x-badge flat green label="Active" />
                                     @else
-                                        <x-badge flat red label="Inactive" />
+                                         <x-badge flat red label="Inactive" />
                                     @endif
                                 </td>
                                 <td class="px-4 py-2">@if($product->is_featured )
-                                     <x-badge flat green label="Active" />
+                                     <x-mini-badge flat green icon="check" />
                                     @else
-                                        <x-badge flat red label="Inactive" />
+                                        <x-mini-badge flat red icon="x-mark" />
                                     @endif
                                 </td>
                                 <td class="px-4 py-2">@if($product->is_new)
-                                     <x-badge flat green label="Active" />
+                                     <x-mini-badge flat green icon="check" />
                                     @else
-                                        <x-badge flat red label="Inactive" />
+                                        <x-mini-badge flat red icon="x-mark" />
                                     @endif
                                 </td>
                                 <td class="px-4 py-2">@if($product->is_on_sale)
-                                     <x-badge flat green label="Active" />
+                                     <x-mini-badge flat green icon="check" />
                                     @else
-                                        <x-badge flat red label="Inactive" />
+                                        <x-mini-badge flat red icon="x-mark" />
                                     @endif
                                 </td>
+
                                 <td class="px-4 py-2">{{ $product->created_at->format('Y-m-d H:i') }}</td>
                                 <td class="px-4 py-2 flex gap-2">
 
@@ -103,7 +104,7 @@
     <!-- Modal for creating a product -->
     <x-modal-card title="Create Product" name="createProductModal">
         <x-slot name="slot">
-            <form method="POST" action="{{ route('products.store') }}" class="space-y-6">
+            <form method="POST" action="{{ route('products.store') }}" class="space-y-6" enctype="multipart/form-data">
                 @csrf
 
                 <div>
@@ -126,7 +127,7 @@
                     @enderror
                 </div>
                 <div>
-                     <x-input label="Description" name="description" placeholder="Product description" />
+                     <x-textarea label="Description" placeholder="Product description" name="description" />
                        @error('description')
                      <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
                         @enderror
