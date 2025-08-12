@@ -23,7 +23,8 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $users = User::all(); // Get all users for the select input
+
+        $users=User::all(); // Get all users for the select input
         return view('orders.create', compact('users'));
     }
 
@@ -31,7 +32,8 @@ class OrderController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+    { 
+        //$this->authorize('order-create');
         $request->validate([
             'user_id' => 'required|exists:users,id',
             'grand_total' => 'required|numeric',
