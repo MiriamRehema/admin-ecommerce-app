@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->longText('description')->nullable();
-            $table->json('image')->nullable();
+            $table->string('image')->nullable();
             $table->decimal('price', 10, 2)->default(true);
             $table->boolean('is_active')->default(true);
-            $table->foreignId('category_id')->contsrained('categories')->CascadeOnDelete();
+            $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
             $table->integer('stock')->default(0);
             $table->boolean('is_featured')->default(false);
             $table->boolean('is_new')->default(false);
