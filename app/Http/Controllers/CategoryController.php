@@ -80,7 +80,7 @@ class CategoryController extends Controller
     {
        $request->validate([
             'name' => 'required|string|max:255',
-            'slug' => 'required|unique:categories,slug',
+            'slug' => 'required|unique:categories,slug,'.$id,
             'description' => 'required|string|max:1000',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'is_active' => 'required|boolean',
@@ -92,7 +92,7 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->slug = $request->slug;
         $category->description = $request->description;
-        $category->is_active = $request->is_active;
+        $category->is_active = $request->has('is_active') ? 1 : 0;
 
         // Handle image upload if provided
         if ($request->hasFile('image')) {
