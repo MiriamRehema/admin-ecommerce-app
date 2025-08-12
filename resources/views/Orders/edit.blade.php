@@ -90,6 +90,45 @@
                     <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
                 @enderror
             </div>
+            <!-- Edit for order items -->
+            <div>
+                <h2 class="text-lg font-semibold">Order Items</h2>
+                @foreach($order->items as $item)
+                    <div class="border p-4 mb-4">
+                        <x-input 
+                            label="Product ID" 
+                            name="items[{{ $loop->index }}][product_id]" 
+                            placeholder="Product ID" 
+                            value="{{ old("items.{$loop->index}.product_id", $item->product_id) }}" 
+                        />
+                        @error("items.{$loop->index}.product_id")
+                            <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                        @enderror
+
+                        <x-input 
+                            label="Quantity" 
+                            name="items[{{ $loop->index }}][quantity]" 
+                            type="number" 
+                            placeholder="Quantity" 
+                            value="{{ old("items.{$loop->index}.quantity", $item->quantity) }}" 
+                        />
+                        @error("items.{$loop->index}.quantity")
+                            <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                        @enderror
+
+                        <x-input 
+                            label="Unit Amount" 
+                            name="items[{{ $loop->index }}][unit_amount]" 
+                            type="number" 
+                            step="0.01" 
+                            placeholder="Unit Amount" 
+                            value="{{ old("items.{$loop->index}.unit_amount", $item->unit_amount) }}" 
+                        />
+                        @error("items.{$loop->index}.unit_amount")
+                            <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+                        @enderror
+                    </div>
+                @endforeach
 
             <div>
                 <x-button type="submit" positive label="Update Order" />
