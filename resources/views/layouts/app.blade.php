@@ -38,7 +38,7 @@
             <div class="flex justify-between h-16">
                 <div class="flex">
                     <a class="flex items-center text-xl font-semibold text-gray-900 dark:text-white" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'Afrinet') }}
                     </a>
                 </div>
                 <div class="flex items-center">
@@ -55,24 +55,7 @@
                                 </li>
                             @endif
                         @else
-                            <li>
-                                <a class="text-gray-700 dark:text-gray-200 hover:underline" href="{{ route('users.index') }}">Manage Users</a>
-                            </li>
-                            <li>
-                                <a class="text-gray-700 dark:text-gray-200 hover:underline" href="{{ route('products.index') }}">Manage Products</a>
-                            </li>
-                            <li>
-                                <a class="text-gray-700 dark:text-gray-200 hover:underline" href="{{ route('roles.index') }}">Manage Roles</a>
-                            </li>
-                            <li>
-                                <a class="text-gray-700 dark:text-gray-200 hover:underline" href="{{ route('orders.index') }}">Manage Orders</a>
-                            </li>
-                            <li>
-                                <a class="text-gray-700 dark:text-gray-200 hover:underline" href="{{ route('categories.index') }}">Manage Categories</a>
-                            </li>
-                            <li>
-                                <a class="text-gray-700 dark:text-gray-200 hover:underline" href="{{ route('services.index') }}">Manage Services</a>
-                            </li>
+                            
                             <li class="relative" x-data="{ open: false }">
                                 <button @click="open = !open" class="flex items-center text-gray-700 dark:text-gray-200 hover:underline focus:outline-none">
                                     {{ Auth::user()->name }}
