@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Database\Eloquent\Builder;
 use Spatie\Permission\Models\Role;
+use Illuminate\Http\JsonResponse;
 
 use App\Models\User;
 use Hash;
@@ -141,4 +143,23 @@ class UserController extends Controller
         return redirect()->route('users.index')
                ->with("success","Successfully Deleted");
     }
+   public function searchUser(Request $request)
+{
+    $searchStr = $request->get('search');
+
+    $users = User::when($searchStr, function (Builder $query) use ($searchStr) {
+        $query->where(function ($query) use ($searchStr) {
+            $query->where('name', 'like', '%' . $searchStr . '%')
+                  ->orWhere('email', 'like', '%' . $searchStr . '%');
+        });
+    })
+    ->when($request->has('selected'), function (Builder $query) use ($request) {
+        $query->whereIn('id', $request->input('selected', []));
+    }, function (Builder $query) {
+        $query->limit(5);
+    })
+    ->get(['id', 'name']);
+
+    return response()->json($users);
+}
 }
