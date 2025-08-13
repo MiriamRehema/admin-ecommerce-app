@@ -1,138 +1,72 @@
-<div class="max-w-full mx-auto py-8">
-    <x-card title="USERS">
-        <x-slot name="slot">
-            @if (session('success'))
-                 <x-alert title="Success Message!" positive />
-            @endif
+<div class="p-6">
 
-            
-            
-            <x-button md label="Add User" x-on:click="$openModal('createUserModal')" warning />
+    @if ($mode === 'index')
+        <x-button positive label="Add User" wire:click="create" class="mb-4" />
+        
+        <x-select 
+    label="Search User"
+    placeholder="Select User"
+    :async-data="route('user-search')" 
+    option-label="name" 
+    option-value="id" 
+    wire:model="user_id" />
+        <table class="w-full">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Roles</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($users as $user)
+                    <tr>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->roles->pluck('name')->join(', ') }}</td>
+                        <td>{{ $user->is_active ? 'Active' : 'Inactive' }}</td>
+                        <td class="space-x-2">
+                            <x-button xs info wire:click="show({{ $user->id }})" label="View" />
+                            <x-button xs warning wire:click="edit({{ $user->id }})" label="Edit" />
+                            <x-button xs negative wire:click="delete({{ $user->id }})" label="Delete" />
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
 
-            <div class="overflow-x-auto rounded-lg shadow">
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Initials</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Created At</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Role</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Is Active</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-100">
-                        @foreach($users as $user)
-                            <tr>
-                                <td>
-                                <x-avatar sm >
-                                     <x-slot name="label" class="!text-orange-300 !font-extrabold italic">
-                                        {{ $user->initials() }}
-                                    </x-slot>
-                                </x-avatar>
-                                </td>
+    @elseif ($mode === 'create' || $mode === 'edit')
+        <form wire:submit.prevent="{{ $mode === 'create' ? 'store' : 'update' }}" class="space-y-4">
+            <x-input wire:model="name" label="Name" />
+            <x-input wire:model="email" label="Email" />
+            <x-password wire:model="password" label="Password" />
 
-                                <td class="px-4 py-2">{{ $user->name }}</td>
-                                <td class="px-4 py-2">{{ $user->created_at->format('Y-m-d H:i') }}</td>
-                                <td>
-                                    @foreach($user->roles as $role)
-                                        <x-badge flat green label="{{ $role->name }}" />
-                                    @endforeach
-                                    @if($user->roles->isEmpty())
-                                        <x-badge flat rose label="No Role" />
-                                    @endif
-                                </td>
-                                
-                                <td class="px-4 py-2">
-                                    @if($user->is_active)
-                                        <x-badge flat green label="Active" />
-                                    @else
-                                        <x-badge flat red label="Inactive" />
-                                    @endif
-                                </td>
+            <x-select
+                label="Roles"
+                wire:model="roles"
+                multiselect
+                :options="$roles->pluck('name', 'id')->toArray()" />
 
-                                
-                                <td class="px-4 py-2 flex gap-2">
-                                    
-                                    <a href="{{ route('users.show', $user->id) }}">
-                                        <x-button  icon="eye" flat interaction:solid="positive" style="color: info;"/>
-                                    </a>
-                                    <a href="{{ route('users.edit', $user->id) }}">
-                                        <x-button icon="pencil-square " flat interaction:solid="info" style="color: green;" />
-                                    </a>
-                                    <form method="POST" action="{{ route('users.destroy', $user->id) }}" onsubmit="return confirm('Are you sure?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <x-mini-button rounded icon="trash" flat gray interaction="negative" style="color: red;" type="submit"/>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+            <label>
+                <input type="checkbox" wire:model="is_active" /> Active
+            </label>
+
+            <div class="flex gap-2">
+                <x-button positive type="submit" label="{{ $mode === 'create' ? 'Create' : 'Update' }}" />
+                <x-button flat label="Cancel" wire:click="$set('mode', 'index')" />
             </div>
-        </x-slot>
-    </x-card>
+        </form>
 
-    <!-- Modal for creating users -->
-     <x-modal-card title="Create User" name="createUserModal">
-        <x-slot name="slot">
-            <form method="POST" action="{{ route('users.store') }}" class="space-y-6">
+    @elseif ($mode === 'show')
+        <x-card title="User Details">
+            <p><strong>Name:</strong> {{ $selectedUser->name }}</p>
+            <p><strong>Email:</strong> {{ $selectedUser->email }}</p>
+            <p><strong>Roles:</strong> {{ $selectedUser->roles->pluck('name')->join(', ') }}</p>
+            <p><strong>Status:</strong> {{ $selectedUser->is_active ? 'Active' : 'Inactive' }}</p>
 
-               
-                
-                @csrf
-
-                <div>
-                     <x-input icon="users" label="Name" name="name" placeholder='Name' />
-                    @error('name')
-                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div>
-                    <x-input icon='envelope'  label="Email" name="email" placeholder='Email' />
-                    @error('email')
-                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div>
-                    <x-password label="Password"  name="password" value="I love WireUI ❤️" />
-                    
-                    @error('password')
-                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-                    @enderror
-                </div>
-                
-
-               <div>
-                    <x-select
-    label="Select Roles"
-    name="roles[]"
-    placeholder="Select many roles"
-    multiselect
-    :selected="$user->roles->pluck('id')->toArray()"
-    :options="$roles->pluck('name', 'id')->toArray()"
-/>
-                </div>
-                
-                <div>
-    <label for="is_active">Is Active:</label>
-    <input type="checkbox" name="is_active" value="1" {{ old('is_active', 1) ? 'checked' : '' }}>
-    </div>
-
-                <div>
-                    <x-button type="submit" positive label="Submit" />
-                </div>
-
-            </form>
-
-        </x-slot>
-
-        <x-slot name="footer" class="flex justify-end">
-            <x-button flat label="Cancel" x-on:click="close" />
-        </x-slot>
-    </x-modal-card>
+            <x-button flat label="Back" wire:click="$set('mode', 'index')" class="mt-4" />
+        </x-card>
+    @endif
 </div>
-
