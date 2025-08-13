@@ -1,4 +1,8 @@
-<x-layouts.app :title="__('Dashboard')">
+@extends('layouts.app')
+
+@section('content')
+
+
     <div class="flex">
         <!-- Sidebar -->
         <div class="w-64 bg-gray-800 text-white h-screen">
@@ -26,7 +30,7 @@
 
         <div class="flex-1">
             <!-- Top Navbar -->
-            <div class="bg-white shadow flex items-center justify-between px-4 py-2">
+            <div class="bg-gray-600 shadow flex items-center justify-between px-4 py-2">
                 <div>
                     <button class="text-gray-600 focus:outline-none" id="sidebarToggle">
                         <span class="material-icons">menu</span>
@@ -51,7 +55,7 @@
                 </div>
             </div>
 
-            <div class="max-w-7xl mx-auto py-8 px-4">
+            <div class="bg-gray-800 max-w-7xl mx-auto py-8 px-4">
                 <div class="grid gap-6 md:grid-cols-3">
                     <x-card class="aspect-video flex items-center justify-center">
                         <a href="{{ route('users.index') }}" class="text-lg font-semibold text-blue-600 hover:underline">
@@ -87,10 +91,7 @@
         </div>
     </div>
 
-    <script>
-        document.getElementById('sidebarToggle').addEventListener('click', function() {
-            const sidebar = document.querySelector('.w-64');
-            sidebar.classList.toggle('hidden');
-        });
-    </script>
-</x-layouts.app>
+
+   
+
+@endsection
