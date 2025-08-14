@@ -34,6 +34,9 @@ return [
         'rounded' => Packs\Rounded::MD,
         'color' => Packs\Color::PRIMARY,
     ],
+    'scripts' => [
+        'cdn' => true,
+    ],
 
     /*
     |--------------------------------------------------------------------------
