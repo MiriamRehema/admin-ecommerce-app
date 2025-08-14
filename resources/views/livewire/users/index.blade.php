@@ -1,3 +1,5 @@
+
+
 <div class="p-6">
 
     @if ($mode === 'index')
@@ -6,7 +8,7 @@
         <x-select 
     label="Search User"
     placeholder="Select User"
-    :async-data="route('user-search')" 
+    :async-data="route('user.search-user')" 
     option-label="name" 
     option-value="id" 
     wire:model="user_id" />
@@ -47,7 +49,7 @@
                 label="Roles"
                 wire:model="roles"
                 multiselect
-                :options="$roles->pluck('name', 'id')->toArray()" />
+                :options="$roles->pluck('name', 'id')" />
 
             <label>
                 <input type="checkbox" wire:model="is_active" /> Active
