@@ -17,13 +17,21 @@ class Index extends Component
 
     public function mount()
     {
-        $this->fetchUsers();
+        
+        $this->loadUsers();
     }
+    public function updatedUserId($value)
+{
+    $this->selectedUser = User::find($value); // Reload users list when selection changes
+}
+    public function loadUsers()
+{
+    $this->users = User::with('roles')
+        ->when($this->user_id, fn($query) => $query->where('id', $this->user_id))
+        ->get();
+}
 
-    public function fetchUsers()
-    {
-        $this->users = User::with('roles')->get();
-    }
+    
 
     public function show($id)
     {
@@ -61,7 +69,7 @@ class Index extends Component
         $user->syncRoles($this->roles);
 
         $this->resetForm();
-        $this->fetchUsers();
+        $this->loadUsers();
         $this->mode = 'index';
     }
 
@@ -90,7 +98,7 @@ class Index extends Component
         $user->syncRoles($this->roles);
 
         $this->resetForm();
-        $this->fetchUsers();
+        $this->loadUsers();
         $this->mode = 'index';
     }
 
@@ -98,7 +106,7 @@ class Index extends Component
     {
         $user = User::findOrFail($id);
         $user->delete();
-        $this->fetchUsers();
+        $this->loadUsers();
     }
 
     public function resetForm()
@@ -115,6 +123,7 @@ class Index extends Component
     {
         return view('livewire.users.index', [
             'roles' => Role::all(),
+        
         ]);
     }
     
