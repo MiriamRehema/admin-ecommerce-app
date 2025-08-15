@@ -6,12 +6,14 @@
     <title>Admin Dashboard</title>
     
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @livewireStyles
-    
-
    
+    
+      @wireUiScripts
+    <!-- <script src="https://unpkg.com/alpinejs" defer></script>
+    -->
       <!-- ✅ WireUI CDN -->
-     <script src="//unpkg.com/alpinejs" defer></script>
+     <!-- <script src="//unpkg.com/alpinejs" defer></script> -->
+      @livewireStyles
     
 </head>
 

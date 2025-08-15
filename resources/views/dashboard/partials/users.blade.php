@@ -1,1 +1,1 @@
-<livewire:users.index/>
+<livewire:users.index />
