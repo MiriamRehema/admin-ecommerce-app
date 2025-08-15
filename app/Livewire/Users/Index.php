@@ -11,18 +11,27 @@ class Index extends Component
 {
     public $users;
     public $user_id;
-    public $name, $email, $password, $roles = [], $is_active = true;
+    public $allRoles;
+    public $name, $email, $password, $selectedRoles = [], $is_active = true;
     public $mode = 'index'; // can be 'index', 'create', 'edit', 'show'
-    public $selectedUser;
+    public $updatedUserId;
+
+    public $confirmingDelete = false;
+    public $userToDelete;
 
     public function mount()
     {
-        
+        $this->allRoles = Role::all();
+
         $this->loadUsers();
     }
     public function updatedUserId($value)
 {
-    $this->selectedUser = User::find($value); // Reload users list when selection changes
+      logger('updatedUserId triggered', ['value' => $value]);
+    $this->user_id=$value;
+    $this->loadUsers(); 
+    //dd('Selected user_id = ' . $value);// Reload users list when selection changes
+    
 }
     public function loadUsers()
 {
@@ -66,7 +75,7 @@ class Index extends Component
         }
         $user->is_active = $this->is_active;
         $user->save();
-        $user->syncRoles($this->roles);
+        $user->syncRoles($this->selectedRoles);
 
         $this->resetForm();
         $this->loadUsers();
@@ -95,19 +104,26 @@ class Index extends Component
             'is_active' => $this->is_active,
         ]);
 
-        $user->syncRoles($this->roles);
+        $user->syncRoles($this->selectedRoles);
 
         $this->resetForm();
         $this->loadUsers();
         $this->mode = 'index';
     }
 
-    public function delete($id)
-    {
-        $user = User::findOrFail($id);
-        $user->delete();
-        $this->loadUsers();
-    }
+    public function confirmDelete($id)
+{
+    $this->userToDelete = $id;
+    $this->confirmingDelete = true;
+}
+
+public function deleteConfirmed()
+{
+    User::findOrFail($this->userToDelete)->delete();
+    $this->confirmingDelete = false;
+    $this->userToDelete = null;
+    $this->loadUsers();
+}
 
     public function resetForm()
     {
@@ -115,7 +131,7 @@ class Index extends Component
         $this->name = '';
         $this->email = '';
         $this->password = '';
-        $this->roles = [];
+        $this->selecteRoles = [];
         $this->is_active = true;
     }
 
