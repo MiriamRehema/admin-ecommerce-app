@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Database\Eloquent\Builder;
 use Spatie\Permission\Models\Role;
-use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Collection;
 
 use App\Models\User;
 use Hash;
@@ -143,23 +143,23 @@ class UserController extends Controller
         return redirect()->route('users.index')
                ->with("success","Successfully Deleted");
     }
-   public function searchUser(Request $request)
+   public function searchUser(Request $request): Collection
+   
 {
-    $searchStr = $request->get('search');
-
-    $users = User::when($searchStr, function (Builder $query) use ($searchStr) {
-        $query->where(function ($query) use ($searchStr) {
-            $query->where('name', 'like', '%' . $searchStr . '%')
-                  ->orWhere('email', 'like', '%' . $searchStr . '%');
-        });
-    })
-    ->when($request->has('selected'), function (Builder $query) use ($request) {
-        $query->whereIn('id', $request->input('selected', []));
-    }, function (Builder $query) {
-        $query->limit(5);
-    })
-    ->get(['id', 'name']);
-
-    return response()->json($users);
+    
+    return User::query()
+        ->select('id', 'name')
+        ->when($request->search, function ($query) use ($request) {
+            $query->where('name', 'like', '%' . $request->search . '%')
+                  ->orWhere('email', 'like', '%' . $request->search . '%');
+        })
+        ->when(
+            $request->exists('selected'),
+            fn ($query) => $query->whereIn('id', $request->input('selected', [])),
+            fn ($query) => $query->limit(10)
+        )
+        ->get();
+    //dd($request->all());
+        
 }
 }
