@@ -52,7 +52,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/categories', [DashboardController::class, 'categories'])->name('dashboard.categories');
     Route::redirect('settings', 'settings/profile');
     Route::get('/dashboard/roles', [RoleController::class, 'index'])->name('dashboard.roles');
-    Route::get('/user-search', [UserController::class, 'searchUser'])->name('user.search-user');
+    Route::get('/user-search', [UserController::class, 'searchUser'])->name('user-search');
 
 
     Route::get('settings/profile', Profile::class)->name('settings.profile');
