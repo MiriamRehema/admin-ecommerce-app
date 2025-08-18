@@ -1,185 +1,112 @@
-<div class="max-w-full mx-auto py-8">
-    <x-card title="PRODUCTS">
-        <x-slot name="slot">
-            @if (session('success'))
-                <x-alert title="Success Message!" positive />
-            @endif
+<div class="p-6">
+    @if ($mode === 'index')
+        @can('product-create')
+            <x-button positive label="Add Product" wire:click="create" class="mb-4" />
+        @endcan
 
-            <!-- Button to open the modal -->
-            @can('product-create')
+        <x-select 
+            id="product_id"
+            label="Search Product"
+            placeholder="Select Product"
+            :async-data="route('product-search')" 
+            option-label="name" 
+            option-value="id" 
+            wire:model="product_id" 
+        />
 
-            <x-button label="Add Product" x-on:click="$openModal('createProductModal')" warning />
-            @endcan
-            <div class="overflow-x-auto rounded-lg shadow">
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Image</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Slug</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Category</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Stock</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Price</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Is Active</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Is Featured</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Is New</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Is On Sale</th>
+        <table class="w-full mt-4">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Slug</th>
+                    <th>Category</th>
+                    <th>Stock</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($products as $product)
+                    <tr>
+                        <td>
+                            @if ($product->image)
+                                <img src="{{ Storage::url($product->image) }}" class="w-12 h-12 object-cover rounded" />
+                            @else
+                                N/A
+                            @endif
+                        </td>
+                        <td>{{ $product->name }}</td>
+                        <td>{{ $product->slug }}</td>
+                        <td>{{ $product->category->name ?? 'N/A' }}</td>
+                        <td>{{ $product->stock }}</td>
+                        <td>{{ $product->price }}</td>
+                        <td>
+                            @if ($product->is_active)
+                                <x-badge flat green label="Active" />
+                            @else
+                                <x-badge flat red label="Inactive" />
+                            @endif
+                        </td>
+                        <td class="space-x-2">
+                            <x-button xs info wire:click="show({{ $product->id }})" label="View" />
+                            <x-button xs warning wire:click="edit({{ $product->id }})" label="Edit" />
+                            <x-button xs negative wire:click="confirmDelete({{ $product->id }})" label="Delete" />
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
 
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Created At</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-100">
-                        @foreach($products as $product)
-                            <tr>
-                                
-                                <td class="px-4 py-2">
-                                    @if($product->image)
-                                        <img src="{{ Storage::url($product->image) }}" alt="Product Image" class="w-12 h-12 object-contain rounded-full" />
-                                    @else
-                                        No Image
-                                    @endif
-                                </td>
-                                <td class="px-4 py-2">{{ $product->name }}</td>
-                                <td class="px-4 py-2">{{ $product->slug }}</td>
-                                <td class="px-4 py-2">{{ $product->category->name ?? 'N/A' }}</td>
-                                <td class="px-4 py-2">{{ $product->stock }}</td>
-                                <td class="px-4 py-2">{{ $product->price }}</td>
-                                <td class="px-4 py-2">@if($product->is_active)
-                                    <x-badge flat green label="Active" />
-                                    @else
-                                         <x-badge flat red label="Inactive" />
-                                    @endif
-                                </td>
-                                <td class="px-4 py-2">@if($product->is_featured )
-                                     <x-mini-badge flat green icon="check" />
-                                    @else
-                                        <x-mini-badge flat red icon="x-mark" />
-                                    @endif
-                                </td>
-                                <td class="px-4 py-2">@if($product->is_new)
-                                     <x-mini-badge flat green icon="check" />
-                                    @else
-                                        <x-mini-badge flat red icon="x-mark" />
-                                    @endif
-                                </td>
-                                <td class="px-4 py-2">@if($product->is_on_sale)
-                                     <x-mini-badge flat green icon="check" />
-                                    @else
-                                        <x-mini-badge flat red icon="x-mark" />
-                                    @endif
-                                </td>
-
-                                <td class="px-4 py-2">{{ $product->created_at->format('Y-m-d H:i') }}</td>
-                                <td class="px-4 py-2 flex gap-2">
-
-   
-                                    @can('product-edit')
-                                        <a href="{{ route('products.edit', $product->id) }}">
-                                            <x-button icon="pencil-square" flat interaction:solid="info" style="color: green;" />
-                                        </a>
-                                    @endcan
-                                    @can('product-list')
-                                        <a href="{{ route('products.show', $product->id) }}">
-                                            <x-button icon="eye" flat interaction:solid="positive" style="color: info;" />
-                                        </a>
-                                    @endcan
-                                    @can('product-delete')
-                                        <form method="POST" action="{{ route('products.destroy', $product->id) }}" onsubmit="return confirm('Are you sure?');">
-                                            @csrf
-                                            @method('DELETE')
-
-                                            <x-mini-button rounded icon="trash" flat gray interaction="negative" style="color: red;" type="submit" />
-                                        </form>
-                                    @endcan
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+        @if ($confirmingDelete)
+            <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded shadow">
+                    <h2 class="text-lg font-bold mb-4">Confirm Deletion</h2>
+                    <p class="mb-4">Are you sure you want to delete this product?</p>
+                    <div class="flex justify-end space-x-4">
+                        <x-button flat label="Cancel" wire:click="$set('confirmingDelete', false)" />
+                        <x-button negative label="Delete" wire:click="deleteConfirmed" />
+                    </div>
+                </div>
             </div>
-        </x-slot>
-    </x-card>
+        @endif
 
-    <!-- Modal for creating a product -->
-    <x-modal-card title="Create Product" name="createProductModal">
-        <x-slot name="slot">
-            <form method="POST" action="{{ route('products.store') }}" class="space-y-6" enctype="multipart/form-data">
-                @csrf
+    @elseif ($mode === 'create' || $mode === 'edit')
+        <form wire:submit.prevent="{{ $mode === 'create' ? 'store' : 'update' }}" class="space-y-4">
+            <x-input wire:model="name" label="Name" />
+            <x-input wire:model="slug" label="Slug" />
+            <x-textarea wire:model="description" label="Description" />
+            <x-input wire:model="price" type="number" label="Price" />
+            <x-input wire:model="stock" type="number" label="Stock" />
 
-                <div>
-                    <x-input icon="shopping-bag" label="Product Name" name="name" placeholder="Product" />
-                    @error('name')
-                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div>
-
-                    <x-input icon="tag" label="Slug" name="slug" placeholder="product-slug" />
-                       @error('slug')
-                           <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-                       @enderror
-                </div>
-                <div>
-                    <x-input type="file" label="Image" name="image" />
-                    @error('image')
-                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div>
-                     <x-textarea label="Description" placeholder="Product description" name="description" />
-                       @error('description')
-                     <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-                        @enderror
-                </div>
-                <div>
-                     <x-input label="Price" name="price" type="number" step="0.01" placeholder="Product price" />
-                       @error('price')
-                     <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-                      @enderror
-                </div>
-                <div>
-                     <x-input label="Stock" name="stock" type="number" placeholder="Available stock" />
-                      @error('stock')
-                    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-                     @enderror
-                </div>
-                <div>
-    <label for="is_active">Is Active:</label>
-    <input type="checkbox" name="is_active" value="1" {{ old('is_active', 1) ? 'checked' : '' }}>
-</div>
-                <div>
-                <x-select
+            <x-select
+                wire:model="category_id"
                 label="Category"
-                name="category_id"
-                placeholder="Select a category"
-                :options="$categories->pluck('name', 'id')->toArray()"
-                />
-                 @error('category_id')
-                <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-                @enderror
-                </div>
-                <div>
-    <label for="is_featured">Is Featured:</label>
-    <input type="checkbox" name="is_featured" value="1" {{ old('is_featured', 1) ? 'checked' : '' }}>
-</div>
-                <div>
-    <label for="is_new">Is New:</label>
-    <input type="checkbox" name="is_new" value="1" {{ old('is_new', 1) ? 'checked' : '' }}>
-</div>
-                <div>
-    <label for="is_on_sale">Is On Sale:</label>
-    <input type="checkbox" name="is_on_sale" value="1" {{ old('is_on_sale', 1) ? 'checked' : '' }}>
-</div>
+                :options="$categories->pluck('name', 'id')" />
 
-                <div>
-                    <x-button type="submit" positive label="Create" />
-                </div>
-            </form>
-        </x-slot>
+            <label><input type="checkbox" wire:model="is_active" /> Active</label>
+            <label><input type="checkbox" wire:model="is_featured" /> Featured</label>
+            <label><input type="checkbox" wire:model="is_new" /> New</label>
+            <label><input type="checkbox" wire:model="is_on_sale" /> On Sale</label>
 
-        <x-slot name="footer" class="flex justify-end">
-            <x-button flat label="Cancel" x-on:click="close" />
-        </x-slot>
-    </x-modal-card>
+            <div class="flex gap-2">
+                <x-button positive type="submit" label="{{ $mode === 'create' ? 'Create' : 'Update' }}" />
+                <x-button flat label="Cancel" wire:click="$set('mode', 'index')" />
+            </div>
+        </form>
+
+    @elseif ($mode === 'show')
+        <x-card title="Product Details">
+            <p><strong>Name:</strong> {{ $selectedProduct->name }}</p>
+            <p><strong>Slug:</strong> {{ $selectedProduct->slug }}</p>
+            <p><strong>Category:</strong> {{ $selectedProduct->category->name ?? 'N/A' }}</p>
+            <p><strong>Description:</strong> {{ $selectedProduct->description }}</p>
+            <p><strong>Price:</strong> {{ $selectedProduct->price }}</p>
+            <p><strong>Stock:</strong> {{ $selectedProduct->stock }}</p>
+            <p><strong>Status:</strong> {{ $selectedProduct->is_active ? 'Active' : 'Inactive' }}</p>
+
+            <x-button flat label="Back" wire:click="$set('mode', 'index')" class="mt-4" />
+        </x-card>
+    @endif
 </div>
