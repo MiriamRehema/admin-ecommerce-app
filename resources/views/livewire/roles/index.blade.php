@@ -1,92 +1,88 @@
-<div class="max-w-2xl mx-auto py-8">
-    <x-card title="ROLES">
-            
-        <x-slot name="slot">
-            @if (session('success'))
-            <x-alert title="Success Message!" positive />
-            @endif
-            
-            @can('role-create')
-            <x-button label="Add Role" x-on:click="$openModal('createRoleModal')" warning />
-            @endcan
+<div class="p-6">
+    @if ($mode === 'index')
+        @can('role-create')
+            <x-button positive label="Add Role" wire:click="create" class="mb-4" />
+        @endcan
 
-            <div class="overflow-x-auto rounded-lg shadow">
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">ID</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Created At</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-100">
-                        @foreach($roles as $role)
-                            <tr>
-                                <td class="px-4 py-2">{{ $role->id }}</td>
-                                <td class="px-4 py-2">{{ $role->name }}</td>
-                                <td class="px-4 py-2">{{ $role->created_at->format('Y-m-d H:i') }}</td>
-                                <td class="px-4 py-2 flex gap-2">
-                                    @can('role-edit')
-                                    <a href="{{ route('roles.edit', $role->id) }}">
-                                        <x-button icon="pencil-square" flat interaction:solid="info" style="color: green;"/>
-                                    </a>
-                                    @endcan
-                                    @can('role-list')
-                                    <a href="{{ route('roles.show', $role->id) }}">
-                                        <x-button icon="eye" flat interaction:solid="positive" style="color: info;" />
-                                    </a>
-                                    @endcan
-                                
-                                    @can('role-delete')
-                                    <form method="POST" action="{{ route('roles.destroy', $role->id) }}" onsubmit="return confirm('Are you sure?');">
-                                        @csrf
-                                        @method('DELETE')
-                                          <x-mini-button rounded icon="trash" flat gray interaction="negative" style="color: red;" type="submit" />
-                                    </form>
-                                    @endcan
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </x-slot>
-    </x-card>
+        @if (session('success'))
+            <x-alert title="{{ session('success') }}" positive class="mb-4" />
+        @endif
 
-    <!-- Modal for creating a role -->
-     <x-modal-card title="Create Role" name="createRoleModal">
-        <x-slot name="slot">
-            <form method="POST" action="{{ route('roles.store') }}" class="space-y-6">
-                @csrf
-
-                <div>
-                    <x-input icon="users" label="Name" name="name" placeholder="Role" />
-                    @error('name')
-                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div>
-                <h3 class="text-2xl font-semibold">Permissions:</h3>
-                @foreach($permissions as $permission)      
-                <label class="flex items-center" >
-                    <span class="ml-2">
-                <x-checkbox name="permissions[]" value="{{$permission->name}}" />
-                </span>
-                {{ $permission->name }}
-
-                </label>
+        <table class="w-full">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    
+                    <th>Created At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($roles as $role)
+                    <tr>
+                        <td>{{ $role->name }}</td>
+                       
+                        <td>{{ $role->created_at->format('Y-m-d H:i') }}</td>
+                        <td class="space-x-2">
+                            @can('role-list')
+                                <x-button xs info wire:click="show({{ $role->id }})" label="View" />
+                            @endcan
+                            @can('role-edit')
+                                <x-button xs warning wire:click="edit({{ $role->id }})" label="Edit" />
+                            @endcan
+                            @can('role-delete')
+                                <x-button xs negative wire:click="confirmDelete({{ $role->id }})" label="Delete" />
+                            @endcan
+                        </td>
+                    </tr>
                 @endforeach
-                </div>
+            </tbody>
+        </table>
 
-                <div>
-                    <x-button type="submit" positive label="Create" />
-                </div>
-            </form>
-        </x-slot>
+        <div class="mt-4">
+            {{ $roles->links() }}
+        </div>
 
-        <x-slot name="footer" class="flex justify-end">
-            <x-button flat label="Cancel" x-on:click="close" />
-        </x-slot>
-    </x-modal-card>
+    @elseif ($mode === 'create' || $mode === 'edit')
+        <form wire:submit.prevent="{{ $mode === 'create' ? 'store' : 'update' }}" class="space-y-4">
+            <x-input wire:model.defer="name" label="Role Name" />
+            @error('name') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
+
+            <div>
+                <h3 class="text-lg font-semibold mb-2">Permissions:</h3>
+                @foreach($allPermissions as $permission)
+                    <label class="flex items-center space-x-2 mb-1">
+                        <x-checkbox wire:model="selectedPermissions" value="{{ $permission->name }}" />
+                        <span>{{ $permission->name }}</span>
+                    </label>
+                @endforeach
+            </div>
+
+            <div class="flex gap-2">
+                <x-button positive type="submit" label="{{ $mode === 'create' ? 'Create' : 'Update' }}" />
+                <x-button flat label="Cancel" wire:click="$set('mode', 'index')" />
+            </div>
+        </form>
+
+    @elseif ($mode === 'show')
+        <x-card title="Role Details">
+            <p><strong>Name:</strong> {{ $selectedRole->name }}</p>
+            <p><strong>Permissions:</strong> {{ $selectedRole->permissions->pluck('name')->join(', ') }}</p>
+            <x-button flat label="Back" wire:click="$set('mode', 'index')" class="mt-4" />
+        </x-card>
+    @endif
+
+    {{-- Confirmation Modal --}}
+    @if ($confirmingDelete)
+        <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 dark:bg-opacity-70 z-50">
+            <div class="bg-white dark:bg-gray-800 p-6 rounded shadow text-gray-900 dark:text-white">
+                <h2 class="text-lg font-bold mb-4">Are you sure?</h2>
+                <p class="mb-4">Do you really want to delete this role? This action cannot be undone.</p>
+                <div class="flex justify-end space-x-4">
+                    <x-button flat label="Cancel" wire:click="$set('confirmingDelete', false)" />
+                    <x-button negative label="Delete" wire:click="deleteConfirmed" />
+                </div>
+            </div>
+        </div>
+    @endif
 </div>
