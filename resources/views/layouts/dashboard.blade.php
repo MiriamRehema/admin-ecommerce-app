@@ -30,6 +30,10 @@
             @can('user-list')
                 <a href="#" onclick="loadContent(event, '{{ route('dashboard.users') }}')" class="block p-2 hover:bg-gray-700 rounded">Manage Users</a>
             @endcan
+            @can('category-list')
+                <a href="#" onclick="loadContent(event, '{{ route('dashboard.categories') }}')" class="block p-2 hover:bg-gray-700 rounded">Manage Categories</a>
+            @endcan
+
             @can('product-list')
                 <a href="#" onclick="loadContent(event, '{{ route('dashboard.products') }}')" class="block p-2 hover:bg-gray-700 rounded">Manage Products</a>
             @endcan
