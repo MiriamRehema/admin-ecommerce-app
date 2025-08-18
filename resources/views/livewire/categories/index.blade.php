@@ -1,123 +1,73 @@
-<div class="max-w-full mx-auto py-8">
-    <x-card title="CATEGORIES">
-        <x-slot name="slot">
-            @if (session('success'))
-                <x-alert title="Success Message!" positive />
-            @endif
+<div class="p-6">
+    @if ($mode === 'index')
+        <x-button label="Add Category" wire:click="create" class="mb-4" />
+        
+        @if (session('success'))
+            <x-alert title="{{ session('success') }}" positive />
+        @endif
 
-            <!-- Button to open the modal -->
-            
-                <x-button label="Add Category" x-on:click="$openModal('createCategoryModal')" warning />
-            
-
-            <div class="overflow-x-auto rounded-lg shadow">
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Image</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Slug</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Is Active</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Created At</th>
-                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-100">
-                        @foreach($categories as $category)
-                            <tr>
-                                <td class="px-4 py-2">
-                                     @if($category->image)
-                                     <img src="{{ Storage::url($category->image) }}" alt="Category Image" class="w-12 h-12 object-contain rounded-full" />
-                                    @else
-                                    No Image
-                                    @endif
-                                </td>
-                                <td class="px-4 py-2">{{ $category->name }}</td>
-                                <td class="px-4 py-2">{{ $category->slug }}</td>
-                                <td class="px-4 py-2">
-                                    @if($category->is_active)
-                                        <x-badge flat green label="Active" />
-                                    @else
-                                        <x-badge flat red label="Inactive" />
-                                    @endif
-                                </td>
-                                <td class="px-4 py-2">{{ $category->created_at->format('Y-m-d H:i') }}</td>
-                                <td class="px-4 py-2 flex gap-2">
-
-
-                                        <a href="{{ route('categories.show', $category->id) }}">
-                                            <x-button icon="eye" flat interaction:solid="positive" style="color: info;" />
-                                        </a>
-                                        <a href="{{ route('categories.edit', $category->id) }}">
-                                            <x-button icon="pencil-square" flat interaction:solid="info" style="color: green;" />
-                                        </a>
-                                    
-                                   
-                                        
-                                    
-                                    
-                                        <form method="POST" action="{{ route('categories.destroy', $category->id) }}" onsubmit="return confirm('Are you sure?');">
-                                            @csrf
-                                            @method('DELETE')
-                                            <x-mini-button  rounded icon="trash" flat gray interaction="negative" style="color: red;" type="submit" />
-                                        </form>
-                                    
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+        <table class="w-full">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Slug</th>
+                    <th>Active</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($categories as $cat)
+                    <tr>
+                        <td>{{ $cat->name }}</td>
+                        <td>{{ $cat->slug }}</td>
+                        <td>{{ $cat->is_active ? 'Yes' : 'No' }}</td>
+                        <td>{{ $cat->created_at->format('Y-m-d') }}</td>
+                        <td>
+                            <x-button xs label="View" wire:click="show({{ $cat->id }})" />
+                            <x-button xs label="Edit" wire:click="edit({{ $cat->id }})" />
+                            <x-button xs negative wire:click="confirmDelete({{ $cat->id }})" label="Delete" />
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+        @if ($confirmingDelete)
+    <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+        <div class="bg-white dark:bg-gray-800 dark:text-white p-6 rounded shadow">
+            <h2 class="text-lg font-bold mb-4">Are you sure?</h2>
+            <p class="mb-4">Do you really want to delete this category? This action cannot be undone.</p>
+            <div class="flex justify-end space-x-4">
+                <x-button flat label="Cancel" wire:click="$set('confirmingDelete', false)" />
+                <x-button negative label="Delete" wire:click="deleteConfirmed" />
             </div>
-        </x-slot>
-    </x-card>
+        </div>
+    </div>
+@endif
 
-    <!-- Modal for creating a category -->
-    <x-modal-card title="Create Category" name="createCategoryModal">
-        <x-slot name="slot">
-            <form method="POST" action="{{ route('categories.store') }}" class="space-y-6" enctype="multipart/form-data">
-                @csrf
+    @elseif ($mode === 'create' || $mode === 'edit')
+        <form wire:submit.prevent="{{ $mode === 'create' ? 'store' : 'update' }}" class="space-y-4">
+            <x-input wire:model="name" label="Name" />
+            <x-input wire:model="slug" label="Slug" />
+            <x-textarea wire:model="description" label="Description" />
+            <x-input type="file" wire:model="image" label="Image" />
+            <label>
+                <input type="checkbox" wire:model="is_active" /> Active
+            </label>
+            <x-button type="submit" positive label="{{ $mode === 'create' ? 'Create' : 'Update' }}" />
+            <x-button flat label="Cancel" wire:click="$set('mode', 'index')" />
+        </form>
 
-                <div>
-                    <x-input icon="tag" label="  Name" name="name" placeholder=" Category name" />
-                    @error('name')
-                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div>
-                    <x-input label="Slug" name="slug" placeholder="Enter category slug"  />
-                    @error('slug')
-                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div>
-                    <x-input type="file" label="Image" name="image" />
-                    @error('image')
-                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div>
-                     <x-textarea label="Description" placeholder="Category description" name="description" />
-                    @error('description')
-                        <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div>
-    <label for="is_active">Is Active:</label>
-    <input type="checkbox" name="is_active" value="1" {{ old('is_active', 1) ? 'checked' : '' }}>
-</div>
-
-                <div class="mt-4">
-                    <x-button type="submit" positive label="Create" />
-                </div>
-            </form>
-        </x-slot>
-
-        <x-slot name="footer" class="flex justify-end">
-            <x-button flat label="Cancel" x-on:click="close" />
-        </x-slot>
-    </x-modal-card>
+    @elseif ($mode === 'show')
+        <x-card title="Category Details">
+            <p><strong>Name:</strong> {{ $name }}</p>
+            <p><strong>Slug:</strong> {{ $slug }}</p>
+            <p><strong>Description:</strong> {{ $description }}</p>
+            <p><strong>Is Active:</strong> {{ $is_active ? 'Yes' : 'No' }}</p>
+            @if ($image)
+                <img src="{{ Storage::url($image) }}" class="w-32 h-32 object-cover" />
+            @endif
+            <x-button flat label="Back" wire:click="$set('mode', 'index')" />
+        </x-card>
+    @endif
 </div>
