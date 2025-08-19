@@ -5,14 +5,15 @@
     @if ($mode === 'index')
         <x-button positive label="Add User" wire:click="create" class="mb-4" />
         
-        <x-select 
-        id="user_id"
-        label="Search User"
-        placeholder="Select User"
-        :async-data="route('user-search')" 
-        option-label="name" 
-        option-value="id" 
-        wire:model="user_id" />
+    
+        <x-input
+            type="text"
+            name="search"
+            id="search"
+            wire:model.debounce.500ms="search"
+            placeholder="Search by name or email..."
+            class="mb-4 w-1/3"
+        />
         <table class="w-full">
             <thead>
                 <tr>
@@ -24,7 +25,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($users as $user)
+                @foreach ($users??[] as $user)
                 
                     <tr>
                            
@@ -43,18 +44,19 @@
                 @endforeach
             </tbody>
         </table>
+
         @if ($confirmingDelete)
-    <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-        <div class="bg-white dark:bg-gray-800 dark:text-white p-6 rounded shadow">
-            <h2 class="text-lg font-bold mb-4">Are you sure?</h2>
-            <p class="mb-4">Do you really want to delete this user? This action cannot be undone.</p>
+         <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+            <div class="bg-white dark:bg-gray-800 dark:text-white p-6 rounded shadow">
+                   <h2 class="text-lg font-bold mb-4">Are you sure?</h2>
+                  <p class="mb-4">Do you really want to delete this user? This action cannot be undone.</p>
             <div class="flex justify-end space-x-4">
                 <x-button flat label="Cancel" wire:click="$set('confirmingDelete', false)" />
                 <x-button negative label="Delete" wire:click="deleteConfirmed" />
             </div>
-        </div>
-    </div>
-@endif
+            </div>
+         </div>
+         @endif
         
 
 
