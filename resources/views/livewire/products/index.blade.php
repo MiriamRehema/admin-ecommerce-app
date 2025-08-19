@@ -81,9 +81,13 @@
             <x-input wire:model="stock" type="number" label="Stock" />
 
             <x-select
-                wire:model="category_id"
-                label="Category"
-                :options="$categories->pluck('name', 'id')" />
+    wire:model="category_id"
+    label="Category"
+    :options="$categories"
+    option-label="name"
+    option-value="id"
+/>
+
 
             <label><input type="checkbox" wire:model="is_active" /> Active</label>
             <label><input type="checkbox" wire:model="is_featured" /> Featured</label>

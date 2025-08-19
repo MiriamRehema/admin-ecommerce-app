@@ -28,20 +28,20 @@
         </div>
         <nav class="p-4 space-y-2">
             @can('user-list')
-                <a href="#" onclick="loadContent(event, '{{ route('dashboard.users') }}')" class="block p-2 hover:bg-gray-700 rounded">Manage Users</a>
+                <a href="/users" onclick="loadContent(event, '{{ route('dashboard.users') }}')" class="block p-2 hover:bg-gray-700 rounded">Manage Users</a>
             @endcan
             @can('category-list')
-                <a href="#" onclick="loadContent(event, '{{ route('dashboard.categories') }}')" class="block p-2 hover:bg-gray-700 rounded">Manage Categories</a>
+                <a href="/categories" onclick="loadContent(event, '{{ route('dashboard.categories') }}')" class="block p-2 hover:bg-gray-700 rounded">Manage Categories</a>
             @endcan
 
             @can('product-list')
-                <a href="#" onclick="loadContent(event, '{{ route('dashboard.products') }}')" class="block p-2 hover:bg-gray-700 rounded">Manage Products</a>
+                <a href="/products" onclick="loadContent(event, '{{ route('dashboard.products') }}')" class="block p-2 hover:bg-gray-700 rounded">Manage Products</a>
             @endcan
             @can('role-list')
-                <a href="#" onclick="loadContent(event, '{{ route('dashboard.roles') }}')" class="block p-2 hover:bg-gray-700 rounded">Manage Roles</a>
+                <a href="/roles" onclick="loadContent(event, '{{ route('dashboard.roles') }}')" class="block p-2 hover:bg-gray-700 rounded">Manage Roles</a>
             @endcan
             @can('order-list')
-                <a href="#" onclick="loadContent(event, '{{ route('dashboard.orders') }}')" class="block p-2 hover:bg-gray-700 rounded">My Orders</a>
+                <a href="/orders" onclick="loadContent(event, '{{ route('dashboard.orders') }}')" class="block p-2 hover:bg-gray-700 rounded">My Orders</a>
             @endcan
         </nav>
     </aside>
