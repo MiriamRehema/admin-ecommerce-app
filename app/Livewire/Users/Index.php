@@ -9,38 +9,31 @@ use Illuminate\Support\Facades\Hash;
 
 class Index extends Component
 {
-    public $users;
+    
     public $user_id;
     public $allRoles;
     public $name, $email, $password, $selectedRoles = [], $is_active = true;
-    public $mode = 'index'; // can be 'index', 'create', 'edit', 'show'
-    public $updatedUserId;
+    public $mode = 'index';
 
     public $confirmingDelete = false;
     public $userToDelete;
 
+    public $search = ''; // ✅ Add this line
+
     public function mount()
     {
         $this->allRoles = Role::all();
-
-        $this->loadUsers();
     }
-    public function updatedUserId($value)
-{
-      logger('updatedUserId triggered', ['value' => $value]);
-    $this->user_id=$value;
-    $this->loadUsers(); 
-    //dd('Selected user_id = ' . $value);// Reload users list when selection changes
-    
-}
-    public function loadUsers()
-{
-    $this->users = User::with('roles')
-        ->when($this->user_id, fn($query) => $query->where('id', $this->user_id))
-        ->get();
-}
 
-    
+    public function loadUsers()
+    {
+       
+    }
+
+    public function updatedSearch()
+    {
+        $this->loadUsers(); // refresh when search updates
+    }
 
     public function show($id)
     {
@@ -55,7 +48,7 @@ class Index extends Component
         $this->name = $user->name;
         $this->email = $user->email;
         $this->is_active = $user->is_active;
-        $this->roles = $user->roles->pluck('id')->toArray();
+        $this->selectedRoles = $user->roles->pluck('id')->toArray(); // ✅ Fixed here
         $this->mode = 'edit';
     }
 
@@ -112,18 +105,18 @@ class Index extends Component
     }
 
     public function confirmDelete($id)
-{
-    $this->userToDelete = $id;
-    $this->confirmingDelete = true;
-}
+    {
+        $this->userToDelete = $id;
+        $this->confirmingDelete = true;
+    }
 
-public function deleteConfirmed()
-{
-    User::findOrFail($this->userToDelete)->delete();
-    $this->confirmingDelete = false;
-    $this->userToDelete = null;
-    $this->loadUsers();
-}
+    public function deleteConfirmed()
+    {
+        User::findOrFail($this->userToDelete)->delete();
+        $this->confirmingDelete = false;
+        $this->userToDelete = null;
+        $this->loadUsers();
+    }
 
     public function resetForm()
     {
@@ -131,18 +124,26 @@ public function deleteConfirmed()
         $this->name = '';
         $this->email = '';
         $this->password = '';
-        $this->selecteRoles = [];
+        $this->selectedRoles = []; // ✅ Fixed typo
         $this->is_active = true;
     }
 
     public function render()
     {
+
+         $this->users = User::with('roles')
+            ->when($this->user_id, fn($query) => $query->where('id', $this->user_id))
+            ->when($this->search, function ($query) {
+                $query->where(function ($subQuery) {
+                    $subQuery->where('name', 'like', '%' . $this->search . '%')
+                             ->orWhere('email', 'like', '%' . $this->search . '%');
+                });
+            })
+            ->get();
+
         return view('livewire.users.index', [
-            'roles' => Role::all(),
-        
+            'roles' => $this->allRoles,
+            'users' => $this->users,
         ]);
     }
-    
 }
-
-
