@@ -6,6 +6,8 @@ use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\Auth;
+//use App\Http\Controllers\UserController;
+//use App\Http\Controllers\ProductController;
 
 
 use App\Models\User;
@@ -53,8 +55,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/categories', [DashboardController::class, 'categories'])->name('dashboard.categories');
     Route::redirect('settings', 'settings/profile');
     Route::get('/dashboard/roles', [DashboardController::class, 'roles'])->name('dashboard.roles');
-    Route::get('/user-search', [UserController::class, 'searchUser'])->name('user-search');
-
+    
 
     Route::get('settings/profile', Profile::class)->name('settings.profile');
     Route::get('settings/password', Password::class)->name('settings.password');
