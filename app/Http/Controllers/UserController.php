@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Database\Eloquent\Builder;
 use Spatie\Permission\Models\Role;
-use Illuminate\Support\Collection;
+
 
 use App\Models\User;
 use Hash;
@@ -143,23 +143,5 @@ class UserController extends Controller
         return redirect()->route('users.index')
                ->with("success","Successfully Deleted");
     }
-   public function searchUser(Request $request): Collection
    
-{
-    
-    return User::query()
-        ->select('id', 'name')
-        ->when($request->search, function ($query) use ($request) {
-            $query->where('name', 'like', '%' . $request->search . '%')
-                  ->orWhere('email', 'like', '%' . $request->search . '%');
-        })
-        ->when(
-            $request->exists('selected'),
-            fn ($query) => $query->whereIn('id', $request->input('selected', [])),
-            fn ($query) => $query->limit(10)
-        )
-        ->get();
-    //dd($request->all());
-        
-}
 }
