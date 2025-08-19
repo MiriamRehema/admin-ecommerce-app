@@ -16,6 +16,7 @@ class Index extends Component
     public $selectedProduct;
 
     public $name, $slug, $description, $price, $stock;
+    
     public $category_id;
     public $is_active = true;
     public $is_featured = false;
@@ -24,6 +25,7 @@ class Index extends Component
 
     public $categories;
     public $confirmingDelete = false;
+    public $search_product_id;
 
     protected $listeners = ['deleteConfirmed'];
 
@@ -38,16 +40,23 @@ class Index extends Component
 
     public function mount()
     {
-        $this->categories = Category::all();
+        
     }
 
     public function render()
     {
-        $products = Product::with('category')->paginate(10);
+        $this->categories = Category::all();
+        $query = Product::with('category');
 
-        return view('livewire.products.index', [
-            'products' => $products,
-        ]);
+    if ($this->product_id) {
+        $query->where('id', $this->product_id);
+    }
+
+    $products = $query->paginate(10);
+
+    return view('livewire.products.index', [
+        'products' => $products,
+    ]);
     }
 
     public function create()
@@ -58,6 +67,7 @@ class Index extends Component
 
     public function store()
     {
+        //dd($this->category_id);
         $this->validate();
 
         Product::create([
