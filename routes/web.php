@@ -15,11 +15,13 @@ use App\Models\User;
 use App\Http\Controllers\DashboardController;
 
 
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('home');
+
 Route::get('/', function () {
-    return view('welcome');
-})->name('home');
-
-
+    return view('dashboard'); // assuming your file is resources/views/dashboard.blade.php
+});
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
