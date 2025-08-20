@@ -9,7 +9,7 @@
         <x-input
             type="text"
             name="search"
-            id="search"
+            
             wire:model.debounce.500ms="search"
             placeholder="Search by name or email..."
             class="mb-4 w-1/3"
@@ -25,7 +25,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($users??[] as $user)
+                @foreach ($users as $user)
                 
                     <tr>
                            
