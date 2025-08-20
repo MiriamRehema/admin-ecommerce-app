@@ -4,15 +4,7 @@
             <x-button positive label="Add Product" wire:click="create" class="mb-4" />
         @endcan
 
-        <x-select 
-            id="product_id"
-            label="Search Product"
-            placeholder="Select Product"
-            :async-data="route('product-search')" 
-            option-label="name" 
-            option-value="id" 
-            wire:model="product_id" 
-        />
+       
 
         <table class="w-full mt-4">
             <thead>
@@ -76,6 +68,7 @@
         <form wire:submit.prevent="{{ $mode === 'create' ? 'store' : 'update' }}" class="space-y-4">
             <x-input wire:model="name" label="Name" />
             <x-input wire:model="slug" label="Slug" />
+             <x-input type="file" wire:model="image" label="Image" />
             <x-textarea wire:model="description" label="Description" />
             <x-input wire:model="price" type="number" label="Price" />
             <x-input wire:model="stock" type="number" label="Stock" />
@@ -109,6 +102,9 @@
             <p><strong>Price:</strong> {{ $selectedProduct->price }}</p>
             <p><strong>Stock:</strong> {{ $selectedProduct->stock }}</p>
             <p><strong>Status:</strong> {{ $selectedProduct->is_active ? 'Active' : 'Inactive' }}</p>
+            @if ($image)
+                <img src="{{ Storage::url($image) }}" class="w-32 h-32 object-cover" />
+            @endif
 
             <x-button flat label="Back" wire:click="$set('mode', 'index')" class="mt-4" />
         </x-card>
