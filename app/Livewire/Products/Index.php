@@ -6,15 +6,17 @@ use App\Models\Product;
 use App\Models\Category;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\WithFileUploads;
 
 class Index extends Component
 {
     use WithPagination;
+    use WithFileUploads;
 
     public $mode = 'index';
     public $product_id;
     public $selectedProduct;
-
+    public $image;
     public $name, $slug, $description, $price, $stock;
     
     public $category_id;
@@ -81,6 +83,7 @@ class Index extends Component
             'is_featured' => $this->is_featured,
             'is_new' => $this->is_new,
             'is_on_sale' => $this->is_on_sale,
+            'image' => $this->image ? $this->image->store('category', 'public') : null,
         ]);
 
         $this->mode = 'index';
@@ -90,6 +93,8 @@ class Index extends Component
     public function show($id)
     {
         $this->selectedProduct = Product::with('category')->findOrFail($id);
+        $this->image = $this->selectedProduct->image;
+
         $this->mode = 'show';
     }
 
@@ -108,6 +113,7 @@ class Index extends Component
         $this->is_featured = $product->is_featured;
         $this->is_new = $product->is_new;
         $this->is_on_sale = $product->is_on_sale;
+        $this->image = $product->image;
 
         $this->mode = 'edit';
     }
@@ -130,6 +136,7 @@ class Index extends Component
             'is_featured' => $this->is_featured,
             'is_new' => $this->is_new,
             'is_on_sale' => $this->is_on_sale,
+            'image' => $this->image ? $this->image->store('category', 'public') : $product->image,
         ]);
 
         $this->mode = 'index';
@@ -147,6 +154,7 @@ class Index extends Component
         Product::destroy($this->product_id);
         $this->confirmingDelete = false;
         session()->flash('success', 'Product deleted successfully!');
+
     }
 
     private function resetForm()
@@ -155,6 +163,7 @@ class Index extends Component
             'name', 'slug', 'description', 'price', 'stock',
             'category_id', 'is_active', 'is_featured', 'is_new',
             'is_on_sale', 'product_id', 'selectedProduct',
+            'image',
         ]);
     }
 }
