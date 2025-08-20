@@ -6,95 +6,105 @@
     <title>Admin Dashboard</title>
     
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-   
-    
-      @wireUiScripts
-    <!-- <script src="https://unpkg.com/alpinejs" defer></script>
-    -->
-      <!-- ✅ WireUI CDN -->
-     <!-- <script src="//unpkg.com/alpinejs" defer></script> -->
-      @livewireStyles
-    
+    @wireUiScripts
+    @livewireStyles
 </head>
 
 <body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
 
-<div class="flex min-h-screen">
+@auth
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-gray-800 text-white flex-shrink-0">
+            <div class="p-6 text-2xl font-bold border-b border-gray-700">
+                Dashboard
+            </div>
+            <nav class="p-4 space-y-2">
+                @can('user-list')
+                    <a href="/users" onclick="loadContent(event, '{{ route('dashboard.users') }}')" class="block p-2 hover:bg-gray-700 rounded">Manage Users</a>
+                @endcan
+                @can('category-list')
+                    <a href="/categories" onclick="loadContent(event, '{{ route('dashboard.categories') }}')" class="block p-2 hover:bg-gray-700 rounded">Manage Categories</a>
+                @endcan
+                @can('product-list')
+                    <a href="/products" onclick="loadContent(event, '{{ route('dashboard.products') }}')" class="block p-2 hover:bg-gray-700 rounded">Manage Products</a>
+                @endcan
+                @can('role-list')
+                    <a href="/roles" onclick="loadContent(event, '{{ route('dashboard.roles') }}')" class="block p-2 hover:bg-gray-700 rounded">Manage Roles</a>
+                @endcan
+                @can('order-list')
+                    <a href="/orders" onclick="loadContent(event, '{{ route('dashboard.orders') }}')" class="block p-2 hover:bg-gray-700 rounded">My Orders</a>
+                @endcan
+            </nav>
+        </aside>
 
-    <!-- Sidebar -->
-    <aside class="w-64 bg-gray-800 text-white flex-shrink-0">
-        <div class="p-6 text-2xl font-bold border-b border-gray-700">
-            Dashboard
-        </div>
-        <nav class="p-4 space-y-2">
-            @can('user-list')
-                <a href="/users" onclick="loadContent(event, '{{ route('dashboard.users') }}')" class="block p-2 hover:bg-gray-700 rounded">Manage Users</a>
-            @endcan
-            @can('category-list')
-                <a href="/categories" onclick="loadContent(event, '{{ route('dashboard.categories') }}')" class="block p-2 hover:bg-gray-700 rounded">Manage Categories</a>
-            @endcan
+        <!-- Main content -->
+        <div class="flex-1 flex flex-col">
+            <!-- Top navbar -->
+            <header class="bg-white dark:bg-gray-800 shadow p-4 flex items-center justify-between">
+                <div class="text-xl font-semibold text-gray-900 dark:text-white">Admin Panel</div>
 
-            @can('product-list')
-                <a href="/products" onclick="loadContent(event, '{{ route('dashboard.products') }}')" class="block p-2 hover:bg-gray-700 rounded">Manage Products</a>
-            @endcan
-            @can('role-list')
-                <a href="/roles" onclick="loadContent(event, '{{ route('dashboard.roles') }}')" class="block p-2 hover:bg-gray-700 rounded">Manage Roles</a>
-            @endcan
-            @can('order-list')
-                <a href="/orders" onclick="loadContent(event, '{{ route('dashboard.orders') }}')" class="block p-2 hover:bg-gray-700 rounded">My Orders</a>
-            @endcan
-        </nav>
-    </aside>
-
-    <!-- Main content -->
-    <div class="flex-1 flex flex-col">
-
-        <!-- Top navbar -->
-        <header class="bg-white dark:bg-gray-800 shadow p-4 flex items-center justify-between">
-            <div class="text-xl font-semibold text-gray-900 dark:text-white">Admin Panel</div>
-
-            <div class="flex items-center space-x-4">
-                <!-- Notification Icon -->
-                <button class="relative">
-                    <span class="material-icons text-gray-700 dark:text-white">notifications</span>
-                    <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
-                </button>
-
-                <!-- User Dropdown -->
-                <div class="relative" x-data="{ open: false }">
-                    <button @click="open = !open" class="flex items-center space-x-2 focus:outline-none">
-                        <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}" alt="avatar" class="w-8 h-8 rounded-full">
-                        <span class="text-gray-800 dark:text-gray-200 font-medium">{{ Auth::user()->name }}</span>
-                        <svg class="w-4 h-4 text-gray-800 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                <div class="flex items-center space-x-4">
+                    <!-- Notification Icon -->
+                    <button class="relative">
+                        <span class="material-icons text-gray-700 dark:text-white">notifications</span>
+                        <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
                     </button>
 
-                    <!-- Dropdown Menu -->
-                    <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 rounded shadow-lg z-50">
-                        <a href="{{ route('settings.profile') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Settings</a>
-
-                        <button onclick="toggleDarkMode()" class="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">
-                            Switch Mode
+                    <!-- Authenticated User Dropdown -->
+                    <div class="relative" x-data="{ open: false }">
+                        <button @click="open = !open" class="flex items-center space-x-2 focus:outline-none">
+                            <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}" alt="avatar" class="w-8 h-8 rounded-full">
+                            <span class="text-gray-800 dark:text-gray-200 font-medium">{{ Auth::user()->name }}</span>
+                            <svg class="w-4 h-4 text-gray-800 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
                         </button>
 
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <button type="submit" class="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">
-                                Logout
+                        <!-- Dropdown Menu -->
+                        <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 rounded shadow-lg z-50">
+                            <a href="{{ route('settings.profile') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Settings</a>
+
+                            <button onclick="toggleDarkMode()" class="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">
+                                Switch Mode
                             </button>
-                        </form>
+
+                            <a href="{{ route('logout') }}"
+                               class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                                @csrf
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </header>
+            </header>
 
-        <!-- Content Area -->
-        <main class="p-6" id="dashboard-content">
-            @yield('content')
-        </main>
+            <!-- Content Area -->
+            <main class="p-6" id="dashboard-content">
+                @yield('content')
+            </main>
+        </div>
     </div>
-</div>
+@endauth
+
+@guest
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="text-center">
+            <h1 class="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">You must be logged in to access the dashboard.</h1>
+            <div class="space-x-4">
+                @if (Route::has('login'))
+                    <a href="{{ route('login') }}" class="text-blue-600 dark:text-blue-400 hover:underline">Login</a>
+                @endif
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="text-blue-600 dark:text-blue-400 hover:underline">Register</a>
+                @endif
+            </div>
+        </div>
+    </div>
+@endguest
 
 <!-- JS to dynamically load partials into content area -->
 <script>
@@ -114,7 +124,6 @@
         localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
     }
 
-    // Load theme from localStorage
     document.addEventListener('DOMContentLoaded', () => {
         if (localStorage.getItem('theme') === 'dark') {
             document.documentElement.classList.add('dark');
@@ -125,6 +134,5 @@
 </script>
 
 @livewireScripts
-
 </body>
 </html>
