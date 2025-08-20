@@ -9,7 +9,9 @@
         <table class="w-full">
             <thead>
                 <tr>
+                    <th>Image</th>
                     <th>Name</th>
+                    
                     <th>Slug</th>
                     <th>Active</th>
                     <th>Created At</th>
@@ -19,9 +21,20 @@
             <tbody>
                 @foreach ($categories as $cat)
                     <tr>
+                        <td>
+                            @if ($cat->image)
+                                <img src="{{ Storage::url($cat->image) }}" class="w-16 h-16 object-cover rounded" />
+                            @endif
+                        </td>
                         <td>{{ $cat->name }}</td>
                         <td>{{ $cat->slug }}</td>
-                        <td>{{ $cat->is_active ? 'Yes' : 'No' }}</td>
+                        <td>
+                            @if ($cat->is_active)
+                                <x-badge flat green label="Active" />
+                            @else
+                                <x-badge flat red label="Inactive" />
+                            @endif
+                        </td>
                         <td>{{ $cat->created_at->format('Y-m-d') }}</td>
                         <td>
                             <x-button xs label="View" wire:click="show({{ $cat->id }})" />
@@ -63,9 +76,9 @@
             <p><strong>Name:</strong> {{ $name }}</p>
             <p><strong>Slug:</strong> {{ $slug }}</p>
             <p><strong>Description:</strong> {{ $description }}</p>
-            <p><strong>Is Active:</strong> {{ $is_active ? 'Yes' : 'No' }}</p>
+            <p><strong>Is Active:</strong> {{ $selectedCategory->is_active ? 'Active' : 'Inactive' }}</p>
             @if ($image)
-                <img src="{{ Storage::url($image) }}" class="w-32 h-32 object-cover" />
+                <img src="{{ Storage::url($image) }}" class="w-16 h-16 object-cover rounded" />
             @endif
             <x-button flat label="Back" wire:click="$set('mode', 'index')" />
         </x-card>
