@@ -16,16 +16,18 @@
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900 min-h-screen antialiased">
+     
 
 <div id="app">
     <x-notifications />
     <x-notifications position="top-end" />
 
     
-
+ @livewire('partials.navbar')
     <main class="py-8">
-        @yield('content')
+       @yield('content')
     </main>
+@livewire('partials.footer')
 </div>
 
 @livewireScripts
