@@ -15,13 +15,25 @@ use App\Models\User;
 use App\Http\Controllers\DashboardController;
 
 
-// Route::get('/', function () {
-//     return view('welcome');
-// })->name('home');
-
 Route::get('/', function () {
-    return view('dashboard'); // assuming your file is resources/views/dashboard.blade.php
-});
+    return view('homepage');
+})->name('homepage');
+
+Route::get('/categories', function () {
+    return view('categoriespage');
+})->name('categories');
+
+Route::get('/products', function () {
+    return view('products');
+})->name('products');
+
+Route::get('/cart', function () {
+    return view('cartpage');
+})->name('cart');
+Route::get('/product/{product}', function ($product) {
+    return view('product-detail', ['product' => $product]);
+})->name('product.detail');
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
