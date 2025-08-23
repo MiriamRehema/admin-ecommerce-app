@@ -33,6 +33,18 @@ Route::get('/cart', function () {
 Route::get('/product/{product}', function ($product) {
     return view('product-detail', ['product' => $product]);
 })->name('product.detail');
+Route::get('/aboutus', function () {
+    return view('aboutus');
+})->name('aboutus');
+
+Route::get('/oursolutions', function () {
+    return view('oursolutions');
+})->name('oursolutions');
+
+Route::get('/contactus', function () {
+    return view('contactus');
+})->name('contactus');
+
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
