@@ -3,24 +3,26 @@
 @section('content')
 <div>
     <!-- hero section -->
-     <div class="w-full h-screen bg-gradient-to-r from-blue-200 to-cyan-200 py-10 px-4 sm:px-6 lg:px-8 mx-auto">
+     <div class="w-full h-screen bg-gradient-to-r from-green-700 to-green-500 py-10 px-4 sm:px-6 lg:px-8 mx-auto">
   <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Grid -->
     <div class="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
       <div>
-        <h1 class="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">Start your journey with <span class="text-blue-600">DCodeMania</span></h1>
+        <h1 class="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">
+
+IT Solutions for SMEs in Africa. <span class="text-orange-600">Afrinet Telecom</span></h1>
         <p class="mt-3 text-lg text-gray-800 dark:text-gray-400">Purchase wide varities of electronics products like Smartphones, Laptops, Smartwatches, Television and many more.</p>
 
         <!-- Buttons -->
         <div class="mt-7 grid gap-3 w-full sm:inline-flex">
-          <a class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/register">
+          <a class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-orange-600 text-white hover:bg-green-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/register">
             Get started
             <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="m9 18 6-6-6-6" />
             </svg>
           </a>
           <a class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/contact">
-            Contact sales team
+            Contact us
           </a>
         </div>
         <!-- End Buttons -->
@@ -47,9 +49,9 @@
               </svg>
             </div>
 
-            <p class="mt-3 text-sm text-gray-800 dark:text-gray-200">
+            <!-- <p class="mt-3 text-sm text-gray-800 dark:text-gray-200">
               <span class="font-bold">4.6</span> /5 - from 12k reviews
-            </p>
+            </p> -->
 
             <div class="mt-5">
               <!-- Star -->
@@ -87,9 +89,9 @@
               </svg>
             </div>
 
-            <p class="mt-3 text-sm text-gray-800 dark:text-gray-200">
+            <!-- <p class="mt-3 text-sm text-gray-800 dark:text-gray-200">
               <span class="font-bold">4.8</span> /5 - from 5k reviews
-            </p>
+            </p> -->
 
             <div class="mt-5">
               <!-- Star -->
@@ -144,83 +146,84 @@
   </div>
 </div>
 
-<!-- products section -->
- <section class="py-20">
-  <div class="max-w-xl mx-auto">
-    <div class="text-center ">
-      <div class="relative flex flex-col items-center">
-        <h1 class="text-5xl font-bold dark:text-gray-200"> Browse Popular<span class="text-blue-500"> Brands
-          </span> </h1>
-        <div class="flex w-40 mt-2 mb-6 overflow-hidden rounded">
-          <div class="flex-1 h-2 bg-blue-200">
-          </div>
-          <div class="flex-1 h-2 bg-blue-400">
-          </div>
-          <div class="flex-1 h-2 bg-blue-600">
-          </div>
-        </div>
-      </div>
-      <p class="mb-12 text-base text-center text-gray-500">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus magni eius eaque?
-        Pariatur
-        numquam, odio quod nobis ipsum ex cupiditate?
+<!-- IT AND ICT section -->
+<!-- Our Solutions Section for Homepage -->
+<!-- Our Solutions Section for Homepage -->
+<section id="our-solutions" class="py-16 bg-gray-50 dark:bg-gray-800 font-poppins">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Heading -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-900 dark:text-white">Our <span class="text-green-500">Solutions</span></h2>
+      <p class="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        We provide a range of cutting-edge IT services and robust ICT hardware to support your business growth.
       </p>
     </div>
-  </div>
-  <div class="justify-center max-w-6xl px-4 py-4 mx-auto lg:py-0">
-    <div class="grid grid-cols-1 gap-6 lg:grid-cols-4 md:grid-cols-2">
 
-      <div class="bg-white rounded-lg shadow-md dark:bg-gray-800">
-        <a href="" class="">
-          <img src="https://i.pinimg.com/originals/a0/97/c3/a097c3c89b6d9a14f52f9515395d5220.png" alt="" class="object-cover w-full h-64 rounded-t-lg">
-        </a>
-        <div class="p-5 text-center">
-          <a href="" class="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-300">
-            Apple
-          </a>
+    <!-- IT Solutions -->
+    <div class="mb-16">
+      <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-6 border-b pb-2 border-gray-300 dark:border-gray-700">
+        IT Solutions
+      </h3>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        @php
+          $itSolutions = [
+            'Bulk SMS',
+            'Shortcodes & USSD',
+            'Customer Survey',
+            'CRM for SMEs',
+            'Water ERP',
+            'Web & Mobile Applications'
+          ];
+        @endphp
+        @foreach ($itSolutions as $solution)
+        <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition duration-300 hover:bg-green-500 hover:text-white hover:shadow-xl group cursor-pointer">
+          <h4 class="text-xl font-semibold text-gray-800 dark:text-white group-hover:text-white">
+            {{ $solution }}
+          </h4>
+          <p class="text-gray-600 dark:text-gray-300 mt-2 group-hover:text-white">
+            Reliable and scalable {{ strtolower($solution) }} services designed to meet your business needs.
+          </p>
         </div>
+        @endforeach
       </div>
+    </div>
 
-      <div class="bg-white rounded-lg shadow-md dark:bg-gray-800">
-        <a href="" class="">
-          <img src="https://i.pinimg.com/originals/1d/35/83/1d35833251dec0ad373ad7cbbbf4f3e2.png" alt="" class="object-cover w-full h-64 rounded-t-lg">
-        </a>
-        <div class="p-5 text-center">
-          <a href="" class="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-300">
-            Samsung
-          </a>
+    <!-- ICT Solutions -->
+    <div>
+      <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-6 border-b pb-2 border-gray-300 dark:border-gray-700">
+        ICT Hardware Solutions
+      </h3>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        @php
+          $ictSolutions = [
+            ['title' => 'Servers', 'desc' => 'The powerhouse of your network, from basic to virtual servers.'],
+            ['title' => 'Switches', 'desc' => 'Ensure seamless device connectivity and smooth data flow.'],
+            ['title' => 'Routers', 'desc' => 'Direct traffic and manage network connections efficiently.'],
+            ['title' => 'Wi-Fi Access Points', 'desc' => 'Expand coverage with secure high-speed wireless access.'],
+            ['title' => 'Network Storage', 'desc' => 'Centralized and scalable storage for all your data.'],
+            ['title' => 'UPS Systems', 'desc' => 'Protect your data and maintain uptime during outages.'],
+          ];
+        @endphp
+        @foreach ($ictSolutions as $item)
+        <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition duration-300 hover:bg-green-500 hover:text-white hover:shadow-xl group cursor-pointer">
+          <h4 class="text-xl font-semibold text-gray-800 dark:text-white group-hover:text-white">
+            {{ $item['title'] }}
+          </h4>
+          <p class="text-gray-600 dark:text-gray-300 mt-2 group-hover:text-white">
+            {{ $item['desc'] }}
+          </p>
         </div>
+        @endforeach
       </div>
-
-      <div class="bg-white rounded-lg shadow-md dark:bg-gray-800">
-        <a href="" class="">
-          <img src="https://salesindia.com/media/codazon_cache/brand/400x400/wysiwyg/codazon/main-content-22/Brand_logo/ONEPLUS_LOGO_.png" alt="" class="object-cover w-full h-64 rounded-t-lg">
-        </a>
-        <div class="p-5 text-center">
-          <a href="" class="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-300">
-            One Plus
-          </a>
-        </div>
-      </div>
-
-      <div class="bg-white rounded-lg shadow-md dark:bg-gray-800">
-        <a href="" class="">
-          <img src="https://i.pinimg.com/originals/72/15/96/721596edd1de9db231a385d52a9081f8.png" alt="" class="object-cover w-full h-64 rounded-t-lg">
-        </a>
-        <div class="p-5 text-center">
-          <a href="" class="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-300">
-            Xiaomi
-          </a>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
+
+
 <!-- categories section -->
 
-<div class="bg-orange-200 py-20">
+<!-- <div class="bg-orange-200 py-20">
   <div class="max-w-xl mx-auto">
     <div class="text-center ">
       <div class="relative flex flex-col items-center">
@@ -329,7 +332,90 @@
     </div>
   </div>
 
-</div>
+</div> -->
+
+<!-- About Us -->
+<section class="py-16 bg-white dark:bg-gray-900 font-poppin">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-10">
+    
+    <!-- IMAGE -->
+    <div class="w-full lg:w-1/2">
+      <img src="https://images.unsplash.com/photo-1614852202523-610d0b4f2e99?auto=format&fit=crop&w=800&q=80"
+           alt="Happy customer"
+           class="rounded-lg shadow-lg w-full h-auto object-cover">
+    </div>
+
+    <!-- CONTENT -->
+    <div class="w-full lg:w-1/2">
+      <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        About <span class="text-green-600">Us</span>
+      </h2>
+      <p class="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+        We exist to help SMEs leverage technology for growth. <br>
+        We report to work every day to help SMEs run efficiently.
+      </p>
+
+      <!-- Solutions List -->
+      <div class="space-y-2 text-gray-700 dark:text-gray-300 mb-8">
+        <div class="flex items-center gap-3">
+          <span class="text-green-600 text-xl">✔</span> Bulk SMS
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-green-600 text-xl">✔</span> Water Sector ERP
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-green-600 text-xl">✔</span> Mobile & Web Development
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-green-600 text-xl">✔</span> CRM for SMEs
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-green-600 text-xl">✔</span> Church Management ERP
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-green-600 text-xl">✔</span> IT Hardware
+        </div>
+      </div>
+
+      <a href="#"
+         class="inline-block bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full transition">
+        Read More
+      </a>
+    </div>
+  </div>
+
+  <!-- Why Choose Us Section -->
+  <div class="mt-16 bg-gray-50 dark:bg-gray-800 py-12 px-6 lg:px-20 rounded-lg shadow-inner">
+    <div class="text-center mb-10">
+      <h3 class="text-3xl font-semibold text-gray-900 dark:text-white">Why Choose <span class="text-green-600">Us</span></h3>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-gray-700 dark:text-gray-200">
+      <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md text-center">
+        <div class="text-4xl text-orange-500 mb-4">🎯</div>
+        <h4 class="font-semibold text-lg mb-2">We Deliver Value</h4>
+        <p class="text-sm">Your money goes further with tailored cloud tools that create impact.</p>
+      </div>
+      <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md text-center">
+        <div class="text-4xl text-green-500 mb-4">🤝</div>
+        <h4 class="font-semibold text-lg mb-2">Growth Partners</h4>
+        <p class="text-sm">We don't just serve—we walk with you as your business grows.</p>
+      </div>
+      <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md text-center">
+        <div class="text-4xl text-orange-500 mb-4">📱</div>
+        <h4 class="font-semibold text-lg mb-2">Engage & Retain</h4>
+        <p class="text-sm">We help you connect and retain loyal customers efficiently.</p>
+      </div>
+      <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md text-center">
+        <div class="text-4xl text-green-500 mb-4">💬</div>
+        <h4 class="font-semibold text-lg mb-2">We Value Feedback</h4>
+        <p class="text-sm">Continuous improvement through listening to your needs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
 
 <!-- customer reviews -->
  <section class="py-14 font-poppins dark:bg-gray-800">
@@ -678,5 +764,86 @@
     </div>
   </div>
 </section>
+
+<!-- Contact us page -->
+
+<!-- Contact Us Section -->
+<!-- Contact Us Section -->
+<section class="bg-white dark:bg-gray-900 py-16 font-poppin" id="contact">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <!-- Section Title -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-900 dark:text-white">
+        Get in <span class="text-green-600">Touch</span>
+      </h2>
+      <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
+        We'd love to hear from you. Reach out to us or send us a message.
+      </p>
+    </div>
+
+    <!-- Contact Info + Form -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <!-- Contact Information -->
+      <div class="space-y-8">
+        <div class="flex items-start gap-4">
+          <div class="text-3xl text-orange-500">📧</div>
+          <div>
+            <h4 class="text-lg font-semibold text-gray-800 dark:text-white">Email</h4>
+            <p class="text-gray-600 dark:text-gray-300">info@yourecommerce.com</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="text-3xl text-green-600">📞</div>
+          <div>
+            <h4 class="text-lg font-semibold text-gray-800 dark:text-white">Phone</h4>
+            <p class="text-gray-600 dark:text-gray-300">+254 712 345 678</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="text-3xl text-orange-500">📍</div>
+          <div>
+            <h4 class="text-lg font-semibold text-gray-800 dark:text-white">Address</h4>
+            <p class="text-gray-600 dark:text-gray-300">Nairobi, Kenya</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow">
+        <form action="#" method="POST" class="space-y-5">
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Full Name</label>
+            <input type="text" id="name" name="name" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email Address</label>
+            <input type="email" id="email" name="email" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+          </div>
+          <div>
+            <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
+            <textarea id="message" name="message" rows="4" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"></textarea>
+          </div>
+          <div>
+            <button type="submit" class="bg-green-600 hover:bg-orange-500 text-white font-semibold px-6 py-2 rounded-md transition">
+              Send Message
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Google Map -->
+    <div class="mt-12">
+      <div class="w-full h-96 rounded-lg overflow-hidden shadow-lg">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.111891327196!2d36.8219464!3d-1.2920656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d4cbbdfb5f%3A0x1730d7d4181fc2b0!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2ske!4v1631808674203!5m2!1sen!2ske"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 </div>
 @endsection
