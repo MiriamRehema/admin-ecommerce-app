@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
     use HasFactory;
+
+    protected $table = 'service';
 
     protected $fillable=[
         'name',
@@ -26,7 +29,7 @@ class Service extends Model
     public function reviews(){
         return $this->belongsToMany(Review::class);
     }
-    public function services(){
+    public function orderservices(){
         return $this->belongsToMany(Order_service::class);
     }
     
