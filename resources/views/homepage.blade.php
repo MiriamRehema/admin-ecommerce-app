@@ -545,7 +545,7 @@ IT Solutions for SMEs in Africa. <span class="text-orange-700">Afrinet Telecom</
 
       <!-- Contact Form -->
       <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow">
-        <form action="#" method="POST" class="space-y-5">
+        <!-- <form action="#" method="POST" class="space-y-5"> -->
           <div>
             <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Full Name</label>
             <input type="text" id="name" name="name" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
