@@ -10,7 +10,7 @@
       <div>
         <h1 class="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">
 
-IT Solutions for SMEs in Africa. <span class="text-orange-600">Afrinet Telecom</span></h1>
+IT Solutions for SMEs in Africa. <span class="text-orange-700">Afrinet Telecom</span></h1>
         <p class="mt-3 text-lg text-gray-800 dark:text-gray-400">Purchase wide varities of electronics products like Smartphones, Laptops, Smartwatches, Television and many more.</p>
 
         <!-- Buttons -->
@@ -21,7 +21,7 @@ IT Solutions for SMEs in Africa. <span class="text-orange-600">Afrinet Telecom</
               <path d="m9 18 6-6-6-6" />
             </svg>
           </a>
-          <a class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/contact">
+          <a class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/contactus">
             Contact us
           </a>
         </div>
@@ -113,7 +113,7 @@ IT Solutions for SMEs in Africa. <span class="text-orange-600">Afrinet Telecom</
       <!-- End Col -->
 
       <div class="relative ms-4">
-        <img class="w-full rounded-md" src="https://static.vecteezy.com/system/resources/previews/011/993/278/non_2x/3d-render-online-shopping-bag-using-credit-card-or-cash-for-future-use-credit-card-money-financial-security-on-mobile-3d-application-3d-shop-purchase-basket-retail-store-on-e-commerce-free-png.png" alt="Image Description">
+        <!-- <img class="w-full rounded-md" src="https://static.vecteezy.com/system/resources/previews/011/993/278/non_2x/3d-render-online-shopping-bag-using-credit-card-or-cash-for-future-use-credit-card-money-financial-security-on-mobile-3d-application-3d-shop-purchase-basket-retail-store-on-e-commerce-free-png.png" alt="Image Description"> -->
         <div class="absolute inset-0 -z-[1] bg-gradient-to-tr from-gray-200 via-white/0 to-white/0 w-full h-full rounded-md mt-4 -mb-4 me-4 -ms-4 lg:mt-6 lg:-mb-6 lg:me-6 lg:-ms-6 dark:from-slate-800 dark:via-slate-900/0 dark:to-slate-900/0"></div>
 
         <!-- SVG-->
@@ -154,14 +154,14 @@ IT Solutions for SMEs in Africa. <span class="text-orange-600">Afrinet Telecom</
     <!-- Section Heading -->
     <div class="text-center mb-12">
       <h2 class="text-4xl font-bold text-gray-900 dark:text-white">Our <span class="text-green-500">Solutions</span></h2>
-      <p class="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+      <p class="mt-4 text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
         We provide a range of cutting-edge IT services and robust ICT hardware to support your business growth.
       </p>
     </div>
 
     <!-- IT Solutions -->
     <div class="mb-16">
-      <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-6 border-b pb-2 border-gray-300 dark:border-gray-700">
+      <h3 class="text-2xl font-semibold text-gray-700 dark:text-white mb-6 border-b pb-2 border-gray-300 dark:border-gray-700">
         IT Solutions
       </h3>
       <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -177,7 +177,7 @@ IT Solutions for SMEs in Africa. <span class="text-orange-600">Afrinet Telecom</
         @endphp
         @foreach ($itSolutions as $solution)
         <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition duration-300 hover:bg-green-500 hover:text-white hover:shadow-xl group cursor-pointer">
-          <h4 class="text-xl font-semibold text-gray-800 dark:text-white group-hover:text-white">
+          <h4 class="text-xl font-semibold text-orange-700 dark:text-white group-hover:text-white">
             {{ $solution }}
           </h4>
           <p class="text-gray-600 dark:text-gray-300 mt-2 group-hover:text-white">
@@ -190,7 +190,7 @@ IT Solutions for SMEs in Africa. <span class="text-orange-600">Afrinet Telecom</
 
     <!-- ICT Solutions -->
     <div>
-      <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-6 border-b pb-2 border-gray-300 dark:border-gray-700">
+      <h3 class="text-2xl font-semibold text-gray-700 dark:text-white mb-6 border-b pb-2 border-gray-300 dark:border-gray-700">
         ICT Hardware Solutions
       </h3>
       <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -206,7 +206,7 @@ IT Solutions for SMEs in Africa. <span class="text-orange-600">Afrinet Telecom</
         @endphp
         @foreach ($ictSolutions as $item)
         <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition duration-300 hover:bg-green-500 hover:text-white hover:shadow-xl group cursor-pointer">
-          <h4 class="text-xl font-semibold text-gray-800 dark:text-white group-hover:text-white">
+          <h4 class="text-xl font-semibold text-orange-700 dark:text-white group-hover:text-white">
             {{ $item['title'] }}
           </h4>
           <p class="text-gray-600 dark:text-gray-300 mt-2 group-hover:text-white">
@@ -335,19 +335,19 @@ IT Solutions for SMEs in Africa. <span class="text-orange-600">Afrinet Telecom</
 </div> -->
 
 <!-- About Us -->
-<section class="py-16 bg-white dark:bg-gray-900 font-poppin">
+<section class="py-16 bg-gray-50 dark:bg-gray-900 font-poppin">
   <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-10">
     
     <!-- IMAGE -->
     <div class="w-full lg:w-1/2">
-      <img src="https://images.unsplash.com/photo-1614852202523-610d0b4f2e99?auto=format&fit=crop&w=800&q=80"
+      <img src="/images/girl.jpg"
            alt="Happy customer"
            class="rounded-lg shadow-lg w-full h-auto object-cover">
     </div>
 
     <!-- CONTENT -->
     <div class="w-full lg:w-1/2">
-      <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+      <h2 class=" text-center text-4xl font-bold text-gray-900 dark:text-white mb-4">
         About <span class="text-green-600">Us</span>
       </h2>
       <p class="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
@@ -356,28 +356,20 @@ IT Solutions for SMEs in Africa. <span class="text-orange-600">Afrinet Telecom</
       </p>
 
       <!-- Solutions List -->
-      <div class="space-y-2 text-gray-700 dark:text-gray-300 mb-8">
+      <div class="space-y-2 text-green-700 dark:text-gray-300 mb-8">
         <div class="flex items-center gap-3">
-          <span class="text-green-600 text-xl">✔</span> Bulk SMS
-        </div>
-        <div class="flex items-center gap-3">
-          <span class="text-green-600 text-xl">✔</span> Water Sector ERP
-        </div>
-        <div class="flex items-center gap-3">
-          <span class="text-green-600 text-xl">✔</span> Mobile & Web Development
-        </div>
-        <div class="flex items-center gap-3">
-          <span class="text-green-600 text-xl">✔</span> CRM for SMEs
-        </div>
-        <div class="flex items-center gap-3">
-          <span class="text-green-600 text-xl">✔</span> Church Management ERP
-        </div>
-        <div class="flex items-center gap-3">
-          <span class="text-green-600 text-xl">✔</span> IT Hardware
+          <ul >
+            <li icon="check-circle">Bulk SMS</li>
+            <li icon="check-circle">Water Sector ERP</li>
+            <li icon="check-circle">Mobile & Web Development</li>
+            <li icon="check-circle">CRM for SMEs</li>
+            <li icon="check-circle">Church Management ERP</li>
+          </ul>
+
         </div>
       </div>
 
-      <a href="#"
+      <a href="aboutus"
          class="inline-block bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full transition">
         Read More
       </a>
@@ -385,398 +377,137 @@ IT Solutions for SMEs in Africa. <span class="text-orange-600">Afrinet Telecom</
   </div>
 
   <!-- Why Choose Us Section -->
-  <div class="mt-16 bg-gray-50 dark:bg-gray-800 py-12 px-6 lg:px-20 rounded-lg shadow-inner">
-    <div class="text-center mb-10">
-      <h3 class="text-3xl font-semibold text-gray-900 dark:text-white">Why Choose <span class="text-green-600">Us</span></h3>
+  <div class="mt-16 bg-gray-50 dark:bg-gray-800 py-12 px-10 lg:px-20 rounded-lg shadow-inner">
+  <div class="text-center mb-10">
+    <h3 class="text-3xl font-semibold text-gray-900 dark:text-white">
+      Why Choose <span class="text-green-600">Us</span>
+    </h3>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 text-gray-700 dark:text-gray-200">
+    <!-- CARD -->
+    <div class="group bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md text-center transition transform hover:scale-105 hover:ring-2 hover:ring-green-500 duration-300">
+      <!-- Optional Image -->
+      <img src="/images/deliver.jpg" alt="Value Icon" class="w-20 h-20 mx-auto mb-3">
+      <div class="text-4xl text-orange-500 mb-4 group-hover:text-green-600 transition"></div>
+      <h4 class="text-orange-700 font-semibold text-lg mb-2">We Deliver Value</h4>
+      <p class="text-md">Your money goes further with tailored cloud tools that create impact.</p>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-gray-700 dark:text-gray-200">
-      <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md text-center">
-        <div class="text-4xl text-orange-500 mb-4">🎯</div>
-        <h4 class="font-semibold text-lg mb-2">We Deliver Value</h4>
-        <p class="text-sm">Your money goes further with tailored cloud tools that create impact.</p>
-      </div>
-      <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md text-center">
-        <div class="text-4xl text-green-500 mb-4">🤝</div>
-        <h4 class="font-semibold text-lg mb-2">Growth Partners</h4>
-        <p class="text-sm">We don't just serve—we walk with you as your business grows.</p>
-      </div>
-      <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md text-center">
-        <div class="text-4xl text-orange-500 mb-4">📱</div>
-        <h4 class="font-semibold text-lg mb-2">Engage & Retain</h4>
-        <p class="text-sm">We help you connect and retain loyal customers efficiently.</p>
-      </div>
-      <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md text-center">
-        <div class="text-4xl text-green-500 mb-4">💬</div>
-        <h4 class="font-semibold text-lg mb-2">We Value Feedback</h4>
-        <p class="text-sm">Continuous improvement through listening to your needs.</p>
-      </div>
+
+    <!-- CARD -->
+    <div class="group bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md text-center transition transform hover:scale-105 hover:ring-2 hover:ring-green-500 duration-300">
+      <img src="/images/growth.jpg" alt="Growth Icon" class="w-20 h-20 mx-auto mb-3">
+      <div class="text-4xl text-green-500 mb-4 group-hover:text-green-600 transition"></div>
+      <h4 class=" text-orange-700 font-semibold text-lg mb-2">Growth Partners</h4>
+      <p class="text-md">We don't just serve—we walk with you as your business grows.</p>
+    </div>
+
+    <!-- CARD -->
+    <div class="group bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md text-center transition transform hover:scale-105 hover:ring-2 hover:ring-green-500 duration-300">
+      <img src="/images/engage.jpg" alt="Engagement Icon" class="w-20 h-20 mx-auto mb-3">
+      <div class="text-4xl text-orange-500 mb-4 group-hover:text-green-600 transition"></div>
+      <h4 class=" text-orange-700 font-semibold text-lg mb-2">Engage & Retain</h4>
+      <p class="text-md">We help you connect and retain loyal customers efficiently.</p>
+    </div>
+
+    <!-- CARD -->
+    <div class="group bg-white dark:bg-gray-900 p-6 rounded-xl shadow-md text-center transition transform hover:scale-105 hover:ring-2 hover:ring-green-500 duration-300">
+      <img src="/images/feedback2.jpg" alt="Feedback Icon" class="w-20 h-20 mx-auto mb-3">
+      <div class="text-4xl text-green-500 mb-4 group-hover:text-green-600 transition"></div>
+      <h4 class=" text-orange-700 font-semibold text-lg mb-2">We Value Feedback</h4>
+      <p class="text-md">Continuous improvement through listening to your needs.</p>
     </div>
   </div>
+</div>
+
 </section>
 
 
 
 
 <!-- customer reviews -->
- <section class="py-14 font-poppins dark:bg-gray-800">
-  <div class="max-w-6xl px-4 py-6 mx-auto lg:py-4 md:px-6">
-    <div class="max-w-xl mx-auto">
-      <div class="text-center ">
-        <div class="relative flex flex-col items-center">
-          <h1 class="text-5xl font-bold dark:text-gray-200"> Customer <span class="text-blue-500"> Reviews
-            </span> </h1>
-          <div class="flex w-40 mt-2 mb-6 overflow-hidden rounded">
-            <div class="flex-1 h-2 bg-blue-200">
-            </div>
-            <div class="flex-1 h-2 bg-blue-400">
-            </div>
-            <div class="flex-1 h-2 bg-blue-600">
-            </div>
-          </div>
-        </div>
-        <p class="mb-12 text-base text-center text-gray-500">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus magni eius eaque?
-          Pariatur
-          numquam, odio quod nobis ipsum ex cupiditate?
-        </p>
+<section class="bg-white dark:bg-gray-900 py-16 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-4xl font-bold text-gray-800 dark:text-white">What Our Customers Say</h2>
+    <p class="mt-4 text-gray-600 dark:text-gray-300">Real feedback from our amazing customers.</p>
+  </div>
+
+  <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <!-- Card 1 -->
+    <div class="bg-gray-50 dark:bg-gray-800 shadow-md rounded-lg p-6 flex flex-col items-center text-center">
+      <img class="w-24 h-24 rounded-full object-cover mb-4" src="https://i.postimg.cc/rF6G0Dh9/pexels-emmy-e-2381069.jpg" alt="Adren Roy">
+      <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Adren Roy</h3>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Web Designer</p>
+      <p class="text-gray-700 dark:text-gray-300 mb-4">
+        “Amazing experience! The quality and turnaround were beyond expectations. Highly recommend this team.”
+      </p>
+      <div class="flex space-x-1 mb-2">
+        <!-- 5 stars green -->
+        <template>
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 15l-5.878 3.09L5.634 12 .758 7.91l6.282-.91L10 1l2.96 6 6.282.91-4.876 4.09 1.512 5.18z"/>
+          </svg>
+        </template>
+        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09L5.634 12 .758 7.91l6.282-.91L10 1l2.96 6 6.282.91-4.876 4.09 1.512 5.18z"/></svg>
+        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09L5.634 12 .758 7.91l6.282-.91L10 1l2.96 6 6.282.91-4.876 4.09 1.512 5.18z"/></svg>
+        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09L5.634 12 .758 7.91l6.282-.91L10 1l2.96 6 6.282.91-4.876 4.09 1.512 5.18z"/></svg>
+        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09L5.634 12 .758 7.91l6.282-.91L10 1l2.96 6 6.282.91-4.876 4.09 1.512 5.18z"/></svg>
       </div>
+      <span class="text-sm text-orange-600 font-semibold">Joined Sep 2022</span>
     </div>
 
-    <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 ">
-      <div class="py-6 bg-white rounded-md shadow dark:bg-gray-900">
-        <div class="flex flex-wrap items-center justify-between pb-4 mb-6 space-x-2 border-b dark:border-gray-700">
-          <div class="flex items-center px-6 mb-2 md:mb-0 ">
-            <div class="flex mr-2 rounded-full">
-              <img src="https://i.postimg.cc/rF6G0Dh9/pexels-emmy-e-2381069.jpg" alt="" class="object-cover w-12 h-12 rounded-full">
-            </div>
-            <div>
-              <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-300">
-                Adren Roy</h2>
-              <p class="text-xs text-gray-500 dark:text-gray-400">Web Designer</p>
-            </div>
-          </div>
-          <p class="px-6 text-base font-medium text-gray-600 dark:text-gray-400"> Joined 12, SEP , 2022
-          </p>
-        </div>
-        <p class="px-6 mb-6 text-base text-gray-500 dark:text-gray-400">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem cupiditate similique,
-          iure minus sed fugit obcaecati minima quam reiciendis dicta!
-        </p>
-        <div class="flex flex-wrap justify-between pt-4 border-t dark:border-gray-700">
-          <div class="flex px-6 mb-2 md:mb-0">
-            <ul class="flex items-center justify-start mr-4">
-              <li>
-                <a href="#">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 mr-1 text-blue-500 dark:text-blue-400 bi bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                    </path>
-                  </svg>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 mr-1 text-blue-500 dark:text-blue-400 bi bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                    </path>
-                  </svg>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 mr-1 text-blue-500 dark:text-blue-400 bi bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                    </path>
-                  </svg>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 mr-1 text-blue-500 dark:text-blue-400 bi bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                    </path>
-                  </svg>
-                </a>
-              </li>
-            </ul>
-            <h2 class="text-sm text-gray-500 dark:text-gray-400">Rating:<span class="font-semibold text-gray-600 dark:text-gray-300">
-                3.0</span>
-            </h2>
-          </div>
-          <div class="flex items-center px-6 space-x-1 text-sm font-medium text-gray-500 dark:text-gray-400">
-            <div class="flex items-center">
-              <div class="flex mr-3 text-sm text-gray-700 dark:text-gray-400">
-                <a href="#">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 mr-1 text-blue-400 bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
-                    <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z">
-                    </path>
-                  </svg>
-                </a>
-                <span>12</span>
-              </div>
-              <div class="flex text-sm text-gray-700 dark:text-gray-400">
-                <a href="#" class="inline-flex hover:underline">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 mr-1 text-blue-400 bi bi-chat" viewBox="0 0 16 16">
-                    <path d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.807 7-6 0-3.192-3.004-6-7-6S1 4.808 1 8c0 1.468.617 2.83 1.678 3.894zm-.493 3.905a21.682 21.682 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a9.68 9.68 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105z">
-                    </path>
-                  </svg>Reply</a>
-              </div>
-            </div>
-          </div>
-        </div>
+    <!-- Card 2 -->
+    <div class="bg-gray-50 dark:bg-gray-800 shadow-md rounded-lg p-6 flex flex-col items-center text-center">
+      <img class="w-24 h-24 rounded-full object-cover mb-4" src="https://i.postimg.cc/q7pv50zT/pexels-edmond-dant-s-4342352.jpg" alt="Sonira Roy">
+      <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Sonira Roy</h3>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Project Manager</p>
+      <p class="text-gray-700 dark:text-gray-300 mb-4">
+        “Fantastic service and super helpful support. They delivered exactly what I needed with no hassle.”
+      </p>
+      <div class="flex space-x-1 mb-2">
+        <!-- 4 stars green -->
+        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09L5.634 12 .758 7.91l6.282-.91L10 1l2.96 6 6.282.91-4.876 4.09 1.512 5.18z"/></svg>
+        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09L5.634 12 .758 7.91l6.282-.91L10 1l2.96 6 6.282.91-4.876 4.09 1.512 5.18z"/></svg>
+        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09L5.634 12 .758 7.91l6.282-.91L10 1l2.96 6 6.282.91-4.876 4.09 1.512 5.18z"/></svg>
+        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09L5.634 12 .758 7.91l6.282-.91L10 1l2.96 6 6.282.91-4.876 4.09 1.512 5.18z"/></svg>
       </div>
-      <div class="py-6 bg-white rounded-md shadow dark:bg-gray-900">
-        <div class="flex flex-wrap items-center justify-between pb-4 mb-6 space-x-2 border-b dark:border-gray-700">
-          <div class="flex items-center px-6 mb-2 md:mb-0 ">
-            <div class="flex mr-2 rounded-full">
-              <img src="https://i.postimg.cc/q7pv50zT/pexels-edmond-dant-s-4342352.jpg" alt="" class="object-cover w-12 h-12 rounded-full">
-            </div>
-            <div>
-              <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-300">
-                Sonira Roy</h2>
-              <p class="text-xs text-gray-500 dark:text-gray-400">Manager</p>
-            </div>
-          </div>
-          <p class="px-6 text-base font-medium text-gray-600 dark:text-gray-400"> Joined 12, SEP , 2022
-          </p>
-        </div>
-        <p class="px-6 mb-6 text-base text-gray-500 dark:text-gray-400">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem cupiditate similique,
-          iure minus sed fugit obcaecati minima quam reiciendis dicta!
-        </p>
-        <div class="flex flex-wrap justify-between pt-4 border-t dark:border-gray-700">
-          <div class="flex px-6 mb-2 md:mb-0">
-            <ul class="flex items-center justify-start mr-4">
-              <li>
-                <a href="#">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 mr-1 text-blue-500 dark:text-blue-400 bi bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                    </path>
-                  </svg>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 mr-1 text-blue-500 dark:text-blue-400 bi bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                    </path>
-                  </svg>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 mr-1 text-blue-500 dark:text-blue-400 bi bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                    </path>
-                  </svg>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 mr-1 text-blue-500 dark:text-blue-400 bi bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                    </path>
-                  </svg>
-                </a>
-              </li>
-            </ul>
-            <h2 class="text-sm text-gray-500 dark:text-gray-400">Rating:<span class="font-semibold text-gray-600 dark:text-gray-300">
-                3.0</span>
-            </h2>
-          </div>
-          <div class="flex items-center px-6 space-x-1 text-sm font-medium text-gray-500 dark:text-gray-400">
-            <div class="flex items-center">
-              <div class="flex mr-3 text-sm text-gray-700 dark:text-gray-400">
-                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 mr-1 text-blue-400 bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
-                    <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z">
-                    </path>
-                  </svg></a>
-                <span>12</span>
-              </div>
-              <div class="flex text-sm text-gray-700 dark:text-gray-400">
-                <a href="#" class="inline-flex hover:underline">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 mr-1 text-blue-400 bi bi-chat" viewBox="0 0 16 16">
-                    <path d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.807 7-6 0-3.192-3.004-6-7-6S1 4.808 1 8c0 1.468.617 2.83 1.678 3.894zm-.493 3.905a21.682 21.682 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a9.68 9.68 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105z">
-                    </path>
-                  </svg>Reply</a>
-              </div>
-            </div>
-          </div>
-        </div>
+      <span class="text-sm text-orange-600 font-semibold">Joined Dec 2022</span>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="bg-gray-50 dark:bg-gray-800 shadow-md rounded-lg p-6 flex flex-col items-center text-center">
+      <img class="w-24 h-24 rounded-full object-cover mb-4" src="https://i.postimg.cc/gjZ4Gg6b/pexels-italo-melo-2379004.jpg" alt="Daniel Lee">
+      <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Daniel Lee</h3>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Business Owner</p>
+      <p class="text-gray-700 dark:text-gray-300 mb-4">
+        “They made the process effortless. I was updated at every step and the result was perfect!”
+      </p>
+      <div class="flex space-x-1 mb-2">
+        <!-- 5 stars green -->
+        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09L5.634 12 .758 7.91l6.282-.91L10 1l2.96 6 6.282.91-4.876 4.09 1.512 5.18z"/></svg>
+        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09L5.634 12 .758 7.91l6.282-.91L10 1l2.96 6 6.282.91-4.876 4.09 1.512 5.18z"/></svg>
+        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09L5.634 12 .758 7.91l6.282-.91L10 1l2.96 6 6.282.91-4.876 4.09 1.512 5.18z"/></svg>
+        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09L5.634 12 .758 7.91l6.282-.91L10 1l2.96 6 6.282.91-4.876 4.09 1.512 5.18z"/></svg>
+        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09L5.634 12 .758 7.91l6.282-.91L10 1l2.96 6 6.282.91-4.876 4.09 1.512 5.18z"/></svg>
       </div>
-      <div class="py-6 bg-white rounded-md shadow dark:bg-gray-900">
-        <div class="flex flex-wrap items-center justify-between pb-4 mb-6 space-x-2 border-b dark:border-gray-700">
-          <div class="flex items-center px-6 mb-2 md:mb-0 ">
-            <div class="flex mr-2 rounded-full">
-              <img src="https://i.postimg.cc/JzmrHQmk/pexels-pixabay-220453.jpg" alt="" class="object-cover w-12 h-12 rounded-full">
-            </div>
-            <div>
-              <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-300">
-                William harry</h2>
-              <p class="text-xs text-gray-500 dark:text-gray-400">Marketing Officer</p>
-            </div>
-          </div>
-          <p class="px-6 text-base font-medium text-gray-600 dark:text-gray-400"> Joined 12, SEP , 2022
-          </p>
-        </div>
-        <p class="px-6 mb-6 text-base text-gray-500 dark:text-gray-400">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem cupiditate similique,
-          iure minus sed fugit obcaecati minima quam reiciendis dicta!
-        </p>
-        <div class="flex flex-wrap justify-between pt-4 border-t dark:border-gray-700">
-          <div class="flex px-6 mb-2 md:mb-0">
-            <ul class="flex items-center justify-start mr-4">
-              <li>
-                <a href="#">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 mr-1 text-blue-500 dark:text-blue-400 bi bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                    </path>
-                  </svg>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 mr-1 text-blue-500 dark:text-blue-400 bi bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                    </path>
-                  </svg>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 mr-1 text-blue-500 dark:text-blue-400 bi bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                    </path>
-                  </svg>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 mr-1 text-blue-500 dark:text-blue-400 bi bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                    </path>
-                  </svg>
-                </a>
-              </li>
-            </ul>
-            <h2 class="text-sm text-gray-500 dark:text-gray-400">Rating:<span class="font-semibold text-gray-600 dark:text-gray-300">
-                3.0</span>
-            </h2>
-          </div>
-          <div class="flex items-center px-6 space-x-1 text-sm font-medium text-gray-500 dark:text-gray-400">
-            <div class="flex items-center">
-              <div class="flex mr-3 text-sm text-gray-700 dark:text-gray-400">
-                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 mr-1 text-blue-400 bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
-                    <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z">
-                    </path>
-                  </svg></a>
-                <span>12</span>
-              </div>
-              <div class="flex text-sm text-gray-700 dark:text-gray-400">
-                <a href="#" class="inline-flex hover:underline">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 mr-1 text-blue-400 bi bi-chat" viewBox="0 0 16 16">
-                    <path d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.807 7-6 0-3.192-3.004-6-7-6S1 4.808 1 8c0 1.468.617 2.83 1.678 3.894zm-.493 3.905a21.682 21.682 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a9.68 9.68 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105z">
-                    </path>
-                  </svg>Reply</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="py-6 bg-white rounded-md shadow dark:bg-gray-900">
-        <div class="flex flex-wrap items-center justify-between pb-4 mb-6 space-x-2 border-b dark:border-gray-700">
-          <div class="flex items-center px-6 mb-2 md:mb-0 ">
-            <div class="flex mr-2 rounded-full">
-              <img src="https://i.postimg.cc/4NMZPYdh/pexels-dinielle-de-veyra-4195342.jpg" alt="" class="object-cover w-12 h-12 rounded-full">
-            </div>
-            <div>
-              <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-300">
-                James jack</h2>
-              <p class="text-xs text-gray-500 dark:text-gray-400">Java Programmer</p>
-            </div>
-          </div>
-          <p class="px-6 text-base font-medium text-gray-600 dark:text-gray-400"> Joined 12, SEP , 2022
-          </p>
-        </div>
-        <p class="px-6 mb-6 text-base text-gray-500 dark:text-gray-400">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem cupiditate similique,
-          iure minus sed fugit obcaecati minima quam reiciendis dicta!
-        </p>
-        <div class="flex flex-wrap justify-between pt-4 border-t dark:border-gray-700">
-          <div class="flex px-6 mb-2 md:mb-0">
-            <ul class="flex items-center justify-start mr-4">
-              <li>
-                <a href="#">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 mr-1 text-blue-500 dark:text-blue-400 bi bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                    </path>
-                  </svg>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 mr-1 text-blue-500 dark:text-blue-400 bi bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                    </path>
-                  </svg>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 mr-1 text-blue-500 dark:text-blue-400 bi bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                    </path>
-                  </svg>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 mr-1 text-blue-500 dark:text-blue-400 bi bi-star-fill" viewBox="0 0 16 16">
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                    </path>
-                  </svg>
-                </a>
-              </li>
-            </ul>
-            <h2 class="text-sm text-gray-500 dark:text-gray-400">Rating:<span class="font-semibold text-gray-600 dark:text-gray-300">
-                3.0</span>
-            </h2>
-          </div>
-          <div class="flex items-center px-6 space-x-1 text-sm font-medium text-gray-500 dark:text-gray-400">
-            <div class="flex items-center">
-              <div class="flex mr-3 text-sm text-gray-700 dark:text-gray-400">
-                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 mr-1 text-blue-400 bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
-                    <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z">
-                    </path>
-                  </svg></a>
-                <span>12</span>
-              </div>
-              <div class="flex text-sm text-gray-700 dark:text-gray-400">
-                <a href="#" class="inline-flex hover:underline">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 mr-1 text-blue-400 bi bi-chat" viewBox="0 0 16 16">
-                    <path d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.807 7-6 0-3.192-3.004-6-7-6S1 4.808 1 8c0 1.468.617 2.83 1.678 3.894zm-.493 3.905a21.682 21.682 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a9.68 9.68 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105z">
-                    </path>
-                  </svg>Reply</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <span class="text-sm text-orange-600 font-semibold">Joined Mar 2023</span>
     </div>
   </div>
 </section>
+
 
 <!-- Contact us page -->
 
 <!-- Contact Us Section -->
 <!-- Contact Us Section -->
-<section class="bg-white dark:bg-gray-900 py-16 font-poppin" id="contact">
+<section class="bg-green-500 dark:bg-gray-900 py-16 font-poppin" id="contact">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <!-- Section Title -->
     <div class="text-center mb-12">
       <h2 class="text-4xl font-bold text-gray-900 dark:text-white">
-        Get in <span class="text-green-600">Touch</span>
+        Get in <span class="text-gray-900">Touch</span>
       </h2>
-      <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
+      <p class="mt-4 text-lg text-gray-900 dark:text-gray-300">
         We'd love to hear from you. Reach out to us or send us a message.
       </p>
     </div>
@@ -786,27 +517,31 @@ IT Solutions for SMEs in Africa. <span class="text-orange-600">Afrinet Telecom</
       <!-- Contact Information -->
       <div class="space-y-8">
         <div class="flex items-start gap-4">
-          <div class="text-3xl text-orange-500">📧</div>
+          <img src="/images/email.jpg" alt="Email Icon" class="w-14 h-14">
           <div>
             <h4 class="text-lg font-semibold text-gray-800 dark:text-white">Email</h4>
-            <p class="text-gray-600 dark:text-gray-300">info@yourecommerce.com</p>
+            <p class="text-gray-600 dark:text-gray-300">sales-ke@afrinettelecom.co.ke</p>
           </div>
         </div>
         <div class="flex items-start gap-4">
-          <div class="text-3xl text-green-600">📞</div>
+          <img src="/images/phone.jpg" alt="Phone Icon" class="w-16 h-16">
           <div>
             <h4 class="text-lg font-semibold text-gray-800 dark:text-white">Phone</h4>
             <p class="text-gray-600 dark:text-gray-300">+254 712 345 678</p>
           </div>
         </div>
         <div class="flex items-start gap-4">
-          <div class="text-3xl text-orange-500">📍</div>
+                   <!-- Icon on the left -->
+           <img src="/images/address.jpg" alt="Address Icon" class="w-16 h-16">
+
+                <!-- Text content on the right -->
           <div>
             <h4 class="text-lg font-semibold text-gray-800 dark:text-white">Address</h4>
-            <p class="text-gray-600 dark:text-gray-300">Nairobi, Kenya</p>
+           <p class="text-gray-600 dark:text-gray-300">Spur Mall, Thika Road, Nairobi, Kenya</p>
           </div>
         </div>
-      </div>
+
+       </div>
 
       <!-- Contact Form -->
       <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow">
