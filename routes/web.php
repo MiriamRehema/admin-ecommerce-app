@@ -81,6 +81,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/categories', [DashboardController::class, 'categories'])->name('dashboard.categories');
     Route::redirect('settings', 'settings/profile');
     Route::get('/dashboard/roles', [DashboardController::class, 'roles'])->name('dashboard.roles');
+    Route::get('/dashboard/services', [DashboardController::class, 'services'])->name('dashboard.service');
     
 
     Route::get('settings/profile', Profile::class)->name('settings.profile');
