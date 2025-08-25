@@ -23,6 +23,9 @@
                 @can('user-list')
                     <a href="/users" onclick="loadContent(event, '{{ route('dashboard.users') }}')" class="block p-2 hover:bg-gray-700 rounded">Manage Users</a>
                 @endcan
+                @can('order-list')
+                    <a href="/services" onclick="loadContent(event, '{{ route('dashboard.service') }}')" class="block p-2 hover:bg-gray-700 rounded">Services</a>
+                @endcan
                 @can('category-list')
                     <a href="/categories" onclick="loadContent(event, '{{ route('dashboard.categories') }}')" class="block p-2 hover:bg-gray-700 rounded">Manage Categories</a>
                 @endcan
