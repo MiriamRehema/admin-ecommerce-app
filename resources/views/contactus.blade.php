@@ -48,7 +48,7 @@
 
       <!-- Contact Form -->
       <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg shadow-lg">
-        <form action="{{ route('contact.send') }}" method="POST" class="space-y-6">
+        <!-- <form action="{{ route('contact.send') }}" method="POST" class="space-y-6"> -->
           @csrf
           <div>
             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Your Name</label>
