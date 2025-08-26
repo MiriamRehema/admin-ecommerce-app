@@ -29,8 +29,8 @@ class Service extends Model
     public function reviews(){
         return $this->belongsToMany(Review::class);
     }
-    public function orderservices(){
-        return $this->belongsToMany(Order_service::class);
+    public function order_services(){
+        return $this->hasMany(Order_service::class);
     }
     
 }
