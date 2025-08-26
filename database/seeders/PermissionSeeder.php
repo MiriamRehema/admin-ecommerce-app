@@ -35,6 +35,14 @@ class PermissionSeeder extends Seeder
             'user-create',
             'user-edit',
             'user-delete',
+            'service-list',
+            'service-create',
+            'service-edit',
+            'service-delete',
+            'service-request-list',
+            'service-request-create',
+            'service-request-edit',
+            'service-request-delete'
 
         ];
         foreach($permissions as $key=>$permission){
