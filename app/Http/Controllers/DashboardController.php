@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Service;
+use App\Models\ServiceRequest;
 use Spatie\Permission\Models\Role;
 
 
@@ -21,8 +22,9 @@ class DashboardController extends Controller
         $categoryCount = Category::count();
         
         $serviceCount = Service::count();
+        $serviceRequestCount = ServiceRequest::count();
 
-        return view('dashboard.index', compact('userCount', 'orderCount', 'productCount', 'categoryCount', 'serviceCount'));
+        return view('dashboard.index', compact('userCount', 'orderCount', 'productCount', 'categoryCount', 'serviceCount', 'serviceRequestCount'));
     }
 
     public function users()
@@ -34,7 +36,13 @@ class DashboardController extends Controller
     public function services()
     {
         $services = Service::all();
-        return view('dashboard.partials.service', compact('services'));
+        return view('dashboard.partials.services', compact('services'));
+    }
+
+    public function serviceRequests()
+    {
+        $serviceRequests = ServiceRequest::with('user', 'service')->get();
+        return view('dashboard.partials.serviceRequests', compact('serviceRequests'));
     }
 
     public function orders()
