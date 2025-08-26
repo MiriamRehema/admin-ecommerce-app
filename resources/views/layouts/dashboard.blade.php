@@ -23,8 +23,12 @@
                 @can('user-list')
                     <a href="/users" onclick="loadContent(event, '{{ route('dashboard.users') }}')" class="block p-2 hover:bg-gray-700 rounded">Manage Users</a>
                 @endcan
-                @can('order-list')
-                    <a href="/services" onclick="loadContent(event, '{{ route('dashboard.service') }}')" class="block p-2 hover:bg-gray-700 rounded">Services</a>
+                @can('service-list')
+                    <a href="/services" onclick="loadContent(event, '{{ route('dashboard.services') }}')" class="block p-2 hover:bg-gray-700 rounded">Manage Services</a>
+                    
+                @endcan
+                @can('service-request-list')
+                <a href="/serviceRequests" onclick="loadContent(event, '{{ route('dashboard.serviceRequests') }}')" class="block p-2 hover:bg-gray-700 rounded">Manage Service Requests</a>
                 @endcan
                 @can('category-list')
                     <a href="/categories" onclick="loadContent(event, '{{ route('dashboard.categories') }}')" class="block p-2 hover:bg-gray-700 rounded">Manage Categories</a>
