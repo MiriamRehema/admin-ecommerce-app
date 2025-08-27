@@ -3,19 +3,19 @@
 @section('content')
 <div>
     <!-- hero section -->
-     <div class="w-full h-screen bg-gradient-to-r from-green-700 to-green-500 py-10 px-4 sm:px-6 lg:px-8 mx-auto">
-  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Grid -->
-    <div class="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
-      <div>
-        <h1 class="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">
+     <div class="w-full h-screen bg-gradient-to-r from-green-700 to-green-500 py-8 px-4 sm:px-6 lg:px-8 mx-auto">
+          <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+                     <!-- Grid -->
+             <div class="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
+          <div>
+             <h1 class="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">
 
-IT Solutions for SMEs in Africa. <span class="text-orange-700">Afrinet Telecom</span></h1>
-        <p class="mt-3 text-lg text-gray-800 dark:text-gray-400">Purchase wide varities of electronics products like Smartphones, Laptops, Smartwatches, Television and many more.</p>
+                 IT Solutions for SMEs in Africa. <span class="text-orange-700">Afrinet Telecom</span></h1>
+                  <p class="mt-3 text-lg text-gray-800 dark:text-gray-400">We exist to help SMEs leverage on technology for growth.</p>
 
         <!-- Buttons -->
-        <div class="mt-7 grid gap-3 w-full sm:inline-flex">
-          <a class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-orange-600 text-white hover:bg-green-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/register">
+          <div class="mt-7 grid gap-3 w-full sm:inline-flex">
+          <a class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-orange-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/register">
             Get started
             <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="m9 18 6-6-6-6" />
@@ -113,31 +113,11 @@ IT Solutions for SMEs in Africa. <span class="text-orange-700">Afrinet Telecom</
       <!-- End Col -->
 
       <div class="relative ms-4">
-        <!-- <img class="w-full rounded-md" src="https://static.vecteezy.com/system/resources/previews/011/993/278/non_2x/3d-render-online-shopping-bag-using-credit-card-or-cash-for-future-use-credit-card-money-financial-security-on-mobile-3d-application-3d-shop-purchase-basket-retail-store-on-e-commerce-free-png.png" alt="Image Description"> -->
+          <img class="w-full  rounded-md" src="https://static.vecteezy.com/system/resources/previews/011/993/278/non_2x/3d-render-online-shopping-bag-using-credit-card-or-cash-for-future-use-credit-card-money-financial-security-on-mobile-3d-application-3d-shop-purchase-basket-retail-store-on-e-commerce-free-png.png" alt="Image Description"> 
         <div class="absolute inset-0 -z-[1] bg-gradient-to-tr from-gray-200 via-white/0 to-white/0 w-full h-full rounded-md mt-4 -mb-4 me-4 -ms-4 lg:mt-6 lg:-mb-6 lg:me-6 lg:-ms-6 dark:from-slate-800 dark:via-slate-900/0 dark:to-slate-900/0"></div>
 
         <!-- SVG-->
-        <div class="absolute bottom-0 start-0">
-          <svg class="w-2/3 ms-auto h-auto text-white dark:text-slate-900" width="630" height="451" viewBox="0 0 630 451" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="531" y="352" width="99" height="99" fill="currentColor" />
-            <rect x="140" y="352" width="106" height="99" fill="currentColor" />
-            <rect x="482" y="402" width="64" height="49" fill="currentColor" />
-            <rect x="433" y="402" width="63" height="49" fill="currentColor" />
-            <rect x="384" y="352" width="49" height="50" fill="currentColor" />
-            <rect x="531" y="328" width="50" height="50" fill="currentColor" />
-            <rect x="99" y="303" width="49" height="58" fill="currentColor" />
-            <rect x="99" y="352" width="49" height="50" fill="currentColor" />
-            <rect x="99" y="392" width="49" height="59" fill="currentColor" />
-            <rect x="44" y="402" width="66" height="49" fill="currentColor" />
-            <rect x="234" y="402" width="62" height="49" fill="currentColor" />
-            <rect x="334" y="303" width="50" height="49" fill="currentColor" />
-            <rect x="581" width="49" height="49" fill="currentColor" />
-            <rect x="581" width="49" height="64" fill="currentColor" />
-            <rect x="482" y="123" width="49" height="49" fill="currentColor" />
-            <rect x="507" y="124" width="49" height="24" fill="currentColor" />
-            <rect x="531" y="49" width="99" height="99" fill="currentColor" />
-          </svg>
-        </div>
+       
         <!-- End SVG-->
       </div>
       <!-- End Col -->
@@ -159,53 +139,55 @@ IT Solutions for SMEs in Africa. <span class="text-orange-700">Afrinet Telecom</
       </p>
     </div>
 
-    <!-- IT Solutions -->
-    <div class="mb-16">
-      <h3 class="text-2xl font-semibold text-gray-700 dark:text-white mb-6 border-b pb-2 border-gray-300 dark:border-gray-700">
-        IT Solutions
-      </h3>
-      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        @php
-          $itSolutions = [
-            'Bulk SMS',
-            'Shortcodes & USSD',
-            'Customer Survey',
-            'CRM for SMEs',
-            'Water ERP',
-            'Web & Mobile Applications'
-          ];
-        @endphp
-        @foreach ($itSolutions as $solution)
-        <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition duration-300 hover:bg-green-500 hover:text-white hover:shadow-xl group cursor-pointer">
+   <!-- IT Solutions -->
+<div class="mb-16">
+  <h3 class="text-2xl font-semibold text-gray-700 dark:text-white mb-6 border-b pb-2 border-gray-300 dark:border-gray-700">
+    IT Solutions
+  </h3>
+  <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    @php
+      $itSolutions = [
+        ['title' => 'Bulk SMS', 'id' => 'bulk-sms'],
+        ['title' => 'Shortcodes & USSD', 'id' => 'shortcodes-ussd'],
+      
+        ['title' => 'Afrinet Tech Academy', 'id' => 'afrinet-tech-academy'],
+        ['title' => 'Web & Mobile Applications', 'id' => 'web-mobile-apps'],
+      ];
+    @endphp
+    @foreach ($itSolutions as $solution)
+      <a href="{{ url('/oursolutions#' . $solution['id']) }}" class="group">
+        <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition duration-300 hover:bg-green-500 hover:text-white hover:shadow-xl cursor-pointer">
           <h4 class="text-xl font-semibold text-orange-700 dark:text-white group-hover:text-white">
-            {{ $solution }}
+            {{ $solution['title'] }}
           </h4>
           <p class="text-gray-600 dark:text-gray-300 mt-2 group-hover:text-white">
-            Reliable and scalable {{ strtolower($solution) }} services designed to meet your business needs.
+            Reliable and scalable {{ strtolower($solution['title']) }} services designed to meet your business needs.
           </p>
         </div>
-        @endforeach
-      </div>
-    </div>
+      </a>
+    @endforeach
+  </div>
+</div>
 
-    <!-- ICT Solutions -->
-    <div>
-      <h3 class="text-2xl font-semibold text-gray-700 dark:text-white mb-6 border-b pb-2 border-gray-300 dark:border-gray-700">
-        ICT Hardware Solutions
-      </h3>
-      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        @php
-          $ictSolutions = [
-            ['title' => 'Servers', 'desc' => 'The powerhouse of your network, from basic to virtual servers.'],
-            ['title' => 'Switches', 'desc' => 'Ensure seamless device connectivity and smooth data flow.'],
-            ['title' => 'Routers', 'desc' => 'Direct traffic and manage network connections efficiently.'],
-            ['title' => 'Wi-Fi Access Points', 'desc' => 'Expand coverage with secure high-speed wireless access.'],
-            ['title' => 'Network Storage', 'desc' => 'Centralized and scalable storage for all your data.'],
-            ['title' => 'UPS Systems', 'desc' => 'Protect your data and maintain uptime during outages.'],
-          ];
-        @endphp
-        @foreach ($ictSolutions as $item)
-        <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition duration-300 hover:bg-green-500 hover:text-white hover:shadow-xl group cursor-pointer">
+<!-- ICT Hardware Solutions -->
+<div>
+  <h3 class="text-2xl font-semibold text-gray-700 dark:text-white mb-6 border-b pb-2 border-gray-300 dark:border-gray-700">
+    ICT Hardware Solutions
+  </h3>
+  <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    @php
+      $ictSolutions = [
+        ['title' => 'Servers', 'desc' => 'The powerhouse of your network, from basic to virtual servers.', 'id' => 'servers'],
+        ['title' => 'Switches', 'desc' => 'Ensure seamless device connectivity and smooth data flow.', 'id' => 'switches'],
+        ['title' => 'Routers', 'desc' => 'Direct traffic and manage network connections efficiently.', 'id' => 'routers'],
+        ['title' => 'Wi-Fi Access Points', 'desc' => 'Expand coverage with secure high-speed wireless access.', 'id' => 'wifi'],
+        ['title' => 'Network Storage', 'desc' => 'Centralized and scalable storage for all your data.', 'id' => 'storage'],
+        ['title' => 'UPS Systems', 'desc' => 'Protect your data and maintain uptime during outages.', 'id' => 'ups'],
+      ];
+    @endphp
+    @foreach ($ictSolutions as $item)
+      <a href="{{ url('/oursolutions#' . $item['id']) }}" class="group">
+        <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition duration-300 hover:bg-green-500 hover:text-white hover:shadow-xl cursor-pointer">
           <h4 class="text-xl font-semibold text-orange-700 dark:text-white group-hover:text-white">
             {{ $item['title'] }}
           </h4>
@@ -213,10 +195,12 @@ IT Solutions for SMEs in Africa. <span class="text-orange-700">Afrinet Telecom</
             {{ $item['desc'] }}
           </p>
         </div>
-        @endforeach
-      </div>
-    </div>
+      </a>
+    @endforeach
   </div>
+</div>
+
+</div>
 </section>
 
 
@@ -335,22 +319,39 @@ IT Solutions for SMEs in Africa. <span class="text-orange-700">Afrinet Telecom</
 </div> -->
 
 <!-- About Us -->
-<section class="py-16 bg-gray-50 dark:bg-gray-900 font-poppin">
+<section class="py-16 bg-gray-200 dark:bg-gray-900 font-poppin">
   <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-10">
     
     <!-- IMAGE -->
-    <div class="w-full lg:w-1/2">
-      <img src="/images/girl.jpg"
-           alt="Happy customer"
-           class="rounded-lg shadow-lg w-full h-auto object-cover">
-    </div>
+    <div class="w-full lg:w-1/2 relative">
+  <!-- Background Image -->
+  <img src="/images/girl.jpg"
+       alt="Happy customer"
+       class="rounded-lg shadow-lg w-100 h-80 object-cover">
+
+  
+  
+
+  <!-- Example 2: Another Icon in Bottom-Right -->
+  <div class="absolute bottom right">
+    <i class="fa-solid fa-thumbs-up text-green-500 text-4xl"></i>
+  </div>
+
+  <!-- Example 3: Text label in center -->
+  <div class="absolute inset-0 flex items-center justify-center">
+    <span class="bg-black bg-opacity-50 text-white px-4 py-2 rounded-lg text-lg font-semibold">
+      Trusted by 1000+ Clients
+    </span>
+  </div>
+</div>
+
 
     <!-- CONTENT -->
     <div class="w-full lg:w-1/2">
       <h2 class=" text-center text-4xl font-bold text-gray-900 dark:text-white mb-4">
         About <span class="text-green-600">Us</span>
       </h2>
-      <p class="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+      <p class="text-xl text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
         We exist to help SMEs leverage technology for growth. <br>
         We report to work every day to help SMEs run efficiently.
       </p>
@@ -358,13 +359,15 @@ IT Solutions for SMEs in Africa. <span class="text-orange-700">Afrinet Telecom</
       <!-- Solutions List -->
       <div class="space-y-2 text-green-700 dark:text-gray-300 mb-8">
         <div class="flex items-center gap-3">
-          <ul >
-            <li icon="check-circle">Bulk SMS</li>
-            <li icon="check-circle">Water Sector ERP</li>
-            <li icon="check-circle">Mobile & Web Development</li>
-            <li icon="check-circle">CRM for SMEs</li>
-            <li icon="check-circle">Church Management ERP</li>
-          </ul>
+          <ul class="space-y-2 text-gray-700 dark:text-gray-200">
+              <li><i class="fa-solid fa-check-circle text-green-500 mr-2"></i>Bulk SMS</li>
+              <li><i class="fa-solid fa-check-circle text-green-500 mr-2"></i>Afrinet Tech Academy</li>
+              <li><i class="fa-solid fa-check-circle text-green-500 mr-2"></i>Mobile & Web Development</li>
+              <li><i class="fa-solid fa-check-circle text-green-500 mr-2"></i>CRM for SMEs</li>
+              <li><i class="fa-solid fa-check-circle text-green-500 mr-2"></i>IT Hardware</li>
+           </ul>
+
+          
 
         </div>
       </div>
@@ -377,7 +380,7 @@ IT Solutions for SMEs in Africa. <span class="text-orange-700">Afrinet Telecom</
   </div>
 
   <!-- Why Choose Us Section -->
-  <div class="mt-16 bg-gray-50 dark:bg-gray-800 py-12 px-10 lg:px-20 rounded-lg shadow-inner">
+  <div class="mt-16 bg-gray-200 dark:bg-gray-800 py-12 px-10 lg:px-20 rounded-lg shadow-inner">
   <div class="text-center mb-10">
     <h3 class="text-3xl font-semibold text-gray-900 dark:text-white">
       Why Choose <span class="text-green-600">Us</span>
@@ -435,7 +438,7 @@ IT Solutions for SMEs in Africa. <span class="text-orange-700">Afrinet Telecom</
   <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
     <!-- Card 1 -->
     <div class="bg-gray-50 dark:bg-gray-800 shadow-md rounded-lg p-6 flex flex-col items-center text-center">
-      <img class="w-24 h-24 rounded-full object-cover mb-4" src="https://i.postimg.cc/rF6G0Dh9/pexels-emmy-e-2381069.jpg" alt="Adren Roy">
+      <img class="w-24 h-24 rounded-full object-cover mb-4" src="image2/man.jpg" alt="Adren Roy">
       <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Adren Roy</h3>
       <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Web Designer</p>
       <p class="text-gray-700 dark:text-gray-300 mb-4">
@@ -458,8 +461,8 @@ IT Solutions for SMEs in Africa. <span class="text-orange-700">Afrinet Telecom</
 
     <!-- Card 2 -->
     <div class="bg-gray-50 dark:bg-gray-800 shadow-md rounded-lg p-6 flex flex-col items-center text-center">
-      <img class="w-24 h-24 rounded-full object-cover mb-4" src="https://i.postimg.cc/q7pv50zT/pexels-edmond-dant-s-4342352.jpg" alt="Sonira Roy">
-      <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Sonira Roy</h3>
+      <img class="w-24 h-24 rounded-full object-cover mb-4" src="image2/workingwoman.jpg" alt="Sonira Mia">
+      <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Sonira Mia</h3>
       <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Project Manager</p>
       <p class="text-gray-700 dark:text-gray-300 mb-4">
         “Fantastic service and super helpful support. They delivered exactly what I needed with no hassle.”
@@ -476,7 +479,7 @@ IT Solutions for SMEs in Africa. <span class="text-orange-700">Afrinet Telecom</
 
     <!-- Card 3 -->
     <div class="bg-gray-50 dark:bg-gray-800 shadow-md rounded-lg p-6 flex flex-col items-center text-center">
-      <img class="w-24 h-24 rounded-full object-cover mb-4" src="https://i.postimg.cc/gjZ4Gg6b/pexels-italo-melo-2379004.jpg" alt="Daniel Lee">
+      <img class="w-24 h-24 rounded-full object-cover mb-4" src="image2/lady.jpg" alt="Daniel Lee">
       <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Daniel Lee</h3>
       <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Business Owner</p>
       <p class="text-gray-700 dark:text-gray-300 mb-4">
