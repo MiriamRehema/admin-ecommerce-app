@@ -24,9 +24,8 @@
           $itSolutions = [
             'Bulk SMS',
             'Shortcodes & USSD',
-            'Customer Survey',
-            'CRM for SMEs',
-            'Water ERP',
+            'Afrinet Tech Academy',
+            
             'Web & Mobile Applications'
           ];
         @endphp
