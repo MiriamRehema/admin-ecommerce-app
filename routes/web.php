@@ -44,7 +44,7 @@ Route::get('/oursolutions', function () {
 Route::get('/contactus', function () {
     return view('contactus');
 })->name('contactus');
-
+Route::view('/aboutus', 'aboutus')->name('about');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
