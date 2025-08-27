@@ -3,7 +3,7 @@
 
 
 @section('content')
-<section class="bg-gray-100 py-16 px-6 lg:px-20">
+<section class="bg-gray-50 py-16 px-6 lg:px-20">
     <div class="max-w-7xl mx-auto">
         <!-- About -->
         <h2 class="text-4xl font-bold text-gray-800 mb-6">Who We Are</h2>
