@@ -25,12 +25,12 @@
         <div class="overflow-hidden overflow-y-auto max-h-[75vh] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500">
           <div class="flex flex-col gap-x-0 mt-5 divide-y divide-dashed divide-gray-200 md:flex-row md:items-center md:justify-end md:gap-x-7 md:mt-0 md:ps-7 md:divide-y-0 md:divide-solid dark:divide-gray-700">
 
-            <a class="font-medium text-orange-600 py-3 md:py-6 dark:text-orange-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-green-600" href="/" aria-current="page">Home</a>
+            <a wire:navigate class="font-medium text-orange-600 py-3 md:py-6 dark:text-orange-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-green-600" href="/" aria-current="page">Home</a>
 
-            <a class="font-medium text-orange-500 hover:text-green-400 py-3 md:py-6 dark:text-gray-500 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/aboutus">
+            <a wire:navigate class="font-medium text-orange-500 hover:text-green-400 py-3 md:py-6 dark:text-gray-500 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/aboutus">
               About Us
             </a>
-            <a class="font-medium text-orange-500 hover:text-green-400 py-3 md:py-6 dark:text-gray-500 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/oursolutions">
+            <a wire:navigate class="font-medium text-orange-500 hover:text-green-400 py-3 md:py-6 dark:text-gray-500 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/oursolutions">
               Our Solutions
             </a>
 
@@ -42,7 +42,7 @@
               Products
             </a> -->
 
-            <a class="font-medium text-orange-500 hover:text-green-400 py-3 md:py-6 dark:text-gray-500 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/contactus">
+            <a wire:navigate class="font-medium text-orange-500 hover:text-green-400 py-3 md:py-6 dark:text-gray-500 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/contactus">
              Contact Us
             </a>
 
@@ -54,12 +54,12 @@
             </a> -->
 
             <div class="pt-3 md:pt-0">
-              <a class="py-2.5 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-green-600 text-white hover:bg-orange-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/login">
+              <a class="py-2.5 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-green-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/login">
                 <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
                   <circle cx="12" cy="7" r="4" />
                 </svg>
-                Log in
+                Be a member
               </a>
             </div>
 
